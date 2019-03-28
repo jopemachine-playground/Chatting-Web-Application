@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 위쪽 사이드바 스타일 */
+a.navbar-brand{
+  font-family: 'Jeju Gothic';
+}
+/* 아래쪽 사이드바 스타일 */
+footer{
+  color: #ffffff;
+  width: 100%;
+}
+
+/* Chatting box 스타일 */
+textarea:focus{
+  background-color: #ffffff;
+  color: black;
+}
+
+textarea:not(focus){
+  background-color: #dce3ef;
+}
+
+#Message_Writing_Box{
+  height: 200px;
+}
+
+#Program_Window{
+
+}
+
+#BackImage {
+  background-color: #ffffff;
+  background-size:100%;
+  background-attachment: fixed;
+  opacity: 0.5!important;
+  filter:alpha(opacity=30);
+}
+
+#Sending_Message_Box{
+
+}
+
+#Copyright{
+  font-family: 'Jeju Gothic';
+  font-size: 2;
+  text-align: center;
+  color: #f2f2f2;
+}
+
+#My_Message {
+
+}
+
+#Oppenent_Message {
+
+}
+
+#Header {
+  color: #ffffff;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+  #Program_Window{
+    width: auto;
+  }
+  #Message_Writing_Box{
+    width: auto;
+  }
+}

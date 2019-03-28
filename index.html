@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <title>채팅 프로그램</title>
+  <!-- meta 데이터 정의 -->
+  <meta charset="utf-8">
+  <meta name="description" content="Chatting web program">
+  <meta name="keywords" content="Web Programming Term Project, Chatting">
+  <meta name="author" content="Gyu Bong Lee">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/custom.css">
+</head>
+
+<body>
+  <!-- 프로그램 창 -->
+  <div id="Program_Window">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <a class="navbar-brand" href="./index.html">채팅 <span class="badge badge-secondary">0</span></a>
+      <img src="img/menu.svg" alt="sidebar menu" style="float:right;"></img>
+      <img src="img/user.svg" alt="user" style="float:right;"></img>
+    </nav>
+  </div>
+  <!-- 메시지 표시 -->
+  <div id="Message_Window">
+    <img style="width:100%;" id="BackImage" src='./img/sky.jpg' alt="background image: sky"></img>
+  </div>
+
+  <nav id="Message_Writing_Box" class="navbar navbar-expand-sm bg-dark p-3 fixed-bottom">
+    <!-- 메시지 작성 박스 -->
+
+    <div class="text-right mb-5" id="Sending_Message_Box" title ="전송할 메시지를 입력하세요.">
+        <form action="send_message.php">
+          <textarea name="Sending_Message" rows="4" cols="130" placeholder="메시지를 입력하세요." autofocus></textarea>
+        </form>
+    </div>
+
+    <div class="ml-4">
+      <button type="submit" class="btn btn-success mb-2">메시지 전송</button><br>
+      <button id="File_Transfer_Button" type="submit" class="btn btn-primary mb-5" title ="파일을 전송하시려면 클릭하세요.">파일 전송</button>
+    </div>
+
+    <div class="">
+      <footer id="Copyright"> &copy; 2019 201502085 이규봉 웹프로그래밍 </footer>
+    </div>
+
+  </nav>
+
+  <!-- 제이쿼리 자바스크립트 추가하기 -->
+  <script src="./js/jquery-3.2.1.min.js"></script>
+  <!-- Popper 자바스크립트 추가하기 -->
+  <script src="./js/popper.min.js"></script>
+  <!-- 부트스트랩 자바스크립트 추가하기 -->
+  <script src="./js/bootstrap.min.js"></script>
+  <!-- MDB 라이브러리 추가하기 -->
+  <script src="./js/mdb.min.js"></script>
+
+</body>
+</html>
