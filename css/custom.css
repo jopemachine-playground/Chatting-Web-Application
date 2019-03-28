@@ -5,6 +5,13 @@
 a.navbar-brand{
   font-family: 'Jeju Gothic';
 }
+
+/* 위쪽 사이드바 버튼 스타일 */
+.side_btn{
+  border: none;
+  background-color: #007bff;
+}
+
 /* 아래쪽 사이드바 스타일 */
 footer{
   color: #ffffff;
@@ -12,6 +19,10 @@ footer{
 }
 
 /* Chatting box 스타일 */
+textarea{
+  width: 100%
+}
+
 textarea:focus{
   background-color: #ffffff;
   color: black;
@@ -22,7 +33,7 @@ textarea:not(focus){
 }
 
 #Message_Writing_Box{
-  height: 200px;
+  width: 100%
 }
 
 #Program_Window{
@@ -35,10 +46,6 @@ textarea:not(focus){
   background-attachment: fixed;
   opacity: 0.5!important;
   filter:alpha(opacity=30);
-}
-
-#Sending_Message_Box{
-
 }
 
 #Copyright{
@@ -64,10 +71,5 @@ textarea:not(focus){
 }
 
 @media (max-width: 480px) {
-  #Program_Window{
-    width: auto;
-  }
-  #Message_Writing_Box{
-    width: auto;
-  }
+
 }
