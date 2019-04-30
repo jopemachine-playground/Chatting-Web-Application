@@ -40,17 +40,20 @@ textarea:not(focus){
 
 }
 
+/*
+이미지를 단색 배경으로 교체
+
 #BackImage {
   background-color: #ffffff;
   background-size:100%;
   background-attachment: fixed;
   opacity: 0.5!important;
-  filter:alpha(opacity=30);
 }
+*/
 
 #Copyright{
   font-family: 'Jeju Gothic';
-  font-size: 2;
+  font-size: 15pt;
   text-align: center;
   color: #f2f2f2;
 }
@@ -72,4 +75,12 @@ textarea:not(focus){
 
 @media (max-width: 480px) {
 
+}
+
+#background{
+  background-color: #c9ddff;
+}
+
+html, body{
+  height: 120%;
 }

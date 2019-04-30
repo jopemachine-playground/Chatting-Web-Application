@@ -1,0 +1,68 @@
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 위쪽 사이드바 스타일 */
+a.navbar-brand{
+  font-family: 'Jeju Gothic';
+}
+
+/* 위쪽 사이드바 버튼 스타일 */
+.side_btn{
+  border: none;
+  background-color: #007bff;
+}
+
+/* 아래쪽 사이드바 스타일 */
+footer{
+  color: #ffffff;
+  width: 100%;
+}
+
+/* Chatting box 스타일 */
+textarea{
+  width: 100%
+}
+
+textarea:focus{
+  background-color: #ffffff;
+  color: black;
+}
+
+textarea:not(focus){
+  background-color: #dce3ef;
+}
+
+.jumbotron{
+  margin-top: 15px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.toChattingRoom{
+  width: 100%;
+}
+
+#Copyright{
+  font-family: 'Jeju Gothic';
+  font-size: 15pt;
+  text-align: center;
+  color: #f2f2f2;
+  width: 100%;
+}
+
+
+#Header {
+  color: #ffffff;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+
+}
+
+#background{
+  background-color: #c9ddff;
+}

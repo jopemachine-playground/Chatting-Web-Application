@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+a.navbar-brand{
+  font-family: 'Jeju Gothic';
+}
+
+#background{
+  background-color: #c9ddff;
+}
+
+#Copyright{
+  font-family: 'Jeju Gothic';
+  font-size: 15pt;
+  text-align: center;
+  color: #f2f2f2;
+  align= "center";
+  width: 100%;
+}
