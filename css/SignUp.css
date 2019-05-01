@@ -17,3 +17,7 @@ a.navbar-brand{
   align= "center";
   width: 100%;
 }
+
+strong{
+  color: red;
+}

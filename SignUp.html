@@ -11,19 +11,29 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="./SignUp.html">회원가입</a>
   </nav>
-  <section class="container" style="padding-top: 100px;">
+
+  <section class="container" style="padding-top: 45px;">
+      <p class="lead" style="font-size: 60px;">Make Your Own ID</p>
       <form class="" action="SignUp.html" method="post">
         <div class="form-group">
-          <label for="ID">ID </label>
+          <label for="ID">ID <strong>* </strong></label>
           <input type="ID" class="form-control" placeholder="ID를 입력하세요" autofocus>
         </div>
         <div class="form-group">
-          <label for="PW">PW </label>
+          <label for="PW">PW <strong>* </strong></label>
           <input type="PW" class="form-control" placeholder="비밀번호를 입력하세요">
         </div>
         <div class="form-group">
-          <label for="PW">PW 확인</label>
-          <input type="PW" class="form-control" placeholder="비밀번호를 다시 한 번 입력하세요">
+          <label for="PW_Confirm">PW 확인 <strong>* </strong></label>
+          <input type="PW_Confirm" class="form-control" placeholder="비밀번호를 다시 한 번 입력하세요">
+        </div>
+        <div class="form-group">
+          <label for="Address">주소</label>
+          <input type="Address" class="form-control" placeholder="주소를 입력하세요">
+        </div>
+        <div class="form-group">
+          <label for="PhoneNumber">핸드폰 번호</label>
+          <input type="PhoneNumber" class="form-control" placeholder="핸드폰 번호를 입력하세요">
         </div>
         <button type="submit" class="btn btn-primary">제출</button>
       </form>

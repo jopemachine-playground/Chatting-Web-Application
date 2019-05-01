@@ -10,10 +10,12 @@
   </head>
 
   <body id="background">
+    <!-- 로그인 표시 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="./SignIn.html">로그인</a>
     </nav>
     <section class="container" style="padding-top:100px;">
+      <p class="lead" style="font-size: 60px;">Login Page</p>
       <form class="" action="SignIn.html" method="post">
         <div class="form-group">
           <label for="ID">ID </label>
@@ -23,9 +25,14 @@
           <label for="PW">PW </label>
           <input type="PW" class="form-control" placeholder="비밀번호를 입력하세요">
         </div>
-        <button type="submit" class="btn btn-primary">제출</button>
+        <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 20px;">제출</button>
       </form>
     </section>
+
+    <!-- Sign Up 표시 -->
+    <div class="container" style="padding-top:100px;">
+      <a href="SignUp.html" id="AnchorForSignUp">Sign Up</a>
+    </div>
 
     <footer id="Copyright" class="bg-dark mt-4 p-5 text-center fixed-bottom"> &copy; 2019 웹프로그래밍 </footer>
 

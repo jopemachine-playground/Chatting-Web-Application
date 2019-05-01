@@ -5,6 +5,10 @@ a.navbar-brand{
   font-family: 'Jeju Gothic';
 }
 
+#AnchorForSignUp{
+  font-size: 30px;
+}
+
 #background{
   background-color: #c9ddff;
 }
@@ -14,6 +18,5 @@ a.navbar-brand{
   font-size: 15pt;
   text-align: center;
   color: #f2f2f2;
-  align= "center";
   width: 100%;
 }
