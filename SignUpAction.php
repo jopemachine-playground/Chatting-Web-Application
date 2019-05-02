@@ -19,17 +19,6 @@
   $Address = $_POST["Address"];
   $PhoneNumber = $_POST["PhoneNumber"];
 
-  // 비밀번호가 비밀번호 확인과 맞지 않는 경우 에러처리
-  if($PW_Confirm != $PW){
-    echo ("<script language=javascript>alert('비밀번호가 비밀번호 확인과 맞지 않습니다.')</script>");
-    exit();
-  }
-
-  // 필수 입력 란이 비어 있으면 에러 처리
-  if($ID == "" || $PW == "" || $PW_Confirm = ""){
-    echo ("<script language=javascript>alert('필수 입력 칸이 비어 있습니다.')</script>");
-  }
-
   $useDB = "
     USE chattingdb;
   ";
@@ -55,6 +44,7 @@
   //   exit();
   // }
 
+  // 중복 ID가 존재하는 경우 에러처리
   while($row = mysqli_fetch_array($ret)){
     if($ID == $row['ID']){
       echo ("<script language=javascript>alert('중복된 ID가 있습니다.')</script>");
