@@ -29,11 +29,11 @@
         </div>
         <div class="form-group">
           <label for="PW">PW <strong>* </strong></label>
-          <input type="text" name="PW" class="form-control" placeholder="비밀번호를 입력하세요">
+          <input type="password" name="PW" class="form-control" placeholder="비밀번호를 입력하세요">
         </div>
         <div class="form-group">
           <label for="PW_Confirm">PW 확인 <strong>* </strong></label>
-          <input type="text" name="PW_Confirm" class="form-control" placeholder="비밀번호를 다시 한 번 입력하세요">
+          <input type="password" name="PW_Confirm" class="form-control" placeholder="비밀번호를 다시 한 번 입력하세요">
         </div>
         <div class="form-group">
           <label for="Address">주소</label>

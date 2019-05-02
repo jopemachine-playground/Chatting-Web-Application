@@ -91,7 +91,7 @@
   //   echo "실패 원인: " .mysqli_error($connect_object);
   //   exit();
   // }
-  echo ("<script language=javascript>alert('회원가입이 완료되었습니다!')</script>");
+  echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
   echo ("<script>location.href='SignUp.php';</script>");
 
   mysqli_close($connect_object);

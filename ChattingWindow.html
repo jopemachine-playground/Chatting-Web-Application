@@ -17,15 +17,20 @@
   <!-- 프로그램 창 -->
   <div id="Program_Window">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-      <a class="navbar-brand" href="./Chatting.html">채팅 <span class="badge badge-secondary">0</span></a>
-      <ul class="navbar-nav ml-auto">
-        <li>
-          <button type="image" class="side_btn"><img src="img/menu.svg" alt="sidebar menu"></img></button>
-        </li>
-        <li>
-          <button type="button" class="side_btn"><img src="img/user.svg" alt="user"></img></button>
-        </li>
-      </ul>
+      <div class="col-sm-11">
+        <a class="navbar-brand" href="./Chatting.html">~와의 채팅 <span class="badge badge-secondary">0</span></a>
+      </div>
+      <div class="col-sm-1">
+        <div class="btn-group float-right">
+          <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">로그아웃</a>
+            <a class="dropdown-item" href="#">채팅방 선택화면</a>
+            <a class="dropdown-item active" href="#">내 정보</a>
+          </div>
+          <button type="button" class="side_btn"><img src="img/user.svg" alt="user info button"></img></button>
+        </div>
+      </div>
     </nav>
   </div>
   <!-- 메시지 표시 -->

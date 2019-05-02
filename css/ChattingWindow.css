@@ -12,6 +12,11 @@ a.navbar-brand{
   background-color: #007bff;
 }
 
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
 /* 아래쪽 사이드바 스타일 */
 footer{
   color: #ffffff;
@@ -71,6 +76,10 @@ textarea:not(focus){
   padding-top: 7px;
   padding-bottom: 7px;
   margin-bottom: 10px;
+}
+
+.dropdown-toggle::after {
+    content: none;
 }
 
 @media (max-width: 480px) {

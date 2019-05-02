@@ -12,18 +12,19 @@
   <body id="background">
     <!-- 로그인 표시 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="./SignIn.html">로그인</a>
+      <a class="navbar-brand" href="./SignIn.html">Chatting</a>
     </nav>
     <section class="container" style="padding-top:100px;">
-      <p class="lead" style="font-size: 60px;">Login Page</p>
+      <p class="lead" style="font-size: 60px;">Login</p>
+      <p class="lead" style="font-size: 14px; color: #4c4c4c;">로그인 페이지</p>
       <form class="" action="SignIn.html" method="post">
         <div class="form-group">
           <label for="ID">ID </label>
-          <input type="ID" class="form-control" placeholder="ID를 입력하세요" autofocus>
+          <input type="text" name="ID" class="form-control" placeholder="ID를 입력하세요" autofocus>
         </div>
         <div class="form-group">
           <label for="PW">PW </label>
-          <input type="PW" class="form-control" placeholder="비밀번호를 입력하세요">
+          <input type="password" name="PW" class="form-control" placeholder="비밀번호를 입력하세요">
         </div>
         <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 20px;">제출</button>
       </form>
@@ -31,7 +32,7 @@
 
     <!-- Sign Up 표시 -->
     <div class="container" style="padding-top:100px;">
-      <a href="SignUp.html" id="AnchorForSignUp">Sign Up</a>
+      <a href="SignUp.php" id="AnchorForSignUp">Sign Up</a>
     </div>
 
     <footer id="Copyright" class="bg-dark mt-4 p-5 text-center fixed-bottom"> &copy; 2019 웹프로그래밍 </footer>
