@@ -50,13 +50,13 @@
   <footer id="Copyright" class="bg-dark mt-4 p-5 text-center"> &copy; 2019 웹프로그래밍 </footer>
 
   <!-- 제이쿼리 자바스크립트 추가하기 -->
-  <script src="./js/jquery-3.2.1.min.js"></script>
+  <script src="./lib/jquery-3.2.1.min.js"></script>
   <!-- Popper 자바스크립트 추가하기 -->
-  <script src="./js/popper.min.js"></script>
+  <script src="./lib/popper.min.js"></script>
   <!-- 부트스트랩 자바스크립트 추가하기 -->
-  <script src="./js/bootstrap.min.js"></script>
+  <script src="./lib/bootstrap.min.js"></script>
   <!-- MDB 라이브러리 추가하기 -->
-  <script src="./js/mdb.min.js"></script>
+  <script src="./lib/mdb.min.js"></script>
   <!-- 커스텀 자바스크립트 추가하기 -->
   <script src="./js/SignUp.js"></script>
 </body>
