@@ -29,9 +29,9 @@
 
   $ret = mysqli_query($connect_object, $searchUserID);
 
-  $row = mysqli_fetch_array($ret)
+  $row = mysqli_fetch_array($ret);
 
-  if(empty(row)){
+  if(empty($row)){
     echo ("<script language=javascript>alert('존재하지 않는 계정입니다.')</script>");
     echo ("<script>location.href='SignIn.html';</script>");
     exit();
