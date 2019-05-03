@@ -1,16 +1,8 @@
 <?php
+  require_once('C:\xampp\WebProgramming_Project\MySQLConection.php');
   // DB 연결
-  $database_host = "localhost";
-  $database_user = "root";
-  $database_password = "ttdance4902";
-  $database_name = "";
 
-  $connect_object = mysqli_connect($database_host, $database_user, $database_password, $database_name);
-  if(mysqli_connect_error($connect_object)){
-    echo "MySQL 접속 오류";
-    echo "오류 원인 : ", mysqli_connect_error();
-    exit();
-  }
+  $connect_object = MySQLConnection::DB_Connect();
 
   // Post 방식으로 유저 데이터를 가져옴
   $ID = $_POST["ID"];
@@ -48,7 +40,7 @@
   while($row = mysqli_fetch_array($ret)){
     if($ID == $row['ID']){
       echo ("<script language=javascript>alert('중복된 ID가 있습니다.')</script>");
-      echo ("<script>location.href='SignUp.php';</script>");
+      echo ("<script>location.href='SignUp.html';</script>");
       break;
     }
   }
@@ -82,7 +74,7 @@
   //   exit();
   // }
   echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
-  echo ("<script>location.href='SignUp.php';</script>");
+  echo ("<script>location.href='SignIn.html';</script>");
 
   mysqli_close($connect_object);
 

@@ -1,16 +1,7 @@
 <?php
-  // DB 연결
-  $database_host = "localhost";
-  $database_user = "root";
-  $database_password = "ttdance4902";
-  $database_name = "";
-
-  $connect_object = mysqli_connect($database_host, $database_user, $database_password, $database_name);
-  if(mysqli_connect_error($connect_object)){
-    echo "MySQL 접속 오류";
-    echo "오류 원인 : ", mysqli_connect_error();
-    exit();
-  }
+  require_once('C:\xampp\WebProgramming_Project\MySQLConection.php');
+  
+  $connect_object = MySQLConnection::DB_Connect();
 
   // Post 방식으로 유저 데이터를 가져옴
   $ID = $_POST["ID"];
