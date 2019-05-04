@@ -1,5 +1,5 @@
 <?php
-  require_once('C:\xampp\WebProgramming_Project\MySQLConection.php');
+  require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
   // DB 연결
 
   $connect_object = MySQLConnection::DB_Connect();
@@ -40,7 +40,7 @@
   while($row = mysqli_fetch_array($ret)){
     if($ID == $row['ID']){
       echo ("<script language=javascript>alert('중복된 ID가 있습니다.')</script>");
-      echo ("<script>location.href='SignUp.html';</script>");
+      echo ("<script>location.href='../SignUp.html';</script>");
       break;
     }
   }
@@ -74,7 +74,7 @@
   //   exit();
   // }
   echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
-  echo ("<script>location.href='SignIn.html';</script>");
+  echo ("<script>location.href='../SignIn.html';</script>");
 
   mysqli_close($connect_object);
 

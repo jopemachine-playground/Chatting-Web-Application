@@ -7,11 +7,12 @@ function SubmitButtonClicked(){
     return false;
   }
   // ID와 비밀번호의 형식을 검사
-  else if(false){
-    alert('비밀번호는 ~ 자리 이상이어야 합니다');
+
+  else if($('input[name="PW"]')[0].value.length < 4){
+    alert('비밀번호는 4 자리 이상이어야 합니다');
     return false;
   }
-  else if(false){
+  else if($('input[name="ID"]')[0].value.length < 4){
     alert('ID는 대소문자 알파벳으로 시작해야 하며, 4자리 이상이어야 합니다');
     return false;
   }

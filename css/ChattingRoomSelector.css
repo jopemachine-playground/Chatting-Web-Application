@@ -12,6 +12,11 @@ a.navbar-brand{
   background-color: #007bff;
 }
 
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
 /* 아래쪽 사이드바 스타일 */
 footer{
   color: #ffffff;
@@ -41,6 +46,10 @@ textarea:not(focus){
 
 .toChattingRoom{
   width: 100%;
+}
+
+.dropdown-toggle::after {
+    content: none;
 }
 
 #Copyright{
