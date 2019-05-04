@@ -4,7 +4,7 @@ class MySQLConnection{
   private static $database_host = "localhost";
   private static $database_user = "root";
   private static $database_password = "ttdance4902";
-  private static $database_name = "";
+  private static $database_name = "chattingdb";
 
   public static function DB_Connect(){
     $connect_object = mysqli_connect(self::$database_host, self::$database_user, self::$database_password, self::$database_name);

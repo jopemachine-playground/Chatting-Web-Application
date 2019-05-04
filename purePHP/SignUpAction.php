@@ -11,12 +11,6 @@
   $Address = $_POST["Address"];
   $PhoneNumber = $_POST["PhoneNumber"];
 
-  $useDB = "
-    USE chattingdb;
-  ";
-
-  $ret = mysqli_query($connect_object, $useDB);
-
   // DB에서 PK (ID) 중복 검사
   $searchUserID = "
     SELECT * FROM usersinfotbl

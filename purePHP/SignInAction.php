@@ -7,12 +7,6 @@
   $ID = $_POST["ID"];
   $PW = $_POST["PW"];
 
-  $useDB = "
-    USE chattingdb;
-  ";
-
-  $ret = mysqli_query($connect_object, $useDB);
-
   // DB에서 PK (ID) 를 찾음
   $searchUserID = "
     SELECT * FROM usersinfotbl WHERE ID = '$ID'

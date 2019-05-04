@@ -1,3 +1,12 @@
+<?php
+  require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
+  require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+
+  $connect_object = MySQLConnection::DB_Connect();
+  $messageWindow = new MessageWindow();
+
+?>
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -35,6 +44,10 @@
   </div>
   <!-- 메시지 표시 -->
   <section class="container" style="padding-top:100px;" id="Message_Window">
+    <?php
+      echo $messageWindow->$MessageHTML;
+    ?>
+    <!--
     <div class="jumbotron userCard">
       <p>충남대학교우편취급국에서 영수증이 도착하였습니다. 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
     </div>
@@ -47,6 +60,7 @@
     <div class="jumbotron userCard">
       <p>충남대학교우편취급국에서 영수증이 도착하였습니다. 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
     </div>
+    -->
   </section>
 
     <!-- 메시지 작성 박스 -->
@@ -82,7 +96,7 @@
   <!-- MDB 라이브러리 추가하기 -->
   <script src="./lib/mdb.min.js"></script>
   <!-- 커스텀 자바스크립트 파일 추가하기 -->
-  <script src="./js/ChattingWindow.js"></script>
+  <script src="./js/ChattingRoom.js"></script>
 
 </body>
 </html>
