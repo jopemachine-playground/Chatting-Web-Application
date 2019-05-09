@@ -6,7 +6,7 @@ class ChattingRoomSelectorBox{
 
     $chattingRoomSelectorHTML = '';
     $chattingRoomSelectorHTML .= '<div class="jumbotron userCard">';
-    $chattingRoomSelectorHTML .= '<h1 class="display-4">';
+    $chattingRoomSelectorHTML .= '<h1 class="display-6">';
     $chattingRoomSelectorHTML .= $chattingRoomTitle;
     $chattingRoomSelectorHTML .= '</h1>';
     $chattingRoomSelectorHTML .= '<hr class="my-4">';

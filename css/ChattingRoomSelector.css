@@ -12,6 +12,11 @@ a.navbar-brand{
   background-color: #007bff;
 }
 
+.roomDelete_btn{
+  border: none;
+  background-color: #e9ecef;
+}
+
 .dropdown-menu-right {
   right: 0;
   left: auto;
@@ -42,10 +47,6 @@ textarea:not(focus){
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.toChattingRoom{
-  width: 100%;
 }
 
 .dropdown-toggle::after {

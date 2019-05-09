@@ -13,7 +13,11 @@ if($ID == null){
 $connect_object = MySQLConnection::DB_Connect();
 
 $searchUserChattingRoomBoxes = "
-SELECT * FROM usersinchattingroom WHERE UserID = '$ID'
+SELECT *
+FROM usersinchattingroom
+INNER JOIN chattingroomtbl
+ON usersinchattingroom.RoomID = chattingroomtbl.RoomID
+WHERE usersinchattingroom.UserID = '$ID'
 ";
 
 $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
@@ -21,7 +25,7 @@ $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
 $ChattingRoomIndicatingHTML = '';
 
 while($row = mysqli_fetch_array($ret)){
-    $ChattingRoomIndicatingHTML .= ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description']);
+  $ChattingRoomIndicatingHTML .= ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description']);
 }
 
 if(empty($ChattingRoomIndicatingHTML))
@@ -53,7 +57,7 @@ if(empty($ChattingRoomIndicatingHTML))
   <div id="Program_Window">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="col-sm-11">
-        <a class="navbar-brand" href="./ChattingRoomSelector.html">채팅 유저 목록<span class="badge badge-secondary">0</span></a>
+        <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
       </div>
       <div class="col-sm-1">
         <div class="btn-group float-right">
@@ -73,33 +77,32 @@ if(empty($ChattingRoomIndicatingHTML))
 
     <!-- 채팅 기록이 있는 유저 목록 -->
     <?php
-     echo $ChattingRoomIndicatingHTML;
+    echo $ChattingRoomIndicatingHTML;
     ?>
 
-    <!-- <div class="jumbotron userCard">
-    <h1 class="display-4">우체국</h1>
-    <hr class="my-4">
-    <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
-    <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
-  </p>
-</div>
-<div class="jumbotron userCard">
-<h1 class="display-4">우체국</h1>
-<hr class="my-4">
-<p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
-<p class="lead">
-<a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
-</p>
-</div>
-<div class="jumbotron userCard">
-<h1 class="display-4">우체국</h1>
-<hr class="my-4">
-<p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
-<p class="lead">
-<a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
-</p>
-</div> -->
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-sm-11">
+          <h1 class="display-6">우체국</h1>
+          <p style="font-size: 9pt; color: #939496;">채팅방 참가자: </p>
+        </div>
+        <div class="col-sm-1">
+          <img src="img/delete.svg" style="width: 32px; height:32px;" alt="Chatting Room Delete Button"></img>
+        </div>
+      </div>
+
+      <hr class="my-4">
+      <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
+      </p>
+    </div>
+
+
+
+    <!-- 스크롤바 에러를 피하기 위해 공간을 둠 -->
+    <div style="width:100%; height: 200px;"></div>
+
 </section>
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
@@ -135,7 +138,9 @@ if(empty($ChattingRoomIndicatingHTML))
   </div>
 </div>
 
-<footer id="Copyright" class="bg-dark mt-4 p-5 text-center"> &copy; 2019 웹프로그래밍 </footer>
+<div class="navbar bg-dark p-1 fixed-bottom">
+  <footer id="Copyright" class="bg-dark mt-4 p-5 text-center"> &copy; 2019 웹프로그래밍 </footer>
+</div>
 
 
 <!-- 제이쿼리 자바스크립트 추가하기 -->
@@ -148,6 +153,8 @@ if(empty($ChattingRoomIndicatingHTML))
 <script src="./lib/mdb.min.js"></script>
 <!-- 커스텀 자바스크립트 추가하기 -->
 <script src="./js/ChattingRoomAddButtonClickedAction.js"></script>
+<!-- 커스텀 자바스크립트 추가하기 -->
+<script src="./js/ChattingRoomSelector.js"></script>
 
 </body>
 </html>

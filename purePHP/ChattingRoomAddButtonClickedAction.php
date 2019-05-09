@@ -10,7 +10,7 @@ $OppenentID = $_POST["OppenentID"];
 $UserID = $_COOKIE["connectedUserID"];
 
 $searchRoomIndex = "
-  SELECT * FROM usersinchattingroom WHERE ID = '$UserID'
+  SELECT * FROM usersinchattingroom WHERE UserID = '$UserID'
 ";
 
 $ret = mysqli_query($connect_object, $searchRoomIndex);
@@ -45,10 +45,20 @@ Insert INTO usersinchattingroom (
     '$UserID'
 )";
 
+$insertOppenent = "
+Insert INTO usersinchattingroom (
+  RoomID,
+  UserID
+  ) VALUES(
+    '$HashingRoomID',
+    '$OppenentID'
+)";
+
 $ret = mysqli_query($connect_object, $insertNewRoom);
 $ret = mysqli_query($connect_object, $insertParticipants);
+$ret = mysqli_query($connect_object, $insertOppenent);
 
-echo ("<script>location.href='../ChattingRoomSelectorBox.php';</script>");
+echo ("<script>location.href='../ChattingRoomSelector.php';</script>");
 
 function Hashing($Algorithm, $UserRoomsIndex, $UserID){
   $uniqueString = "";

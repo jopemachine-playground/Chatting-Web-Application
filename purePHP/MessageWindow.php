@@ -15,7 +15,7 @@ class MessageWindow{
       SELECT * FROM messageboxestbl;
     ";
 
-    $MessageHTML =
+
   }
 
 }
