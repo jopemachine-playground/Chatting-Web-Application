@@ -1,6 +1,14 @@
 <?php
   require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
   require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+  require_once('C:\xampp\WebProgramming_Project\purePHP\MessageBox.php');
+
+  $ID = $_COOKIE["connectedUserID"];
+
+  if($ID == null){
+    echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
+    echo ("<script>location.href='SignIn.html';</script>");
+  }
 
   $connect_object = MySQLConnection::DB_Connect();
   $messageWindow = new MessageWindow();

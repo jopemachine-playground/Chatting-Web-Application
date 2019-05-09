@@ -1,0 +1,3 @@
+function SubmitButtonClicked(){
+  return true;
+}

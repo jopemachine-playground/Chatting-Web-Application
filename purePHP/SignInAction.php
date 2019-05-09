@@ -1,4 +1,5 @@
 <?php
+
   require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
 
   $connect_object = MySQLConnection::DB_Connect();
@@ -11,6 +12,9 @@
   $searchUserID = "
     SELECT * FROM usersinfotbl WHERE ID = '$ID'
   ";
+
+  // 1시간 동안 로그인을 쿠키를 이용해 유지함
+  setcookie("connectedUserID", $ID, time() + 3600, "/");
 
   $ret = mysqli_query($connect_object, $searchUserID);
 
@@ -28,6 +32,4 @@
     exit();
   }
 
-  echo ("<script>location.href='ChattingRoomSelector.html';</script>");
-
-?>
+  echo ("<script>location.href='../ChattingRoomSelector.php';</script>");

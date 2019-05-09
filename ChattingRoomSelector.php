@@ -1,3 +1,40 @@
+<?php
+require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+require_once('C:\xampp\WebProgramming_Project\purePHP\ChattingRoomSelectorBox.php');
+
+$ID = $_COOKIE["connectedUserID"];
+
+if($ID == null){
+  echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
+  echo ("<script>location.href='SignIn.html';</script>");
+  exit();
+}
+
+$connect_object = MySQLConnection::DB_Connect();
+
+$searchUserChattingRoomBoxes = "
+SELECT * FROM chattingroomtbl WHERE UserID = '$ID'
+";
+
+$ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
+
+$ChattingRoomIndicatingHTML = '';
+
+while($row = mysqli_fetch_array($ret)){
+  if(empty($row))
+  {
+    $ChattingRoomIndicatingHTML .= '<p>';
+    $ChattingRoomIndicatingHTML .= '채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!';
+    $ChattingRoomIndicatingHTML .= '</p>';
+    break;
+  }
+  else{
+    $ChattingRoomIndicatingHTML .= ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description']);
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -35,78 +72,84 @@
   </div>
 
   <section class="container mt-1" style="padding-top: 75px;">
-    <!-- 채팅 기록이 있는 유저 목록 -->
-    <div class="jumbotron userCard">
-      <h1 class="display-4">우체국</h1>
-      <!-- <img src="./img/userBlack.svg" class="img-fluid mb-3 rounded-circle mt-1"> -->
-      <hr class="my-4">
-      <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
-      </p>
-    </div>
-    <div class="jumbotron userCard">
-      <h1 class="display-4">우체국</h1>
-      <hr class="my-4">
-      <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
-      </p>
-    </div>
-    <div class="jumbotron userCard">
-      <h1 class="display-4">우체국</h1>
-      <hr class="my-4">
-      <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
-      </p>
-    </div>
-  </section>
 
-  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal">새 채팅방 추가</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label>채팅방 제목</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>채팅방 설명</label>
-              <textarea type="text" class="form-control" style="height: 180px;"></textarea>
-            </div>
-            <div class="form-group">
-              <label>상대방 ID</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-              <button type="button" class="btn btn-primary">추가하기</button>
-            </div>
-          </form>
-        </div>
+    <!-- 채팅 기록이 있는 유저 목록 -->
+    <?php
+     echo $ChattingRoomIndicatingHTML;
+    ?>
+
+    <!-- <div class="jumbotron userCard">
+    <h1 class="display-4">우체국</h1>
+    <hr class="my-4">
+    <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
+    <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
+  </p>
+</div>
+<div class="jumbotron userCard">
+<h1 class="display-4">우체국</h1>
+<hr class="my-4">
+<p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
+<p class="lead">
+<a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
+</p>
+</div>
+<div class="jumbotron userCard">
+<h1 class="display-4">우체국</h1>
+<hr class="my-4">
+<p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
+<p class="lead">
+<a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
+</p>
+</div> -->
+</section>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal">새 채팅방 추가</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="purePHP/ChattingRoomAddButtonClickedAction.php" onsubmit="return SubmitButtonClicked()" method="post" accept-charset="utf-8">
+          <div class="form-group">
+            <label for="RoomTitle">채팅방 제목</label>
+            <input name="RoomTitle" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="RoomDesc">채팅방 설명</label>
+            <textarea name="RoomDesc" type="text" class="form-control" style="height: 180px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="OppenentID">상대방 ID</label>
+            <input name="OppenentID" type="text" class="form-control">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+            <button type="submit" class="btn btn-primary">추가하기</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
-  <footer id="Copyright" class="bg-dark mt-4 p-5 text-center"> &copy; 2019 웹프로그래밍 </footer>
+<footer id="Copyright" class="bg-dark mt-4 p-5 text-center"> &copy; 2019 웹프로그래밍 </footer>
 
 
-  <!-- 제이쿼리 자바스크립트 추가하기 -->
-  <script src="./lib/jquery-3.2.1.min.js"></script>
-  <!-- Popper 자바스크립트 추가하기 -->
-  <script src="./lib/popper.min.js"></script>
-  <!-- 부트스트랩 자바스크립트 추가하기 -->
-  <script src="./lib/bootstrap.min.js"></script>
-  <!-- MDB 라이브러리 추가하기 -->
-  <script src="./lib/mdb.min.js"></script>
+<!-- 제이쿼리 자바스크립트 추가하기 -->
+<script src="./lib/jquery-3.2.1.min.js"></script>
+<!-- Popper 자바스크립트 추가하기 -->
+<script src="./lib/popper.min.js"></script>
+<!-- 부트스트랩 자바스크립트 추가하기 -->
+<script src="./lib/bootstrap.min.js"></script>
+<!-- MDB 라이브러리 추가하기 -->
+<script src="./lib/mdb.min.js"></script>
+<!-- 커스텀 자바스크립트 추가하기 -->
+<script src="./js/ChattingRoomAddButtonClickedAction.js"></script>
 
 </body>
 </html>

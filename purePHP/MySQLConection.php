@@ -16,5 +16,3 @@ class MySQLConnection{
     return $connect_object;
   }
 }
-
-?>

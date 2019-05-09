@@ -71,5 +71,3 @@
   echo ("<script>location.href='../SignIn.html';</script>");
 
   mysqli_close($connect_object);
-
-?>
