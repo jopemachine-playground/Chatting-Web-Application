@@ -56,8 +56,16 @@
       //echo $messageWindow->$MessageHTML;
     ?>
 
-    <div class="jumbotron userCard">
-      <p>충남대학교우편취급국에서 영수증이 도착하였습니다. 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
+    <div class="jumbotron bg-dark text-white">
+      <h6>jopebot</h6>
+      <hr class="my-1">
+      <p>난 달콤한 쾌락에 눈 먼 장님인가?</p>
+    </div>
+
+    <div class="jumbotron bg-white text-black">
+      <h6>gravityc</h6>
+      <hr class="my-1">
+      <p>어차피 빈손으로 왔다 가는 게 인생이라지만, 난 여태껏 깡통만 찼다.</p>
     </div>
 
     <!-- 스크롤바 에러를 피하기 위해 공간을 둠 -->

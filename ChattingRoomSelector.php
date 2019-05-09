@@ -22,19 +22,6 @@ WHERE usersinchattingroom.UserID = '$ID'
 
 $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
 
-$ChattingRoomIndicatingHTML = '';
-
-while($row = mysqli_fetch_array($ret)){
-  $ChattingRoomIndicatingHTML .= ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description']);
-}
-
-if(empty($ChattingRoomIndicatingHTML))
-{
-  $ChattingRoomIndicatingHTML .= '<p>';
-  $ChattingRoomIndicatingHTML .= '채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!';
-  $ChattingRoomIndicatingHTML .= '</p>';
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -77,10 +64,22 @@ if(empty($ChattingRoomIndicatingHTML))
 
     <!-- 채팅 기록이 있는 유저 목록 -->
     <?php
-    echo $ChattingRoomIndicatingHTML;
+
+    $isExecuted = false;
+
+    while($row = mysqli_fetch_array($ret)){
+      $isExecuted = true;
+      ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description'], $ID);
+    }
+
+    if($isExecuted == false)
+    {
+      echo '<p>채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!</p>';
+    }
+
     ?>
 
-    <div class="jumbotron">
+    <div class="jumbotron bg-light">
       <div class="row">
         <div class="col-sm-11">
           <h1 class="display-6">우체국</h1>
@@ -90,8 +89,7 @@ if(empty($ChattingRoomIndicatingHTML))
           <img src="img/delete.svg" style="width: 32px; height:32px;" alt="Chatting Room Delete Button"></img>
         </div>
       </div>
-
-      <hr class="my-4">
+      <hr class="my-2">
       <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
       <p class="lead">
         <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
