@@ -13,7 +13,7 @@ if($ID == null){
 $connect_object = MySQLConnection::DB_Connect();
 
 $searchUserChattingRoomBoxes = "
-SELECT * FROM chattingroomtbl WHERE UserID = '$ID'
+SELECT * FROM usersinchattingroom WHERE UserID = '$ID'
 ";
 
 $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
@@ -21,16 +21,14 @@ $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
 $ChattingRoomIndicatingHTML = '';
 
 while($row = mysqli_fetch_array($ret)){
-  if(empty($row))
-  {
-    $ChattingRoomIndicatingHTML .= '<p>';
-    $ChattingRoomIndicatingHTML .= '채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!';
-    $ChattingRoomIndicatingHTML .= '</p>';
-    break;
-  }
-  else{
     $ChattingRoomIndicatingHTML .= ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description']);
-  }
+}
+
+if(empty($ChattingRoomIndicatingHTML))
+{
+  $ChattingRoomIndicatingHTML .= '<p>';
+  $ChattingRoomIndicatingHTML .= '채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!';
+  $ChattingRoomIndicatingHTML .= '</p>';
 }
 
 ?>
