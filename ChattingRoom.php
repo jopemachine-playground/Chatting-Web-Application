@@ -41,7 +41,7 @@
         <div class="btn-group float-right">
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item active" href="#">로그아웃</a>
+            <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
             <a class="dropdown-item" href="#">채팅방 선택화면</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
@@ -108,7 +108,11 @@
   <!-- MDB 라이브러리 추가하기 -->
   <script src="./lib/mdb.min.js"></script>
   <!-- 커스텀 자바스크립트 파일 추가하기 -->
+  <script src="./lib/jquery.cookie.js"></script>
+  <!-- 커스텀 자바스크립트 추가하기 -->
   <script src="./js/ChattingRoom.js"></script>
+  <!-- 커스텀 자바스크립트 추가하기 -->
+  <script src="./js/Logout.js"></script>
 
 </body>
 </html>
