@@ -72,7 +72,7 @@
       //echo $messageWindow->$MessageHTML;
     ?>
 
-    <div class="jumbotron bg-dark text-white">
+    <!-- <div class="jumbotron bg-dark text-white">
       <h6>jopebot</h6>
       <hr class="my-1">
       <p>난 달콤한 쾌락에 눈 먼 장님인가?</p>
@@ -82,7 +82,7 @@
       <h6>gravityc</h6>
       <hr class="my-1">
       <p>어차피 빈손으로 왔다 가는 게 인생이라지만, 난 여태껏 깡통만 찼다.</p>
-    </div>
+    </div> -->
 
     <!-- 스크롤바 에러를 피하기 위해 공간을 둠 -->
     <div style="width:100%; height: 200px;"></div>
