@@ -5,6 +5,12 @@ a.navbar-brand{
   font-family: 'Jeju Gothic';
 }
 
+/* 위쪽 사이드바 버튼 스타일 */
+.side_btn{
+  border: none;
+  background-color: #007bff;
+}
+
 #background{
   background-color: #c9ddff;
 }

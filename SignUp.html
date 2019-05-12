@@ -9,45 +9,52 @@
 
 <body id="background">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="./SignUp.html">회원가입</a>
+    <div class="col-sm-11">
+      <a class="navbar-brand" href="./SignUp.html">회원가입</a>
+    </div>
+    <div class="col-sm-1">
+      <div class="btn-group float-right">
+        <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return login page" onclick="ToLogin();"></img></button>
+      </div>
+    </div>
   </nav>
 
   <section class="container" style="padding-top: 45px;">
-      <p class="lead" style="font-size: 60px;">Make Your Own ID</p>
-      <p class="lead" style="font-size: 14px; color: #4c4c4c;"><strong>* </strong> 란은 필수입니다.</p>
-      <form action="purePHP/SignUpAction.php" onsubmit="return SubmitButtonClicked()" method="post" accept-charset="utf-8">
-        <div class="form-group">
-          <label for="ID">ID <strong>* </strong></label>
-          <div class="row">
-            <div class="col-lg-10">
+    <p class="lead" style="font-size: 60px;">Make Your Own ID</p>
+    <p class="lead" style="font-size: 14px; color: #4c4c4c;"><strong>* </strong> 란은 필수입니다.</p>
+    <form action="purePHP/SignUpAction.php" onsubmit="return SubmitButtonClicked()" method="post" accept-charset="utf-8">
+      <div class="form-group">
+        <label for="ID">ID <strong>* </strong></label>
+        <div class="row">
+          <div class="col-lg-10">
             <input type="text" name="ID" class="ID form-control" maxlength="20" placeholder="ID를 입력하세요" autofocus required>
-            </div>
-            <div class="col-lg-2">
+          </div>
+          <div class="col-lg-2">
             <button type="submit" class="btn btn-info btn-sm" style="margin-top: 5px;">중복확인</button>
-            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="PW">PW <strong>* </strong></label>
-          <input type="password" name="PW" class="PW form-control" maxlength="20" placeholder="비밀번호를 입력하세요" required>
-        </div>
-        <div class="form-group">
-          <label for="PW_Confirm">PW 확인 <strong>* </strong></label>
-          <input type="password" name="PW_Confirm" class="PW_Confirm form-control" maxlength="20" placeholder="비밀번호를 다시 한 번 입력하세요" required>
-        </div>
-        <div class="form-group">
-          <label for="Address">주소</label>
-          <input type="text" name="Address" class="form-control" placeholder="주소를 입력하세요">
-        </div>
-        <div class="form-group">
-          <label for="PhoneNumber">핸드폰 번호</label>
-          <input type="text" name="PhoneNumber" class="form-control" placeholder="핸드폰 번호를 입력하세요">
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 20px;">제출</button>
-      </form>
+      </div>
+      <div class="form-group">
+        <label for="PW">PW <strong>* </strong></label>
+        <input type="password" name="PW" class="PW form-control" maxlength="20" placeholder="비밀번호를 입력하세요" required>
+      </div>
+      <div class="form-group">
+        <label for="PW_Confirm">PW 확인 <strong>* </strong></label>
+        <input type="password" name="PW_Confirm" class="PW_Confirm form-control" maxlength="20" placeholder="비밀번호를 다시 한 번 입력하세요" required>
+      </div>
+      <div class="form-group">
+        <label for="Address">주소</label>
+        <input type="text" name="Address" class="form-control" placeholder="주소를 입력하세요">
+      </div>
+      <div class="form-group">
+        <label for="PhoneNumber">핸드폰 번호</label>
+        <input type="text" name="PhoneNumber" class="form-control" placeholder="핸드폰 번호를 입력하세요">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 20px;">제출</button>
+    </form>
   </section>
 
-  <footer id="Copyright" class="bg-dark mt-4 p-5 text-center"> &copy; 2019 웹프로그래밍 </footer>
+  <footer id="Copyright" class="bg-dark mt-4 p-3 text-center fixed-bottom"> &copy; 2019 웹프로그래밍 </footer>
 
   <!-- 제이쿼리 자바스크립트 추가하기 -->
   <script src="./lib/jquery-3.2.1.min.js"></script>

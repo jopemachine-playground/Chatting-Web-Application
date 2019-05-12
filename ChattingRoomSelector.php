@@ -20,8 +20,6 @@ ON usersinchattingroom.RoomID = chattingroomtbl.RoomID
 WHERE usersinchattingroom.UserID = '$ID'
 ";
 
-$ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
-
 ?>
 
 <!DOCTYPE html>
@@ -67,9 +65,11 @@ $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
 
     $isExecuted = false;
 
+    $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
+
     while($row = mysqli_fetch_array($ret)){
       $isExecuted = true;
-      ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description'], $ID);
+      ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description'], $ID, $row['RoomID']);
     }
 
     if($isExecuted == false)
@@ -78,7 +78,7 @@ $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
     }
 
     ?>
-
+<!--
     <div class="jumbotron bg-light">
       <div class="row">
         <div class="col-sm-11">
@@ -94,7 +94,7 @@ $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
       <p class="lead">
         <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
       </p>
-    </div>
+    </div> -->
 
 
 
@@ -137,7 +137,7 @@ $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
 </div>
 
 <div class="navbar bg-dark p-1 fixed-bottom">
-  <footer id="Copyright" class="bg-dark mt-4 p-5 text-center"> &copy; 2019 웹프로그래밍 </footer>
+  <footer id="Copyright" class="bg-dark mt-4 p-3 text-center fixed-bottom"> &copy; 2019 웹프로그래밍 </footer>
 </div>
 
 

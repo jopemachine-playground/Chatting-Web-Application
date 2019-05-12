@@ -1,6 +1,8 @@
 // 클라이언트 쪽에서 유효성 검사를 하고, 유효한 경우에만 넘어감
 function SubmitButtonClicked(){
 
+// 아래 코드 작동 안 함. 고칠 것.
+
   // 비밀번호와 비밀번호 확인이 같은 값인지 검사
   if($('.PW').value != $('.PW_Confirm').value){
     alert('비밀번호가 비밀번호 확인과 맞지 않습니다');
@@ -18,4 +20,8 @@ function SubmitButtonClicked(){
   }
 
   return true;
+}
+
+function ToLogin(){
+  location.href='SignIn.html';
 }

@@ -2,7 +2,7 @@
 
 class ChattingRoomSelectorBox{
 
-  public static function GetInstance($chattingRoomTitle, $chattingRoomDesc, $participants){
+  public static function GetInstance($chattingRoomTitle, $chattingRoomDesc, $participants, $roomID){
 
     printf('
     <div class="jumbotron bg-light">
@@ -12,17 +12,17 @@ class ChattingRoomSelectorBox{
           <p style="font-size: 9pt; color: #939496;">채팅방 참가자: %s</p>
         </div>
         <div class="col-sm-1">
-          <img src="img/delete.svg" style="width: 32px; height:32px;" alt="Chatting Room Delete Button"></img>
+          <img src="img/delete.svg" style="width: 32px; height:32px;" onclick="DeleteChattingRoom()" alt="Chatting Room Delete Button"></img>
         </div>
       </div>
       <hr class="my-2">
       <p>%s</p>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
+        <a class="btn btn-primary btn-lg" href="ChattingRoom.php?RoomID=%s" + RoomID;" role="button">채팅방으로 이동</a>
       </p>
     </div>
 
-    ', $chattingRoomTitle, $participants, $chattingRoomDesc);
+    ', $chattingRoomTitle, $participants, $chattingRoomDesc, $roomID);
   }
 
 }

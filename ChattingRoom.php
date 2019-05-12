@@ -3,15 +3,30 @@
   require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
   require_once('C:\xampp\WebProgramming_Project\purePHP\MessageBox.php');
 
-  $ID = $_COOKIE["connectedUserID"];
+  $UserID = $_COOKIE["connectedUserID"];
+  $RoomID = $_GET["RoomID"];
 
-  if($ID == null){
+  if($UserID == null){
     echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
     echo ("<script>location.href='SignIn.html';</script>");
   }
 
   $connect_object = MySQLConnection::DB_Connect();
-  $messageWindow = new MessageWindow();
+
+  $searchThisUserBeInThisChattingRoom = "
+    SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
+  ";
+
+  $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom)
+
+  if(empty($ret)){
+    echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
+    echo ("<script>location.href='ChattingRoomSelector.php';</script>");
+    exit();
+  }
+
+
+
 
 ?>
 
@@ -39,6 +54,7 @@
       </div>
       <div class="col-sm-1">
         <div class="btn-group float-right">
+          <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></img></button>
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
@@ -113,6 +129,12 @@
   <script src="./js/ChattingRoom.js"></script>
   <!-- 커스텀 자바스크립트 추가하기 -->
   <script src="./js/Logout.js"></script>
+
+  <script type="text/javascript">
+  function ToChattingRoom(){
+    location.href='ChattingRoomSelector.php';
+  }
+  </script>
 
 </body>
 </html>

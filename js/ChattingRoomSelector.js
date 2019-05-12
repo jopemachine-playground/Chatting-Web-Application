@@ -1,3 +1,3 @@
-function ExitChattingRoom(){
-  
+function DeleteChattingRoom(){
+
 }
