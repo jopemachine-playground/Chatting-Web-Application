@@ -2,7 +2,7 @@
   require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
   require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
   require_once('C:\xampp\WebProgramming_Project\purePHP\MessageBox.php');
-
+  
   $UserID = $_COOKIE["connectedUserID"];
   $RoomID = $_GET["RoomID"];
 

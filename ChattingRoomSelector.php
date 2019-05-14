@@ -20,8 +20,6 @@ ON usersinchattingroom.RoomID = chattingroomtbl.RoomID
 WHERE usersinchattingroom.UserID = '$ID'
 ";
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -48,13 +46,13 @@ WHERE usersinchattingroom.UserID = '$ID'
       </div>
       <div class="col-sm-1">
         <div class="btn-group float-right">
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#modal"><img src="img/plus.svg" alt="Chatting Room Add Button"></img></button>
+          <button type="button" class="side_btn" data-toggle="modal" data-target="#ChattingRoomAddModal"><img src="img/plus.svg" alt="Chatting Room Add Button"></img></button>
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
-          <button type="button" class="side_btn"><img src="img/user.svg" alt="user info button"></img></button>
+          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
         </div>
       </div>
     </nav>
@@ -105,7 +103,20 @@ WHERE usersinchattingroom.UserID = '$ID'
 
 </section>
 
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+<div class="modal fade" id="UserInfoModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <!-- 유저 프로필 사진, ID 등을 표시하는 Small Modal Box -->
+      <?php
+
+      ?>
+      <!-- <img src="" alt="Profile Image"> -->
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ChattingRoomAddModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

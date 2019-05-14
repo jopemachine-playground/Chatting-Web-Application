@@ -1,21 +1,16 @@
 <?php
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
-
 class MessageWindow{
 
-  // $IndexHashValue는 User들 ID와 채팅방 Title로 만든 Hash value
-  public $IndexHashValue;
-  private $MessageHTML;
+  static public $updateIndex = 0;
 
-  function __constructor($messageBoxList){
-
-    $connect_object = MySQLConnection::DB_Connect();
-
-    $searchMessageBoxes = "
-      SELECT * FROM messageboxestbl;
-    ";
-
-
+  function static CreateMessageWindow($sender, $sendedDateTime, $message){
+    return sprintf(
+      '<div class="jumbotron bg-dark text-white">
+        <h6>%s</h6>
+        <p>보낸 시각: %s</p>
+        <hr class="my-1">
+        <p>%s</p>
+      </div>', $sender, $sendedDateTime, $message);
   }
 
 }
