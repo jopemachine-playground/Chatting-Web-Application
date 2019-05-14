@@ -1,4 +1,5 @@
-var roomID;
+var RoomID = getQueryParam("RoomID");
+var UserID = $.cookie('connectedUserID');
 
 function ToChattingRoom(){
   location.href='ChattingRoomSelector.php';
@@ -6,7 +7,7 @@ function ToChattingRoom(){
 
 // 메시지 전송 버튼 클릭 이벤트
 function HandlingSendEvent(){
-  SendJsonMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), $.cookie('connectedUserID')));
+  SendJsonMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), UserID, RoomID));
   // console.log($('#Sending_Message_Box').val());
   // console.log($.cookie('connectedUserID'));
 
@@ -28,10 +29,11 @@ function SendJsonMessageToServer(sendingMessageJson){
   });
 }
 
-function createMessageHTML(sendingMessage, senderID){
+function createMessageHTML(sendingMessage, senderID, roomID){
   let newMessage = {
     message: sendingMessage,
-    sender: senderID
+    sender: senderID,
+    roomID: roomID
   };
 
   return newMessage;
@@ -42,12 +44,12 @@ function FetchMessageWithAjax(){
   $.ajax({
       type: "POST",
       url : "../purePHP/MessageFetchAction.php",
-      data : { RoomID : getQueryParam("RoomID") } ,
+      data : { RoomID : RoomID } ,
       dataType:"HTML",
 
       success : function(response) {
           console.log("서버에서 채팅 메시지를 받아오는데 성공했습니다!" + response);
-          $('#Message_Window').innerHTML += response;
+          $('#Message_Window').html(response);
       },
       error: function(jqXHR, textStatus, errorThrown) {
           console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);

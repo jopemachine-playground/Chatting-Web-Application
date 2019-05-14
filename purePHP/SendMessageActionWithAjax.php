@@ -6,15 +6,18 @@ $connect_object = MySQLConnection::DB_Connect();
 
 $SenderID = $_POST['sender'];
 $Message = $_POST['message'];
+$RoomID = $_POST['roomID'];
 
 $AddMessageToDB = "
 Insert INTO messageboxestbl (
     SendingUserId,
     Message,
+    RoomID,
     SendingDateTime
   ) VALUES(
     '$SenderID',
     '$Message',
+    '$RoomID',
     NOW()
 )";
 

@@ -16,11 +16,7 @@ $RoomID = $_POST['RoomID'];
 // ";
 
 $searchUserChattingRoomBoxes = "
-SELECT *
-FROM chattingroomtbl
-INNER JOIN messageboxestbl
-ON chattingroomtbl.UserID = messageboxestbl.SendingUserId
-WHERE chattingroomtbl.UserID = '$UserID'
+SELECT * FROM messageboxestbl WHERE RoomID = '$RoomID'
 ";
 
 $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
@@ -28,13 +24,6 @@ $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
 $i = 0;
 
 while($row = mysqli_fetch_array($ret)){
-
-  MessageWindow::$updateIndex += 1;
-
-  // 이미 업데이트 된 메시지를 다시 만들지 않게 함
-  if($i++ < MessageWindow::$updateIndex){
-    continue;
-  }
   
   echo MessageWindow::CreateMessageWindow($row['SendingUserId'], $row['SendingDateTime'], $row['Message']);
 
