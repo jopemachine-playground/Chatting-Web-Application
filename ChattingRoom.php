@@ -17,16 +17,13 @@
     SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
   ";
 
-  $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom)
+  $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom);
 
-  if(empty($ret)){
-    echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
-    echo ("<script>location.href='ChattingRoomSelector.php';</script>");
-    exit();
-  }
-
-
-
+  // if(empty($ret)){
+  //   echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
+  //   echo ("<script>location.href='ChattingRoomSelector.php';</script>");
+  //   exit();
+  // }
 
 ?>
 
@@ -95,14 +92,14 @@
         <div class="col-sm-1">
 
         </div>
-        <div class="col-sm-9 text-right" style="margin-top:10px;" id="Sending_Message_Box" title ="전송할 메시지를 입력하세요.">
-          <form action="send_message.php">
-            <textarea name="Sending_Message" rows="4" cols="400" placeholder="메시지를 입력하세요." autofocus></textarea>
+        <div class="col-sm-9 text-right" style="margin-top:10px;" title ="전송할 메시지를 입력하세요.">
+          <form>
+            <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" placeholder="메시지를 입력하세요." autofocus></textarea>
           </form>
         </div>
 
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-success mb-2" style="margin-top:10px;" onclick="Message_Send()">메시지 전송</button>
+          <button type="submit" class="btn btn-success mb-2" style="margin-top:10px;" onclick="HandlingSendEvent()">메시지 전송</button>
            <br>
           <button id="File_Transfer_Button" type="submit" class="btn btn-primary mb-5" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
         </div>
@@ -123,18 +120,13 @@
   <script src="./lib/bootstrap.min.js"></script>
   <!-- MDB 라이브러리 추가하기 -->
   <script src="./lib/mdb.min.js"></script>
-  <!-- 커스텀 자바스크립트 파일 추가하기 -->
+  <!-- 제이쿼리 쿠키 자바스크립트 파일 추가하기 -->
   <script src="./lib/jquery.cookie.js"></script>
   <!-- 커스텀 자바스크립트 추가하기 -->
   <script src="./js/ChattingRoom.js"></script>
   <!-- 커스텀 자바스크립트 추가하기 -->
   <script src="./js/Logout.js"></script>
 
-  <script type="text/javascript">
-  function ToChattingRoom(){
-    location.href='ChattingRoomSelector.php';
-  }
-  </script>
 
 </body>
 </html>
