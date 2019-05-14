@@ -2,7 +2,7 @@
   require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
   require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
   require_once('C:\xampp\WebProgramming_Project\purePHP\MessageBox.php');
-  
+
   $UserID = $_COOKIE["connectedUserID"];
   $RoomID = $_GET["RoomID"];
 
@@ -19,11 +19,11 @@
 
   $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom);
 
-  // if(empty($ret)){
-  //   echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
-  //   echo ("<script>location.href='ChattingRoomSelector.php';</script>");
-  //   exit();
-  // }
+  if(empty($ret)){
+    echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
+    echo ("<script>location.href='ChattingRoomSelector.php';</script>");
+    exit();
+  }
 
 ?>
 
@@ -65,9 +65,7 @@
   </div>
   <!-- 메시지 표시 -->
   <section class="container" style="padding-top:100px;" id="Message_Window">
-    <?php
-      //echo $messageWindow->$MessageHTML;
-    ?>
+
 
     <!-- <div class="jumbotron bg-dark text-white">
       <h6>jopebot</h6>

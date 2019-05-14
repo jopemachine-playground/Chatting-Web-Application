@@ -3,7 +3,9 @@ class MessageWindow{
 
   static public $updateIndex = 0;
 
-  function static CreateMessageWindow($sender, $sendedDateTime, $message){
+  static public $innerHTML = "";
+
+  static public function CreateMessageWindow($sender, $sendedDateTime, $message){
     return sprintf(
       '<div class="jumbotron bg-dark text-white">
         <h6>%s</h6>

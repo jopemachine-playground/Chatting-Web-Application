@@ -1,10 +1,12 @@
+var roomID;
+
 function ToChattingRoom(){
   location.href='ChattingRoomSelector.php';
 }
 
 // 메시지 전송 버튼 클릭 이벤트
 function HandlingSendEvent(){
-  SendJsonMessageToServer(createMessageToJson($('#Sending_Message_Box').val(), $.cookie('connectedUserID')));
+  SendJsonMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), $.cookie('connectedUserID')));
   // console.log($('#Sending_Message_Box').val());
   // console.log($.cookie('connectedUserID'));
 
@@ -26,7 +28,7 @@ function SendJsonMessageToServer(sendingMessageJson){
   });
 }
 
-function createMessageToJson(sendingMessage, senderID){
+function createMessageHTML(sendingMessage, senderID){
   let newMessage = {
     message: sendingMessage,
     sender: senderID
@@ -37,5 +39,35 @@ function createMessageToJson(sendingMessage, senderID){
 }
 
 function FetchMessageWithAjax(){
+  $.ajax({
+      type: "POST",
+      url : "../purePHP/MessageFetchAction.php",
+      data : { RoomID : getQueryParam("RoomID") } ,
+      dataType:"HTML",
 
+      success : function(response) {
+          console.log("서버에서 채팅 메시지를 받아오는데 성공했습니다!" + response);
+          $('#Message_Window').innerHTML += response;
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);
+      }
+  });
+}
+
+window.onload = function(){
+  setInterval(FetchMessageWithAjax, 1000);
+}
+
+// https://systemoutofmemory.com/blogs/the-programmer-blog/javascript-getting-query-string-values 참고
+function getQueryParam(param){
+  var query = window.location.search.substring(1);
+  var vars = query.split("?");
+  for (let i =0; i<vars.length; i++){
+    let pair = vars[i].split("=");
+    if(pair[0] == param){
+      return pair[1];
+    }
+  }
+  return false;
 }

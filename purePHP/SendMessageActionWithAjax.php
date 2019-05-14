@@ -8,10 +8,10 @@ $SenderID = $_POST['sender'];
 $Message = $_POST['message'];
 
 $AddMessageToDB = "
-Insert INTO usersinfotbl (
-    Sender,
+Insert INTO messageboxestbl (
+    SendingUserId,
     Message,
-    SendingTime
+    SendingDateTime
   ) VALUES(
     '$SenderID',
     '$Message',
