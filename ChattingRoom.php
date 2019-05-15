@@ -1,12 +1,11 @@
 <?php
   require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
   require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
-  require_once('C:\xampp\WebProgramming_Project\purePHP\MessageBox.php');
 
   $UserID = $_COOKIE["connectedUserID"];
   $RoomID = $_GET["RoomID"];
 
-  if($UserID == null){
+  if(empty($UserID)){
     echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
     echo ("<script>location.href='SignIn.html';</script>");
   }
@@ -46,7 +45,7 @@
   <div id="Program_Window">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="col-sm-11">
-        <a class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
+        <a id="chattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
       </div>
       <div class="col-sm-1">
         <div class="btn-group float-right">
@@ -62,30 +61,17 @@
       </div>
     </nav>
   </div>
+
   <!-- 메시지 표시 -->
   <section class="container" style="padding-top:100px;" id="Message_Window">
-
-
-    <!-- <div class="jumbotron bg-dark text-white">
-      <h6>jopebot</h6>
-      <hr class="my-1">
-      <p>난 달콤한 쾌락에 눈 먼 장님인가?</p>
-    </div>
-
-    <div class="jumbotron bg-white text-black">
-      <h6>gravityc</h6>
-      <hr class="my-1">
-      <p>어차피 빈손으로 왔다 가는 게 인생이라지만, 난 여태껏 깡통만 찼다.</p>
-    </div> -->
-
   </section>
 
     <!-- 메시지 작성 박스 -->
-    <div id="Message_Writing_Box" class="navbar bg-dark p-1 fixed-bottom">
+    <footer id="Message_Writing_Box" class="navbar bg-dark p-2 fixed-bottom">
       <div class="row">
-        <div class="col-sm-1">
 
-        </div>
+        <div class="col-sm-1"></div>
+
         <div class="col-sm-9 text-right" style="margin-top:10px;" title ="전송할 메시지를 입력하세요.">
           <form>
             <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" placeholder="메시지를 입력하세요." autofocus></textarea>
@@ -93,18 +79,17 @@
         </div>
 
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-success mb-2" style="margin-top:10px;" onclick="HandlingSendEvent()">메시지 전송</button>
-           <br>
+          <button type="submit" class="btn btn-success mb-2" style="margin-top:10px;" onclick="HandlingSendEvent()">메시지 전송</button><br>
           <button id="File_Transfer_Button" type="submit" class="btn btn-primary mb-5" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
         </div>
       </div>
 
       <div class="row" style="width: 100%">
         <div style="margin:0 auto">
-          <footer id="Copyright" style="margin-bottom: 12px;"> &copy; 2019 웹프로그래밍 </footer>
+          <div id="Copyright" style="margin-bottom: 12px;"> &copy; 2019 웹프로그래밍 </div>
         </div>
       </div>
-    </div>
+    </footer>
 
   <!-- 제이쿼리 자바스크립트 추가하기 -->
   <script src="./lib/jquery-3.2.1.min.js"></script>

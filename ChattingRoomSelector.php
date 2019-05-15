@@ -69,34 +69,15 @@ WHERE usersinchattingroom.UserID = '$ID'
 
     while($row = mysqli_fetch_array($ret)){
       $isExecuted = true;
-      ChattingRoomSelectorBox::GetInstance($row['Title'], $row['Description'], $ID, $row['RoomID']);
+      echo ChattingRoomSelectorBox::CreateChattingRoomBox($row['Title'], $row['Description'], $ID, $row['RoomID']);
     }
 
     if($isExecuted == false)
     {
-      echo '<p>채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!</p>';
+      echo '<p id="ChattingRoomNotExistedWarning">채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!</p>';
     }
 
     ?>
-<!--
-    <div class="jumbotron bg-light">
-      <div class="row">
-        <div class="col-sm-11">
-          <h1 class="display-6">우체국</h1>
-          <p style="font-size: 9pt; color: #939496;">채팅방 참가자: </p>
-        </div>
-        <div class="col-sm-1">
-          <img src="img/delete.svg" style="width: 32px; height:32px;" alt="Chatting Room Delete Button"></img>
-        </div>
-      </div>
-      <hr class="my-2">
-      <p>[우체국] [오전 9:28] 충남대학교우편취급국에서 영수증이 도착하였습니다. 결제금액 :800원 영수증 보기 http://epost.go.kr/r/?r=3gEvBuGj20h1VDC9CE</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">채팅방으로 이동</a>
-      </p>
-    </div> -->
-
-
 
     <!-- 스크롤바 에러를 피하기 위해 공간을 둠 -->
     <div style="width:100%; height: 200px;"></div>

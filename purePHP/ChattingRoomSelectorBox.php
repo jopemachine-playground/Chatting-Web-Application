@@ -2,9 +2,9 @@
 
 class ChattingRoomSelectorBox{
 
-  public static function GetInstance($chattingRoomTitle, $chattingRoomDesc, $participants, $roomID){
+  public static function CreateChattingRoomBox($chattingRoomTitle, $chattingRoomDesc, $participants, $roomID){
 
-    printf('
+    return sprintf('
     <div class="jumbotron bg-light">
       <div class="row">
         <div class="col-sm-11">
@@ -27,7 +27,3 @@ class ChattingRoomSelectorBox{
   }
 
 }
-//
-// <p class="lead">
-//   <a class="btn btn-primary btn-lg" href="ChattingRoom.php?RoomID=%s" + RoomID;" role="button">채팅방으로 이동</a>
-// </p>

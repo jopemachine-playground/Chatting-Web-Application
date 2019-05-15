@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+*{
+  box-sizing: border-box;
+}
 /* 위쪽 사이드바 스타일 */
 a.navbar-brand{
   font-family: 'Jeju Gothic';
@@ -15,6 +18,29 @@ a.navbar-brand{
 .dropdown-menu-right {
   right: 0;
   left: auto;
+}
+
+.bg-white h6,p{
+  color: #000000;
+}
+
+.bg-dark h6,p{
+  color: #ffffff;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.sendingTime{
+  color: #878787;
+  font-size: 9px;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 /* 아래쪽 사이드바 스타일 */
@@ -38,11 +64,14 @@ textarea:not(focus){
 }
 
 #Message_Writing_Box{
-  width: 100%
+  width: 100%;
 }
 
-#Program_Window{
-
+.stikyFooter{
+  position: sticky;
+  display: block;
+  bottom: 0px;
+  left: 0px;
 }
 
 /*
@@ -62,33 +91,10 @@ textarea:not(focus){
   color: #f2f2f2;
 }
 
-#My_Message {
-
-}
-
-#Oppenent_Message {
-
-}
-
-#Header {
-  color: #ffffff;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  margin-bottom: 10px;
-}
-
-.dropdown-toggle::after {
-    content: none;
-}
-
-@media (max-width: 480px) {
-
-}
-
 #background{
   background-color: #c9ddff;
 }
 
-html, body{
-  height: 120%;
+@media (max-width: 480px) {
+
 }
