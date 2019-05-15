@@ -50,6 +50,21 @@ a.navbar-brand{
   padding-bottom: 10px;
 }
 
+.jumbotron h1{
+  font-size: 28px;
+  font-family: 'Jeju Gothic';
+}
+
+.MessageContent{
+  font-size: 16px;
+  font-family: 'Jeju Gothic';
+}
+
+.ToChattingRoomButton{
+  font-size: 14px;
+  font-family: 'Jeju Gothic';
+}
+
 .dropdown-toggle::after {
   content: none;
 }
@@ -77,6 +92,21 @@ a.navbar-brand{
   font-family: 'Jeju Gothic';
   font-size: 12pt;
   text-align: center;
+}
+
+#Modal_USER_ID{
+  display: inline;
+  font-family: 'Jeju Gothic';
+}
+
+#Modal_SIGNUP_DATE{
+  display: inline;
+  font-family: 'Jeju Gothic';
+}
+
+#UserDefaultProfile{
+  float:right;
+  display: inline;
 }
 
 @media screen and (max-width: 766px) {

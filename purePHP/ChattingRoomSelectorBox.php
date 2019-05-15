@@ -16,10 +16,10 @@ class ChattingRoomSelectorBox{
         </div>
       </div>
       <hr class="my-2">
-      <p>%s</p>
+      <p class="MessageContent">%s</p>
       <form action="../ChattingRoom.php" method="get">
         <label for="RoomID">
-        <button class="btn btn-primary btn-lg" type="submit" name="RoomID" value="%s">채팅방으로 이동</button>
+        <button class="btn btn-primary btn-lg ToChattingRoomButton" type="submit" name="RoomID" value="%s">채팅방으로 이동</button>
       </form>
     </div>
 

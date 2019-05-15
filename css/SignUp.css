@@ -5,6 +5,10 @@ strong{
   color: red;
 }
 
+label{
+  font-family: 'Jeju Gothic';
+}
+
 a.navbar-brand{
   font-family: 'Jeju Gothic';
 }

@@ -79,76 +79,83 @@ WHERE usersinchattingroom.UserID = '$ID'
 
     ?>
 
-</section>
+  </section>
 
-<div class="modal fade" id="UserInfoModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <!-- 유저 프로필 사진, ID 등을 표시하는 Small Modal Box -->
-      <?php
+  <div class="modal fade" id="UserInfoModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
 
-      ?>
-      <!-- <img src="" alt="Profile Image"> -->
-      <p></p>
-    </div>
-  </div>
-</div>
+        <!-- 유저 프로필 사진, ID 등을 표시하는 Small Modal Box -->
+        <div class="container">
+          <img id="UserDefaultProfile" width="100px" height="100px" class="img-fluid rounded-circle" src="img/userDefaultProfile.svg" alt="Image For User Profile">
+          <p id="Modal_USER_ID" class="lead">&nbsp;jopebot</p><br>
+          <p id="Modal_SIGNUP_DATE" class="lead">&nbsp;19-15-15</p><br>
+        </div>
 
-<div class="modal fade" id="ChattingRoomAddModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal">새 채팅방 추가</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="purePHP/ChattingRoomAddButtonClickedAction.php" onsubmit="return SubmitButtonClicked()" method="post" accept-charset="utf-8">
-          <div class="form-group">
-            <label for="RoomTitle">채팅방 제목</label>
-            <input name="RoomTitle" type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="RoomDesc">채팅방 설명</label>
-            <textarea name="RoomDesc" type="text" class="form-control" style="height: 180px;"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="OppenentID">상대방 ID</label>
-            <input name="OppenentID" type="text" class="form-control">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-            <button type="submit" class="btn btn-primary">추가하기</button>
-          </div>
-        </form>
+        <?php
+
+        ?>
+        <!-- <img src="" alt="Profile Image"> -->
+        <p></p>
       </div>
     </div>
   </div>
-</div>
 
-<div class="navbar bg-dark p-1" style="margin-top: 70px;">
-  <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 </footer>
-</div>
+  <div class="modal fade" id="ChattingRoomAddModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal">새 채팅방 추가</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="purePHP/ChattingRoomAddButtonClickedAction.php" onsubmit="return SubmitButtonClicked()" method="post" accept-charset="utf-8">
+            <div class="form-group">
+              <label for="RoomTitle">채팅방 제목</label>
+              <input name="RoomTitle" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="RoomDesc">채팅방 설명</label>
+              <textarea name="RoomDesc" type="text" class="form-control" style="height: 180px;"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="OppenentID">상대방 ID</label>
+              <input name="OppenentID" type="text" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+              <button type="submit" class="btn btn-primary">추가하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar bg-dark p-1" style="margin-top: 70px;">
+    <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 </footer>
+  </div>
 
 
-<!-- 제이쿼리 자바스크립트 추가하기 -->
-<script src="./lib/jquery-3.2.1.min.js"></script>
-<!-- Popper 자바스크립트 추가하기 -->
-<script src="./lib/popper.min.js"></script>
-<!-- 부트스트랩 자바스크립트 추가하기 -->
-<script src="./lib/bootstrap.min.js"></script>
-<!-- MDB 라이브러리 추가하기 -->
-<script src="./lib/mdb.min.js"></script>
-<!-- 제이쿼리 쿠키 플러그인 추가하기 -->
-<script src="./lib/jquery.cookie.js"></script>
-<!-- 커스텀 자바스크립트 추가하기 -->
+  <!-- 제이쿼리 자바스크립트 추가하기 -->
+  <script src="./lib/jquery-3.2.1.min.js"></script>
+  <!-- Popper 자바스크립트 추가하기 -->
+  <script src="./lib/popper.min.js"></script>
+  <!-- 부트스트랩 자바스크립트 추가하기 -->
+  <script src="./lib/bootstrap.min.js"></script>
+  <!-- MDB 라이브러리 추가하기 -->
+  <script src="./lib/mdb.min.js"></script>
+  <!-- 제이쿼리 쿠키 플러그인 추가하기 -->
+  <script src="./lib/jquery.cookie.js"></script>
+  <!-- 커스텀 자바스크립트 추가하기 -->
 
-<script src="./js/ChattingRoomAddButtonClickedAction.js"></script>
-<!-- 커스텀 자바스크립트 추가하기 -->
-<script src="./js/ChattingRoomSelector.js"></script>
-<!-- 커스텀 자바스크립트 추가하기 -->
-<script src="./js/Logout.js"></script>
+  <script src="./js/ChattingRoomAddButtonClickedAction.js"></script>
+  <!-- 커스텀 자바스크립트 추가하기 -->
+  <script src="./js/ChattingRoomSelector.js"></script>
+  <!-- 커스텀 자바스크립트 추가하기 -->
+  <script src="./js/Logout.js"></script>
 
 </body>
 </html>
