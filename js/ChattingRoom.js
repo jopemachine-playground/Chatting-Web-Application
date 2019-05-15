@@ -85,8 +85,8 @@ function getQueryParam(param){
 }
 
 function checkOutFooterStyle(){
-  // Footer의 높이가 200px이므로, window.innerHeight - 200 보다 문서 전체의 높이가 더 클 때 stiky로 전환한다
-  if(document.body.scrollHeight > window.innerHeight - 200){
+  // Footer의 높이가 176px 이므로, window.innerHeight - 176 보다 문서 전체의 높이가 더 클 때 stiky로 전환한다
+  if(document.body.scrollHeight > window.innerHeight - 176){
     $('#Message_Writing_Box').addClass('stikyFooter');
   }
 }

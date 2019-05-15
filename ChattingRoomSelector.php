@@ -74,13 +74,10 @@ WHERE usersinchattingroom.UserID = '$ID'
 
     if($isExecuted == false)
     {
-      echo '<p id="ChattingRoomNotExistedWarning">채팅방이 존재하지 않습니다. 우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!</p>';
+      echo '<p id="ChattingRoomNotExistedWarning"><br>채팅방이 존재하지 않습니다. <br><br>우측 상단바의 + 버튼을 눌러 채팅방을 추가해보세요!</p>';
     }
 
     ?>
-
-    <!-- 스크롤바 에러를 피하기 위해 공간을 둠 -->
-    <div style="width:100%; height: 200px;"></div>
 
 </section>
 
@@ -130,8 +127,8 @@ WHERE usersinchattingroom.UserID = '$ID'
   </div>
 </div>
 
-<div class="navbar bg-dark p-1 fixed-bottom">
-  <footer id="Copyright" class="bg-dark mt-4 p-3 text-center fixed-bottom"> &copy; 2019 웹프로그래밍 </footer>
+<div class="navbar bg-dark p-1" style="margin-top: 70px;">
+  <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 </footer>
 </div>
 
 

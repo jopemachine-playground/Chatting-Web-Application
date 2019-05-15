@@ -10,6 +10,7 @@
   $PW_Confirm = $_POST["PW_Confirm"];
   $Address = $_POST["Address"];
   $PhoneNumber = $_POST["PhoneNumber"];
+  $ProfileImage = $_POST["ProfileImage"];
 
   // DB에서 PK (ID) 중복 검사
   $searchUserID = "
@@ -45,12 +46,14 @@
         PW,
         Address,
         PhoneNumber,
+        ProfileImage,
         SignupDate
       ) VALUES(
         '$ID',
         '$PW',
         '$Address',
         '$PhoneNumber',
+        '$ProfileImage',
         Now()
       )";
 

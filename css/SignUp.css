@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+strong{
+  color: red;
+}
+
 a.navbar-brand{
   font-family: 'Jeju Gothic';
 }
@@ -11,7 +15,11 @@ a.navbar-brand{
   background-color: #007bff;
 }
 
-#background{
+.bg-dark *{
+  color: #ffffff;
+}
+
+#Background{
   background-color: #c9ddff;
 }
 
@@ -22,8 +30,4 @@ a.navbar-brand{
   color: #f2f2f2;
   align= "center";
   width: 100%;
-}
-
-strong{
-  color: red;
 }

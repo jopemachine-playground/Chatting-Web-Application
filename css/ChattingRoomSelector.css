@@ -1,26 +1,6 @@
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-/* 위쪽 사이드바 스타일 */
-a.navbar-brand{
-  font-family: 'Jeju Gothic';
-}
-
-/* 위쪽 사이드바 버튼 스타일 */
-.side_btn{
-  border: none;
-  background-color: #007bff;
-}
-
-.roomDelete_btn{
-  border: none;
-  background-color: #e9ecef;
-}
-
-.dropdown-menu-right {
-  right: 0;
-  left: auto;
-}
 
 /* 아래쪽 사이드바 스타일 */
 footer{
@@ -40,6 +20,27 @@ textarea:focus{
 
 textarea:not(focus){
   background-color: #dce3ef;
+}
+
+/* 위쪽 사이드바 스타일 */
+a.navbar-brand{
+  font-family: 'Jeju Gothic';
+}
+
+/* 위쪽 사이드바 버튼 스타일 */
+.side_btn{
+  border: none;
+  background-color: #007bff;
+}
+
+.roomDelete_btn{
+  border: none;
+  background-color: #e9ecef;
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
 }
 
 .jumbotron{
@@ -70,6 +71,12 @@ textarea:not(focus){
 
 #background{
   background-color: #c9ddff;
+}
+
+#ChattingRoomNotExistedWarning{
+  font-family: 'Jeju Gothic';
+  font-size: 12pt;
+  text-align: center;
 }
 
 @media screen and (max-width: 766px) {
