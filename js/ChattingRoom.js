@@ -1,5 +1,6 @@
 var RoomID = getQueryParam("RoomID");
 var UserID = $.cookie('connectedUserID');
+var UpdatedIndex = 0;
 
 function ToChattingRoom(){
   location.href='ChattingRoomSelector.php';
@@ -41,23 +42,31 @@ function createMessageHTML(sendingMessage, senderID, roomID){
 }
 
 function FetchMessageWithAjax(){
+
+  UpdatedIndex = $('.jumbotron').length;
+
   $.ajax({
       type: "POST",
       url : "../purePHP/MessageFetchAction.php",
-      data : { RoomID : RoomID } ,
+      data : { RoomID : RoomID, UpdatedIndex : UpdatedIndex} ,
       dataType:"HTML",
 
       success : function(response) {
-          console.log("서버에서 채팅 메시지를 받아오는데 성공했습니다!" + response);
-          $('#Message_Window').html(response);
+          console.log("서버에서 채팅 메시지를 받아오는데 성공했습니다!");
+          $('#Message_Window').append(response);
       },
       error: function(jqXHR, textStatus, errorThrown) {
           console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);
       }
+  })
+  .then(function(){
+    UpdatedIndex = $('.jumbotron').length;
   });
 }
 
+// 콜백함수 setInterval를 이용해 1초마다 새로 보내진 채팅 데이터를 가져옴
 window.onload = function(){
+  FetchMessageWithAjax();
   setInterval(FetchMessageWithAjax, 1000);
 }
 

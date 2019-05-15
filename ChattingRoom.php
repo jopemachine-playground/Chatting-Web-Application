@@ -24,7 +24,6 @@
     echo ("<script>location.href='ChattingRoomSelector.php';</script>");
     exit();
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -78,9 +77,6 @@
       <hr class="my-1">
       <p>어차피 빈손으로 왔다 가는 게 인생이라지만, 난 여태껏 깡통만 찼다.</p>
     </div> -->
-
-    <!-- 스크롤바 에러를 피하기 위해 공간을 둠 -->
-    <div style="width:100%; height: 200px;"></div>
 
   </section>
 
