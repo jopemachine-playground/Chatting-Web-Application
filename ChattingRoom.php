@@ -40,15 +40,15 @@
   <link rel="stylesheet" href="./css/ChattingRoom.css">
 </head>
 
-<body id="background">
+<body id="Background">
   <!-- 프로그램 창 -->
-  <div id="Program_Window">
+  <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="col-sm-11">
-        <a id="chattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
+        <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
       </div>
       <div class="col-sm-1">
-        <div class="btn-group float-right">
+        <div class="btn-group float-right responsive">
           <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></img></button>
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
           <div class="dropdown-menu dropdown-menu-right">
@@ -72,15 +72,15 @@
 
         <div class="col-sm-1"></div>
 
-        <div class="col-sm-9 text-right" style="margin-top:10px;" title ="전송할 메시지를 입력하세요.">
+        <div class="col-sm-9 text-right" style="margin-top:10px;" title="전송할 메시지를 입력하세요.">
           <form>
             <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" placeholder="메시지를 입력하세요." autofocus></textarea>
           </form>
         </div>
 
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-success mb-2" style="margin-top:10px;" onclick="HandlingSendEvent()">메시지 전송</button><br>
-          <button id="File_Transfer_Button" type="submit" class="btn btn-primary mb-5" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
+        <div class="col-sm-1.5 responsive">
+          <button id="Message_Send_Button" type="submit" class="btn btn-block btn-success" title="메시지를 전송합니다." onclick="HandlingSendEvent()">메시지 전송</button>
+          <button id="File_Transfer_Button" type="submit" class="btn btn-block btn-primary" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
         </div>
       </div>
 

@@ -44,7 +44,7 @@ WHERE usersinchattingroom.UserID = '$ID'
       <div class="col-sm-11">
         <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1 responsive">
         <div class="btn-group float-right">
           <button type="button" class="side_btn" data-toggle="modal" data-target="#ChattingRoomAddModal"><img src="img/plus.svg" alt="Chatting Room Add Button"></img></button>
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>

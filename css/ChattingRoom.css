@@ -20,12 +20,14 @@ a.navbar-brand{
   left: auto;
 }
 
-.bg-white h6,p{
+.OthersMessage *{
   color: #000000;
+  text-align: left;
 }
 
-.bg-dark h6,p{
+.MyMessage *{
   color: #ffffff;
+  text-align: right;
 }
 
 .dropdown-toggle::after {
@@ -35,6 +37,17 @@ a.navbar-brand{
 .sendingTime{
   color: #878787;
   font-size: 9px;
+}
+
+.jumbotron{
+  padding: 13px;
+}
+
+.stikyFooter{
+  position: sticky;
+  display: block;
+  bottom: 0px;
+  left: 0px;
 }
 
 body{
@@ -67,13 +80,6 @@ textarea:not(focus){
   width: 100%;
 }
 
-.stikyFooter{
-  position: sticky;
-  display: block;
-  bottom: 0px;
-  left: 0px;
-}
-
 /*
 이미지를 단색 배경으로 교체
 
@@ -91,10 +97,28 @@ textarea:not(focus){
   color: #f2f2f2;
 }
 
-#background{
+#Background{
   background-color: #c9ddff;
 }
 
-@media (max-width: 480px) {
+#Message_Send_Button{
+  margin-top:10px;
+  margin-left: 8px;
+}
 
+#File_Transfer_Button{
+  margin-top: 15px;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 766px) {
+  .responsive{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .responsive{
+    display: default;
+  }
 }

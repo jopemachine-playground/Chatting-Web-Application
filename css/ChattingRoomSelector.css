@@ -50,7 +50,7 @@ textarea:not(focus){
 }
 
 .dropdown-toggle::after {
-    content: none;
+  content: none;
 }
 
 #Copyright{
@@ -61,7 +61,6 @@ textarea:not(focus){
   width: 100%;
 }
 
-
 #Header {
   color: #ffffff;
   padding-top: 7px;
@@ -69,10 +68,30 @@ textarea:not(focus){
   margin-bottom: 10px;
 }
 
-@media (max-width: 480px) {
-
-}
-
 #background{
   background-color: #c9ddff;
+}
+
+@media screen and (max-width: 766px) {
+  .responsive{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .responsive{
+    display: default;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .responsiveSmall{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 581px) {
+  .responsiveSmall{
+    display: none;
+  }
 }
