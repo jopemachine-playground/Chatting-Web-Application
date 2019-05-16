@@ -33,22 +33,15 @@ while($row = mysqli_fetch_array($ret)){
 
 // 중복 ID가 없는 경우, 프로필 사진 업로드 처리 및 폴더에 저장
 $ProfileImageUploadDir = 'C:\xampp\WebProgramming_Project\profileImages\\';
-$ProfileImagefile = $ProfileImageUploadDir . $ID . mb_stristr($_FILES['ProfileImage']['name'], '.');
+$ProfileImageFileName = $ID . mb_stristr($_FILES['ProfileImage']['name'], '.');
+$ProfileImageFilePath = $ProfileImageUploadDir . $ProfileImageFileName;
 
 // 임시 디렉터리의 tmp 파일을 위 위치로 옮김
-if(move_uploaded_file($_FILES['ProfileImage']['tmp_name'], $ProfileImagefile)){
+if(move_uploaded_file($_FILES['ProfileImage']['tmp_name'], $ProfileImageFilePath)){
   echo "프로필 이미지 파일 전송 성공";
 }
 else{
   print "프로필 이미지 파일 전송 실패!\n";
-}
-
-// DB에 삽입할 Image Blob을 생성함 (addslashes는 단지, 이스케이프를 이용해 DB에 저장 가능한 포맷으로 바꿔주는 함수일 뿐이다.)
-try{
-  $imageblob = addslashes(fread(fopen($ProfileImagefile, "r"), filesize($ProfileImagefile)));
-}
-catch(Exception $e){
-  echo $e->getMessage();
 }
 
 // DB에 새 레코드 입력
@@ -58,14 +51,14 @@ Insert INTO usersinfotbl (
   PW,
   Address,
   PhoneNumber,
-  ProfileImage,
+  ProfileImageFileName,
   SignupDate
   ) VALUES(
     '$ID',
     '$PW',
     '$Address',
     '$PhoneNumber',
-    '$imageblob',
+    '$ProfileImageFileName',
     Now()
     )";
 

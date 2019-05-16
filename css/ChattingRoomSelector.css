@@ -104,9 +104,16 @@ a.navbar-brand{
   font-family: 'Jeju Gothic';
 }
 
-#UserDefaultProfile{
-  float:right;
+#userDefaultProfile{
+  float: right;
   display: inline;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+#smallModal{
+  padding: 15px;
 }
 
 @media screen and (max-width: 766px) {

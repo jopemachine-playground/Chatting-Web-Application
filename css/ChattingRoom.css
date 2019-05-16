@@ -37,6 +37,7 @@ a.navbar-brand{
 .sendingTime{
   color: #878787;
   font-size: 9px;
+  margin-bottom: 30px;
 }
 
 .jumbotron{
@@ -48,6 +49,26 @@ a.navbar-brand{
   display: block;
   bottom: 0px;
   left: 0px;
+}
+
+.MyProfileImages{
+  float: left;
+  width: 65px;
+  height: 65px;
+  overflow: hidden;
+  margin-top: -5px;
+}
+
+.OthersProfileImages{
+  float: right;
+  width: 65px;
+  height: 65px;
+  overflow: hidden;
+  margin-top: -5px;
+}
+
+.messageContent{
+  font-family: 'Jeju Gothic';
 }
 
 body{
@@ -80,17 +101,6 @@ textarea:not(focus){
   width: 100%;
 }
 
-/*
-이미지를 단색 배경으로 교체
-
-#BackImage {
-  background-color: #ffffff;
-  background-size:100%;
-  background-attachment: fixed;
-  opacity: 0.5!important;
-}
-*/
-
 #Copyright{
   font-family: 'Jeju Gothic';
   font-size: 15pt;
@@ -110,6 +120,29 @@ textarea:not(focus){
   margin-top: 15px;
   margin-left: 8px;
 }
+
+#Modal_USER_ID{
+  display: inline;
+  font-family: 'Jeju Gothic';
+}
+
+#Modal_SIGNUP_DATE{
+  display: inline;
+  font-family: 'Jeju Gothic';
+}
+
+#userDefaultProfile{
+  float: right;
+  display: inline;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+#smallModal{
+  padding: 15px;
+}
+
 
 @media screen and (max-width: 766px) {
   .responsive{

@@ -23,5 +23,9 @@ while($row = mysqli_fetch_array($ret)){
     continue;
   }
 
-  echo MessageWindow::CreateMessageWindow($row['SendingUserId'], $row['SendingDateTime'], $row['Message']);
+  echo MessageWindow::CreateMessageWindow(
+    $row['SendingUserId'],
+    $row['SendingDateTime'],
+    $row['Message'],
+    $row['ProfileImageFileName']);
 }

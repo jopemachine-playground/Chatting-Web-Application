@@ -1,4 +1,5 @@
 <?php
+require_once('C:\xampp\WebProgramming_Project\purePHP\UserModalBox.php');
 require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
 require_once('C:\xampp\WebProgramming_Project\purePHP\ChattingRoomSelectorBox.php');
 
@@ -60,9 +61,8 @@ WHERE usersinchattingroom.UserID = '$ID'
 
   <section class="container mt-1" style="padding-top: 75px;">
 
-    <!-- 채팅 기록이 있는 유저 목록 -->
     <?php
-
+    // 채팅 기록이 있는 유저 목록을 가져옴
     $isExecuted = false;
 
     $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
@@ -85,18 +85,19 @@ WHERE usersinchattingroom.UserID = '$ID'
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
-        <!-- 유저 프로필 사진, ID 등을 표시하는 Small Modal Box -->
-        <div class="container">
-          <img id="UserDefaultProfile" width="100px" height="100px" class="img-fluid rounded-circle" src="img/userDefaultProfile.svg" alt="Image For User Profile">
-          <p id="Modal_USER_ID" class="lead">&nbsp;jopebot</p><br>
-          <p id="Modal_SIGNUP_DATE" class="lead">&nbsp;19-15-15</p><br>
-        </div>
-
         <?php
+        // 유저 프로필 사진, ID 등을 표시하는 Small Modal Box
+        $searchUserID = "
+        SELECT * FROM usersinfotbl WHERE ID = '$ID'
+        ";
 
+        $ret = mysqli_query($connect_object, $searchUserID);
+
+        $row = mysqli_fetch_array($ret);
+
+        echo UserModalBox::GenerateUserInfoModal($row['ID'], $row['SignupDate'], $row['ProfileImageFileName']);
         ?>
-        <!-- <img src="" alt="Profile Image"> -->
-        <p></p>
+
       </div>
     </div>
   </div>

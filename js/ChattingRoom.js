@@ -1,5 +1,6 @@
 var RoomID = getQueryParam("RoomID");
 var UserID = $.cookie('connectedUserID');
+var ProfileImageFileName = $.cookie('profileImageFileName');
 var UpdatedIndex = 0;
 
 function ToChattingRoom(){
@@ -8,10 +9,7 @@ function ToChattingRoom(){
 
 // 메시지 전송 버튼 클릭 이벤트
 function HandlingSendEvent(){
-  SendJsonMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), UserID, RoomID));
-  // console.log($('#Sending_Message_Box').val());
-  // console.log($.cookie('connectedUserID'));
-
+  SendJsonMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), UserID, RoomID, ProfileImageFileName));
 }
 
 function SendJsonMessageToServer(sendingMessageJson){
@@ -30,11 +28,12 @@ function SendJsonMessageToServer(sendingMessageJson){
   });
 }
 
-function createMessageHTML(sendingMessage, senderID, roomID){
+function createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName){
   let newMessage = {
     message: sendingMessage,
     sender: senderID,
-    roomID: roomID
+    roomID: roomID,
+    profileImageFileName: profileImageFileName
   };
 
   return newMessage;
@@ -43,12 +42,12 @@ function createMessageHTML(sendingMessage, senderID, roomID){
 
 function FetchMessageWithAjax(){
 
-  UpdatedIndex = $('.jumbotron').length;
+  UpdatedIndex = $('.MessageBox').length;
 
   $.ajax({
       type: "POST",
       url : "../purePHP/MessageFetchAction.php",
-      data : { RoomID : RoomID, UpdatedIndex : UpdatedIndex} ,
+      data : { RoomID : RoomID, UpdatedIndex : UpdatedIndex },
       dataType:"HTML",
 
       success : function(response) {
@@ -60,7 +59,7 @@ function FetchMessageWithAjax(){
       }
   })
   .then(function(){
-    UpdatedIndex = $('.jumbotron').length;
+    UpdatedIndex = $('.MessageBox').length;
     checkOutFooterStyle();
   });
 }

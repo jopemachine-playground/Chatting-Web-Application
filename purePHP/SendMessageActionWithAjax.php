@@ -7,17 +7,20 @@ $connect_object = MySQLConnection::DB_Connect();
 $SenderID = $_POST['sender'];
 $Message = $_POST['message'];
 $RoomID = $_POST['roomID'];
+$ProfileImageFileName = $_POST['profileImageFileName'];
 
 $AddMessageToDB = "
 Insert INTO messageboxestbl (
     SendingUserId,
     Message,
     RoomID,
+    ProfileImageFileName,
     SendingDateTime
   ) VALUES(
     '$SenderID',
     '$Message',
     '$RoomID',
+    '$ProfileImageFileName',
     NOW()
 )";
 

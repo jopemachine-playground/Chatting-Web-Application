@@ -1,28 +1,29 @@
 <?php
-  require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
-  require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+require_once('C:\xampp\WebProgramming_Project\purePHP\UserModalBox.php');
+require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
+require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
 
-  $UserID = $_COOKIE["connectedUserID"];
-  $RoomID = $_GET["RoomID"];
+$UserID = $_COOKIE["connectedUserID"];
+$RoomID = $_GET["RoomID"];
 
-  if(empty($UserID)){
-    echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
-    echo ("<script>location.href='SignIn.html';</script>");
-  }
+if(empty($UserID)){
+  echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
+  echo ("<script>location.href='SignIn.html';</script>");
+}
 
-  $connect_object = MySQLConnection::DB_Connect();
+$connect_object = MySQLConnection::DB_Connect();
 
-  $searchThisUserBeInThisChattingRoom = "
-    SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
-  ";
+$searchThisUserBeInThisChattingRoom = "
+SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
+";
 
-  $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom);
+$ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom);
 
-  if(empty($ret)){
-    echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
-    echo ("<script>location.href='ChattingRoomSelector.php';</script>");
-    exit();
-  }
+if(empty($ret)){
+  echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
+  echo ("<script>location.href='ChattingRoomSelector.php';</script>");
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,40 +57,60 @@
             <a class="dropdown-item" href="#">채팅방 선택화면</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
-          <button type="button" class="side_btn"><img src="img/user.svg" alt="user info button"></img></button>
+          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
         </div>
       </div>
     </nav>
   </div>
 
   <!-- 메시지 표시 -->
-  <section class="container" style="padding-top:100px;" id="Message_Window">
-  </section>
+  <section class="container" style="padding-top:100px;" id="Message_Window"></section>
 
-    <!-- 메시지 작성 박스 -->
-    <footer id="Message_Writing_Box" class="navbar bg-dark p-2 fixed-bottom">
-      <div class="row">
+  <div class="modal fade" id="UserInfoModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
 
-        <div class="col-sm-1"></div>
+        <?php
+        // 유저 프로필 사진, ID 등을 표시하는 Small Modal Box
+        $searchUserID = "
+        SELECT * FROM usersinfotbl WHERE ID = '$UserID'
+        ";
 
-        <div class="col-sm-9 text-right" style="margin-top:10px;" title="전송할 메시지를 입력하세요.">
-          <form>
-            <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" placeholder="메시지를 입력하세요." autofocus></textarea>
-          </form>
-        </div>
+        $ret = mysqli_query($connect_object, $searchUserID);
 
-        <div class="col-sm-1.5 responsive">
-          <button id="Message_Send_Button" type="submit" class="btn btn-block btn-success" title="메시지를 전송합니다." onclick="HandlingSendEvent()">메시지 전송</button>
-          <button id="File_Transfer_Button" type="submit" class="btn btn-block btn-primary" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
-        </div>
+        $row = mysqli_fetch_array($ret);
+
+        echo UserModalBox::GenerateUserInfoModal($row['ID'], $row['SignupDate'], $row['ProfileImageFileName']);
+        ?>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 메시지 작성 박스 -->
+  <footer id="Message_Writing_Box" class="navbar bg-dark p-2 fixed-bottom">
+    <div class="row">
+
+      <div class="col-sm-1"></div>
+
+      <div class="col-sm-9 text-right" style="margin-top:10px;" title="전송할 메시지를 입력하세요.">
+        <form>
+          <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" placeholder="메시지를 입력하세요." autofocus></textarea>
+        </form>
       </div>
 
-      <div class="row" style="width: 100%">
-        <div style="margin:0 auto">
-          <div id="Copyright" style="margin-bottom: 12px;"> &copy; 2019 웹프로그래밍 </div>
-        </div>
+      <div class="col-sm-1.5 responsive">
+        <button id="Message_Send_Button" type="submit" class="btn btn-block btn-success" title="메시지를 전송합니다." onclick="HandlingSendEvent()">메시지 전송</button>
+        <button id="File_Transfer_Button" type="submit" class="btn btn-block btn-primary" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
       </div>
-    </footer>
+    </div>
+
+    <div class="row" style="width: 100%">
+      <div style="margin:0 auto">
+        <div id="Copyright" style="margin-bottom: 12px;"> &copy; 2019 웹프로그래밍 </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- 제이쿼리 자바스크립트 추가하기 -->
   <script src="./lib/jquery-3.2.1.min.js"></script>

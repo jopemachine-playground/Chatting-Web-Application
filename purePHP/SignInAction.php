@@ -13,9 +13,6 @@
     SELECT * FROM usersinfotbl WHERE ID = '$ID'
   ";
 
-  // 1시간 동안 로그인을 쿠키를 이용해 유지함
-  setcookie("connectedUserID", $ID, time() + 3600, "/");
-
   $ret = mysqli_query($connect_object, $searchUserID);
 
   $row = mysqli_fetch_array($ret);
@@ -31,5 +28,10 @@
     echo ("<script>location.href='../SignIn.html';</script>");
     exit();
   }
+
+  // 1시간 동안 로그인 및 유저 프로필 사진 이름을 쿠키를 이용해 유지함
+  setcookie("connectedUserID", $ID, time() + 3600, "/");
+  setcookie("profileImageFileName", $row['ProfileImageFileName'], time() + 3600, "/");
+
 
   echo ("<script>location.href='../ChattingRoomSelector.php';</script>");
