@@ -37,9 +37,9 @@ WHERE usersinchattingroom.UserID = '$ID'
   <link rel="stylesheet" href="./css/ChattingRoomSelector.css">
 </head>
 
-<body id="background">
+<body id="Background">
   <!-- 프로그램 창 -->
-  <div id="Program_Window">
+  <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="col-sm-11">
         <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
@@ -101,11 +101,11 @@ WHERE usersinchattingroom.UserID = '$ID'
     </div>
   </div>
 
-  <div class="modal fade" id="ChattingRoomAddModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+  <div id="ChattingRoomAddModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modal">새 채팅방 추가</h5>
+          <h5 class="modal-title">새 채팅방 추가</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

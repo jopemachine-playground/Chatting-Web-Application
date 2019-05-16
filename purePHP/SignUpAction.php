@@ -1,76 +1,77 @@
+<!-- 파일 전송에 관한 부분은 오른쪽 페이지 참고함 https://opentutorials.org/course/62/5136 -->
+
 <?php
-  require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
-  // DB 연결
+require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
 
-  $connect_object = MySQLConnection::DB_Connect();
+var_dump($_FILES);
 
-  // Post 방식으로 유저 데이터를 가져옴
-  $ID = $_POST["ID"];
-  $PW = $_POST["PW"];
-  $PW_Confirm = $_POST["PW_Confirm"];
-  $Address = $_POST["Address"];
-  $PhoneNumber = $_POST["PhoneNumber"];
-  $ProfileImage = $_POST["ProfileImage"];
+// DB 연결
+$connect_object = MySQLConnection::DB_Connect();
 
-  // DB에서 PK (ID) 중복 검사
-  $searchUserID = "
-    SELECT * FROM usersinfotbl
-  ";
+// Post 방식으로 유저 데이터를 가져옴
+$ID = $_POST["ID"];
+$PW = $_POST["PW"];
+$PW_Confirm = $_POST["PW_Confirm"];
+$Address = $_POST["Address"];
+$PhoneNumber = $_POST["PhoneNumber"];
 
-  $ret = mysqli_query($connect_object, $searchUserID);
+// DB에서 PK (ID) 중복 검사
+$searchUserID = "
+SELECT * FROM usersinfotbl
+";
 
-  /////////////////////////////////////////////
-  /////////////// For Dubugging ///////////////
-  /////////////////////////////////////////////
+$ret = mysqli_query($connect_object, $searchUserID);
 
-  // if($ret){
-  //   echo mysqli_num_rows($ret), "건이 조회됨.<br><br>";
-  // }
-  // else{
-  //   echo "실패 원인: " .mysqli_error($connect_object);
-  //   exit();
-  // }
-
-  // 중복 ID가 존재하는 경우 에러처리
-  while($row = mysqli_fetch_array($ret)){
-    if($ID == $row['ID']){
-      echo ("<script language=javascript>alert('중복된 ID가 있습니다.')</script>");
-      echo ("<script>location.href='../SignUp.html';</script>");
-      break;
-    }
+// 중복 ID가 존재하는 경우 에러처리
+while($row = mysqli_fetch_array($ret)){
+  if($ID == $row['ID']){
+    echo ("<script language=javascript>alert('중복된 ID가 있습니다.')</script>");
+    echo ("<script>location.href='../SignUp.html';</script>");
+    exit();
   }
+}
 
-  $insertData = "
-    Insert INTO usersinfotbl (
-        ID,
-        PW,
-        Address,
-        PhoneNumber,
-        ProfileImage,
-        SignupDate
-      ) VALUES(
-        '$ID',
-        '$PW',
-        '$Address',
-        '$PhoneNumber',
-        '$ProfileImage',
-        Now()
-      )";
+// 중복 ID가 없는 경우, 프로필 사진 업로드 처리 및 폴더에 저장
+$ProfileImageUploadDir = 'C:\xampp\WebProgramming_Project\profileImages\\';
+$ProfileImagefile = $ProfileImageUploadDir . $ID . mb_stristr($_FILES['ProfileImage']['name'], '.');
 
-  $ret = mysqli_query($connect_object, $insertData);
+// 임시 디렉터리의 tmp 파일을 위 위치로 옮김
+if(move_uploaded_file($_FILES['ProfileImage']['tmp_name'], $ProfileImagefile)){
+  echo "프로필 이미지 파일 전송 성공";
+}
+else{
+  print "프로필 이미지 파일 전송 실패!\n";
+}
 
-  /////////////////////////////////////////////
-  /////////////// For Dubugging ///////////////
-  /////////////////////////////////////////////
+// DB에 삽입할 Image Blob을 생성함 (addslashes는 단지, 이스케이프를 이용해 DB에 저장 가능한 포맷으로 바꿔주는 함수일 뿐이다.)
+try{
+  $imageblob = addslashes(fread(fopen($ProfileImagefile, "r"), filesize($ProfileImagefile)));
+}
+catch(Exception $e){
+  echo $e->getMessage();
+}
 
-  // if($ret){
-  //   echo "성공";
-  // }
-  // else{
-  //   echo "실패 원인: " .mysqli_error($connect_object);
-  //   exit();
-  // }
-  echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
-  echo ("<script>location.href='../SignIn.html';</script>");
+// DB에 새 레코드 입력
+$insertData = "
+Insert INTO usersinfotbl (
+  ID,
+  PW,
+  Address,
+  PhoneNumber,
+  ProfileImage,
+  SignupDate
+  ) VALUES(
+    '$ID',
+    '$PW',
+    '$Address',
+    '$PhoneNumber',
+    '$imageblob',
+    Now()
+    )";
 
-  mysqli_close($connect_object);
+    $ret = mysqli_query($connect_object, $insertData);
+
+    echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
+    echo ("<script>location.href='../SignIn.html';</script>");
+
+    mysqli_close($connect_object);

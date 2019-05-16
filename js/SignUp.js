@@ -1,3 +1,5 @@
+var profileImage;
+
 // 클라이언트 쪽에서 유효성 검사를 하고, 유효한 경우에만 넘어감
 function SubmitButtonClicked(){
 
@@ -19,12 +21,32 @@ function SubmitButtonClicked(){
     return false;
   }
 
+  // // 프로필 사진 데이터 넘겨주기
+  // if(profileImage != null){
+  //   $.ajax({
+  //       type: "POST",
+  //       url : "../purePHP/SignUpAction.php",
+  //       data: { ProfileImage : ProfileImage },
+  //
+  //       success : function(data, status, xhr) {
+  //           console.log("서버로 프로필 사진 전송 성공" + data);
+  //       },
+  //       error: function(jqXHR, textStatus, errorThrown) {
+  //           console.log("프로필 사진 전송 실패!" + jqXHR.responseText);
+  //       }
+  //   });
+  // }
+
   return true;
 }
 
 function ToLogin(){
   location.href='SignIn.html';
 }
+
+function UserID_DuplicateCheck(){
+}
+
 
 function changeProfileImage(value){
 
@@ -44,10 +66,10 @@ function changeProfileImage(value){
 
     reader.onload = function(e){
 
-      var image = new Image();
-      image.src = reader.result;
+      profileImage = new Image();
+      profileImage.src = reader.result;
 
-      image.onload = function(){
+      profileImage.onload = function(){
         canvasContext.drawImage(this, 0, 0, 100, 100);
       }
     }
