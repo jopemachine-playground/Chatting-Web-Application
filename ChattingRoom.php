@@ -44,7 +44,7 @@ if(empty($ret)){
 <body id="Background">
   <!-- 프로그램 창 -->
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="col-sm-11">
         <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
       </div>
@@ -88,7 +88,7 @@ if(empty($ret)){
   </div>
 
   <!-- 메시지 작성 박스 -->
-  <footer id="Message_Writing_Box" class="navbar bg-dark p-2 fixed-bottom">
+  <footer id="Message_Writing_Box" class="container-fluid navbar bg-dark p-2 fixed-bottom">
     <div class="row">
 
       <div class="col-sm-1"></div>

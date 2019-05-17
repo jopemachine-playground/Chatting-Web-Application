@@ -52,23 +52,26 @@ a.navbar-brand{
 }
 
 .MyProfileImages{
-  float: left;
-  width: 65px;
-  height: 65px;
-  overflow: hidden;
-  margin-top: -5px;
-}
-
-.OthersProfileImages{
   float: right;
   width: 65px;
   height: 65px;
   overflow: hidden;
   margin-top: -5px;
+  padding-left: 10px;
+}
+
+.OthersProfileImages{
+  float: left;
+  width: 65px;
+  height: 65px;
+  overflow: hidden;
+  margin-top: -5px;
+  padding-left: 10px;
 }
 
 .messageContent{
   font-family: 'Jeju Gothic';
+  overflow-wrap: break-word;
 }
 
 body{

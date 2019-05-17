@@ -41,7 +41,7 @@ WHERE usersinchattingroom.UserID = '$ID'
 <body id="Background">
   <!-- 프로그램 창 -->
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="col-sm-11">
         <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
       </div>
@@ -59,7 +59,7 @@ WHERE usersinchattingroom.UserID = '$ID'
     </nav>
   </div>
 
-  <section class="container mt-1" style="padding-top: 75px;">
+  <section id="ChattingRoomSection" class="container mt-1" style="padding-top: 75px;">
 
     <?php
     // 채팅 기록이 있는 유저 목록을 가져옴
@@ -135,7 +135,7 @@ WHERE usersinchattingroom.UserID = '$ID'
     </div>
   </div>
 
-  <div class="navbar bg-dark p-1" style="margin-top: 70px;">
+  <div id="FooterDiv" class="navbar bg-dark p-1 fixed-bottom" style="margin-top: 70px;">
     <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 </footer>
   </div>
 

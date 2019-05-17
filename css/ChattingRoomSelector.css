@@ -69,6 +69,13 @@ a.navbar-brand{
   content: none;
 }
 
+.stikyFooter{
+  position: sticky;
+  display: block;
+  bottom: 0px;
+  left: 0px;
+}
+
 #Copyright{
   font-family: 'Jeju Gothic';
   font-size: 15pt;
