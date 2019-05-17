@@ -6,36 +6,20 @@ function SubmitButtonClicked(){
   // 아래 코드 작동 안 함. 고칠 것.
 
   // 비밀번호와 비밀번호 확인이 같은 값인지 검사
-  if($('.PW').value != $('.PW_Confirm').value){
+  if($('#PW').val() != $('#PW_Confirm').val()){
     alert('비밀번호가 비밀번호 확인과 맞지 않습니다');
     return false;
   }
   // ID와 비밀번호의 형식을 검사
 
-  else if($('.PW').value.length < 4){
+  else if($('#PW').val().length < 4){
     alert('비밀번호는 4 자리 이상이어야 합니다');
     return false;
   }
-  else if($('.ID').value.length < 4){
+  else if($('#ID').val().length < 4){
     alert('ID는 대소문자 알파벳으로 시작해야 하며, 4자리 이상이어야 합니다');
     return false;
   }
-
-  // // 프로필 사진 데이터 넘겨주기
-  // if(profileImage != null){
-  //   $.ajax({
-  //       type: "POST",
-  //       url : "../purePHP/SignUpAction.php",
-  //       data: { ProfileImage : ProfileImage },
-  //
-  //       success : function(data, status, xhr) {
-  //           console.log("서버로 프로필 사진 전송 성공" + data);
-  //       },
-  //       error: function(jqXHR, textStatus, errorThrown) {
-  //           console.log("프로필 사진 전송 실패!" + jqXHR.responseText);
-  //       }
-  //   });
-  // }
 
   return true;
 }
@@ -45,8 +29,20 @@ function ToLogin(){
 }
 
 function UserID_DuplicateCheck(){
-}
+  $.ajax({
+    type: "GET",
+    url : "purePHP/ID_DuplicateCheck.php",
+    data: { userID : $('#ID').val() },
 
+    success : function(data, status, xhr) {
+      console.log("서버로 채팅 데이터 전송 성공" + data);
+      alert(data);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Ajax 전송에 실패했습니다!" + jqXHR.responseText);
+    }
+  });
+}
 
 function changeProfileImage(value){
 
@@ -56,8 +52,8 @@ function changeProfileImage(value){
   var canvas = document.getElementById('userProfileImage');
   var canvasContext = canvas.getContext("2d");
 
-  canvas.width = 100;
-  canvas.height = 100;
+  canvas.width = 80;
+  canvas.height = 80;
 
   if(value.files && value.files[0]){
     var reader = new FileReader();
@@ -70,7 +66,7 @@ function changeProfileImage(value){
       profileImage.src = reader.result;
 
       profileImage.onload = function(){
-        canvasContext.drawImage(this, 0, 0, 100, 100);
+        canvasContext.drawImage(this, 0, 0, 80, 80);
       }
     }
   }

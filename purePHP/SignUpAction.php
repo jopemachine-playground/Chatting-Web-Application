@@ -1,9 +1,6 @@
 <!-- 파일 전송에 관한 부분은 오른쪽 페이지 참고함 https://opentutorials.org/course/62/5136 -->
-
 <?php
 require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
-
-var_dump($_FILES);
 
 // DB 연결
 $connect_object = MySQLConnection::DB_Connect();

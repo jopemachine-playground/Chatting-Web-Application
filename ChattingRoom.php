@@ -64,9 +64,9 @@ if(empty($ret)){
   </div>
 
   <!-- 메시지 표시 -->
-  <section class="container" style="padding-top:100px;" id="Message_Window"></section>
+  <section id="Message_Window" class="container" style="padding-top:100px;"></section>
 
-  <div class="modal fade" id="UserInfoModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div id="UserInfoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 

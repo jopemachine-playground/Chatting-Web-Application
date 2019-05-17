@@ -35,3 +35,14 @@ a.navbar-brand{
   align= "center";
   width: 100%;
 }
+
+#IDDuplicateCheckButton{
+  margin-top: 5px;
+  float: right;
+}
+
+#ProfileImageDiv{
+  padding: 15px;
+  margin-bottom: 32px;
+  border-radius: 8px;
+}

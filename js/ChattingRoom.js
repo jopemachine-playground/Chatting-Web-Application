@@ -99,7 +99,7 @@ function checkOutFooterStyle(){
 
   let comparator = window.outerHeight - $('#Message_Writing_Box').outerHeight() - $('#FixedNavbar').outerHeight() - parseInt(($('#Message_Window').css('padding-top')));
 
-  console.log(comparator);
+  // console.log(comparator);
 
   if(document.body.scrollHeight > comparator){
     $('#Message_Writing_Box').addClass('stikyFooter');

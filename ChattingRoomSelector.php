@@ -81,7 +81,7 @@ WHERE usersinchattingroom.UserID = '$ID'
 
   </section>
 
-  <div class="modal fade" id="UserInfoModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div id="UserInfoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
