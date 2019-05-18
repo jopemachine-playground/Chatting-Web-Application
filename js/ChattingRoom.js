@@ -33,20 +33,8 @@ function SendJsonMessageToServer(sendingMessageJson){
   });
 }
 
-function createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName){
-  let newMessage = {
-    message: sendingMessage,
-    sender: senderID,
-    roomID: roomID,
-    profileImageFileName: profileImageFileName
-  };
-
-  return newMessage;
-  //return JSON.stringify(newMessage);
-}
 
 function FetchMessageWithAjax(){
-
   $.ajax({
     type: "POST",
     url : "../purePHP/MessageFetchAction.php",
@@ -73,6 +61,17 @@ function FetchMessageWithAjax(){
 window.onload = function(){
   FetchMessageWithAjax();
   setInterval(FetchMessageWithAjax, 1000);
+}
+
+function createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName){
+  let newMessage = {
+    message: sendingMessage,
+    sender: senderID,
+    roomID: roomID,
+    profileImageFileName: profileImageFileName
+  };
+
+  return newMessage;
 }
 
 // https://systemoutofmemory.com/blogs/the-programmer-blog/javascript-getting-query-string-values 참고
@@ -111,6 +110,7 @@ $(document).ready(function() {
   $("#Sending_Message_Box").keydown(function(key) {
     if (key.keyCode == 13) {
       HandlingSendEvent();
+      event.preventDefault();
     }
   });
 });

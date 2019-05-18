@@ -28,18 +28,24 @@ while($row = mysqli_fetch_array($ret)){
   }
 }
 
-// 중복 ID가 없는 경우, 프로필 사진 업로드 처리 및 폴더에 저장
-$ProfileImageUploadDir = 'C:\xampp\WebProgramming_Project\profileImages\\';
-$ProfileImageFileName = $ID . mb_stristr($_FILES['ProfileImage']['name'], '.');
-$ProfileImageFilePath = $ProfileImageUploadDir . $ProfileImageFileName;
+if($_FILES['ProfileImage']['size'] != 0){
+  // 중복 ID가 없는 경우, 프로필 사진 업로드 처리 및 폴더에 저장
+  $ProfileImageUploadDir = 'C:\xampp\WebProgramming_Project\profileImages\\';
+  $ProfileImageFileName = $ID . mb_stristr($_FILES['ProfileImage']['name'], '.');
+  $ProfileImageFilePath = $ProfileImageUploadDir . $ProfileImageFileName;
 
-// 임시 디렉터리의 tmp 파일을 위 위치로 옮김
-if(move_uploaded_file($_FILES['ProfileImage']['tmp_name'], $ProfileImageFilePath)){
-  echo "프로필 이미지 파일 전송 성공";
+  // 임시 디렉터리의 tmp 파일을 위 위치로 옮김
+  if(move_uploaded_file($_FILES['ProfileImage']['tmp_name'], $ProfileImageFilePath)){
+    echo "프로필 이미지 파일 전송 성공";
+  }
+  else{
+    print "프로필 이미지 파일 전송 실패!\n";
+  }
 }
 else{
-  print "프로필 이미지 파일 전송 실패!\n";
+  $ProfileImageFileName = '';
 }
+
 
 // DB에 새 레코드 입력
 $insertData = "
