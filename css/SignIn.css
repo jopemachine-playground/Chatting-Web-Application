@@ -16,6 +16,11 @@ a.navbar-brand{
   left: 0px;
 }
 
+#WhiteSpaceForResponsivePage{
+  width: 100%;
+  height: 250px;
+}
+
 #AnchorForSignUp{
   font-size: 30px;
   margin-top:70px;

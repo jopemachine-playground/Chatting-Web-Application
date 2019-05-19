@@ -1,6 +1,9 @@
 var RoomID = getQueryParam("RoomID");
 var UserID = $.cookie('connectedUserID');
 var ProfileImageFileName = $.cookie('profileImageFileName');
+
+// 업데이트 된 메시지들을 가리키기 위한 변수.
+// 업데이트 되어 있는 메시지들을 DB에서 조회하지 않게 해, 조회 속도 및 전송 효율을 높이려고 했음.
 var UpdatedIndex = 0;
 
 function ToChattingRoom(){
@@ -13,6 +16,7 @@ function HandlingSendEvent(){
   $("#Sending_Message_Box").val("");
 }
 
+// 맨 아래로 스크롤을 내린다.
 function ScrollToBottom(){
   $(document).scrollTop($(document).height());
 }
@@ -63,6 +67,10 @@ window.onload = function(){
   setInterval(FetchMessageWithAjax, 1000);
 }
 
+window.onresize = function(){
+  checkOutFooterStyle();
+}
+
 function createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName){
   let newMessage = {
     message: sendingMessage,
@@ -74,7 +82,8 @@ function createMessageHTML(sendingMessage, senderID, roomID, profileImageFileNam
   return newMessage;
 }
 
-// https://systemoutofmemory.com/blogs/the-programmer-blog/javascript-getting-query-string-values 참고
+// 이 함수는 아래 페이지에서 가져와 그대로 사용했음.
+// https://systemoutofmemory.com/blogs/the-programmer-blog/javascript-getting-query-string-values
 function getQueryParam(param){
   var query = window.location.search.substring(1);
   var vars = query.split("?");
@@ -106,10 +115,6 @@ function checkOutFooterStyle(){
   else if(document.body.scrollHeight < window.innerHeight){
     $('#Message_Writing_Box').removeClass('stikyFooter');
   }
-}
-
-window.onresize = function(){
-  checkOutFooterStyle();
 }
 
 $(document).ready(function() {

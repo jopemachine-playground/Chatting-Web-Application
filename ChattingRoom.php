@@ -110,12 +110,13 @@ if(empty($ret)){
   </div>
 
   <!-- 아래 보다 나은 방법은 아직 못 찾았음. 적당히 heigtht를 줘서 반응형으로 기능할 수 있게 했지만, 페이지 아래쪽에 공백이 생긴다.  -->
-  <div style="width:100%; height: 150px;"></div>
+  <div id="WhiteSpaceForResponsivePage"></div>
 
   <!-- 메시지 작성 박스 -->
   <footer id="Message_Writing_Box" class="container-fluid navbar bg-dark p-2 fixed-bottom">
     <div class="row">
 
+      <!-- 왼쪽에 어느 정도 공백을 줘야 여유가 있어 보여 이렇게 했다. -->
       <div class="col-sm-1"></div>
 
       <div class="col-sm-9 text-right" style="margin-top:10px;" title="전송할 메시지를 입력하세요.">
