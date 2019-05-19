@@ -30,7 +30,7 @@ a.navbar-brand{
 /* 위쪽 사이드바 버튼 스타일 */
 .side_btn{
   border: none;
-  background-color: #007bff;
+  background-color: #343a40;
 }
 
 .roomDelete_btn{
@@ -78,10 +78,14 @@ a.navbar-brand{
 
 #Copyright{
   font-family: 'Jeju Gothic';
-  font-size: 15pt;
+  font-size: 12pt;
   text-align: center;
   color: #f2f2f2;
   width: 100%;
+}
+
+#Copyright em{
+  font-size: 12pt;
 }
 
 #Header {
@@ -121,6 +125,14 @@ a.navbar-brand{
 
 #smallModal{
   padding: 15px;
+}
+
+#FixedNavbar{
+  border-bottom: #f8fc25 3px solid;
+}
+
+#FooterDiv{
+  border-top: #e2ff66 3px solid;
 }
 
 @media screen and (max-width: 766px) {

@@ -91,20 +91,26 @@ function checkOutFooterStyle(){
   // 문서 전체의 길이와 비교해 스타일을 전환한다
 
   // 디버깅 용
-  // console.log(document.body.scrollHeight);
-  // console.log(window.outerHeight);
+  console.log(document.body.scrollHeight);
+  console.log(window.innerHeight);
   // console.log($('#Message_Writing_Box').outerHeight())
   // console.log(parseInt(($('#Message_Window').css('padding-top'))));
 
-  let comparator = window.outerHeight - $('#Message_Writing_Box').outerHeight() - $('#FixedNavbar').outerHeight() - parseInt(($('#Message_Window').css('padding-top')));
+  //let comparator = window.outerHeight - $('#Message_Writing_Box').outerHeight() - $('#FixedNavbar').outerHeight() - parseInt(($('#Message_Window').css('padding-top')));
 
   // console.log(comparator);
 
-  if(document.body.scrollHeight > comparator){
+  if(document.body.scrollHeight  > window.innerHeight){
     $('#Message_Writing_Box').addClass('stikyFooter');
+  }
+  else if(document.body.scrollHeight < window.innerHeight){
+    $('#Message_Writing_Box').removeClass('stikyFooter');
   }
 }
 
+window.onresize = function(){
+  checkOutFooterStyle();
+}
 
 $(document).ready(function() {
   $("#Sending_Message_Box").keydown(function(key) {

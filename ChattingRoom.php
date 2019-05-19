@@ -42,28 +42,50 @@ if(empty($ret)){
 </head>
 
 <body id="Background">
-  <!-- 프로그램 창 -->
-  <div>
-    <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-      <div class="col-sm-11">
+  <div class="container">
+      <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
         <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
-      </div>
-      <div class="col-sm-1">
-        <div class="btn-group float-right responsive">
+
+        <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
+        <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->
+        <button class="navbar-toggler responsiveNone2" data-toggle="collapse" data-target="#navCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse responsiveNone2" id="navCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" onclick="ToChattingRoom();">채팅방 선택화면</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">내 정보</a>
+            </li>
+            <li class="nav-item">
+              <a onclick="logout()" class="nav-link">로그아웃</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">정보수정</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 아래의 버튼들은 데스크톱에서 사용할 이미지 버튼 및 dropdown-menu 이다. -->
+        <div class="btn-group float-right responsiveNone">
           <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></img></button>
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
-            <a class="dropdown-item" href="#">채팅방 선택화면</a>
+            <a class="dropdown-item active" onclick="logout()">로그아웃</a>
+            <a class="dropdown-item" onclick="ToChattingRoom();">채팅방 선택화면</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
           <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
         </div>
-      </div>
+
     </nav>
   </div>
 
-  <!-- 메시지 표시 -->
+  <!-- Ajax로 가져온 메시지가 아래에 표시됨 -->
   <section id="Message_Window" class="container" style="padding-top:100px;"></section>
 
   <div id="UserInfoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -87,6 +109,9 @@ if(empty($ret)){
     </div>
   </div>
 
+  <!-- 아래 보다 나은 방법은 아직 못 찾았음. 적당히 heigtht를 줘서 반응형으로 기능할 수 있게 했지만, 페이지 아래쪽에 공백이 생긴다.  -->
+  <div style="width:100%; height: 150px;"></div>
+
   <!-- 메시지 작성 박스 -->
   <footer id="Message_Writing_Box" class="container-fluid navbar bg-dark p-2 fixed-bottom">
     <div class="row">
@@ -99,7 +124,7 @@ if(empty($ret)){
         </form>
       </div>
 
-      <div class="col-sm-1.5 responsive">
+      <div class="col-sm-1.5 responsiveNone">
         <button id="Message_Send_Button" type="submit" class="btn btn-block btn-success" title="메시지를 전송합니다." onclick="HandlingSendEvent()">메시지 전송</button>
         <button id="File_Transfer_Button" type="submit" class="btn btn-block btn-primary" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
       </div>
@@ -107,7 +132,7 @@ if(empty($ret)){
 
     <div class="row" style="width: 100%">
       <div style="margin:0 auto">
-        <div id="Copyright" style="margin-bottom: 12px;"> &copy; 2019 웹프로그래밍 </div>
+        <div id="Copyright"> &copy; 2019 웹프로그래밍 &nbsp; <em>이규봉</em> &nbsp;&nbsp; <sub>Term Project</sub></div>
       </div>
     </div>
   </footer>

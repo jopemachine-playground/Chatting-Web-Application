@@ -9,8 +9,17 @@ a.navbar-brand{
   font-family: 'Jeju Gothic';
 }
 
+.stikyFooter{
+  position: sticky;
+  display: block;
+  bottom: 0px;
+  left: 0px;
+}
+
 #AnchorForSignUp{
   font-size: 30px;
+  margin-top:70px;
+  display: block;
 }
 
 #Background{
@@ -19,10 +28,17 @@ a.navbar-brand{
 
 #Copyright{
   font-family: 'Jeju Gothic';
-  font-size: 15pt;
+  font-size: 12pt;
   text-align: center;
   color: #f2f2f2;
   width: 100%;
-  position: static;
-  bottom:0px;
+  bottom: 0px;
+}
+
+#Copyright em{
+  font-size: 12pt;
+}
+
+#FixedNavbar{
+  border-bottom: #f8fc25 3px solid;
 }
