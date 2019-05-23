@@ -32,8 +32,8 @@ if(empty($ret)){
   <title>채팅 프로그램</title>
   <!-- meta 데이터 정의 -->
   <meta charset="utf-8">
-  <meta name="description" content="Chatting web program">
-  <meta name="keywords" content="Web Programming Term Project, Chatting">
+  <meta name="description" content="Chatting web page">
+  <meta name="keywords" content="Web Programming Term Project, Chatting, chatting Program">
   <meta name="author" content="Gyu Bong Lee">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 
