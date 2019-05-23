@@ -42,20 +42,40 @@ WHERE usersinchattingroom.UserID = '$ID'
   <!-- 프로그램 창 -->
   <div class="container">
     <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="col-sm-11">
-        <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
+
+      <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
+
+      <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
+      <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->
+      <button class="navbar-toggler responsiveNone2" data-toggle="collapse" data-target="#navCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navCollapse" class="collapse navbar-collapse responsiveNone2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#ChattingRoomAddModal">새 채팅방 만들기</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="logout()">로그아웃</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#UserInfoModal">내 정보</a>
+          </li>
+        </ul>
       </div>
-      <div class="col-sm-1 responsive">
-        <div class="btn-group float-right">
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#ChattingRoomAddModal"><img src="img/plus.svg" alt="Chatting Room Add Button"></img></button>
-          <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
-            <a class="dropdown-item" href="#">내 정보</a>
-          </div>
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
+
+      <!-- 아래의 버튼은 데스크톱에서 사용할 버튼 -->
+      <div class="btn-group float-right responsiveNone">
+        <button type="button" class="side_btn" data-toggle="modal" data-target="#ChattingRoomAddModal"><img src="img/plus.svg" alt="Chatting Room Add Button"></img></button>
+        <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
+          <a class="dropdown-item" href="#">내 정보</a>
         </div>
+        <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
       </div>
+
     </nav>
   </div>
 

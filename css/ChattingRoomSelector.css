@@ -144,11 +144,29 @@ a.navbar-brand{
   .responsive{
     display: none;
   }
+  .responsiveNone{
+    display: none;
+  }
+  .responsiveNone2{
+    display: default;
+  }
+  .responsiveNone2 *{
+    display: default;
+  }
 }
 
 @media screen and (min-width: 767px) {
   .responsive{
     display: default;
+  }
+  .responsiveNone{
+    display: default;
+  }
+  .responsiveNone2{
+    display: none;
+  }
+  .responsiveNone2 *{
+    display: none;
   }
 }
 

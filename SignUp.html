@@ -14,14 +14,27 @@
 
 <body id="Background">
   <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="col-sm-11">
+
       <a class="navbar-brand" href="./SignUp.html">회원가입</a>
-    </div>
-    <div class="col-sm-1">
-      <div class="btn-group float-right">
+
+      <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
+      <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->
+      <button class="navbar-toggler responsiveNone2" data-toggle="collapse" data-target="#navCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navCollapse" class="collapse navbar-collapse responsiveNone2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" onclick="ToLogin();">로그인 화면으로</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 아래의 버튼은 데스크톱에서 사용할 버튼 -->
+      <div class="btn-group float-right responsiveNone">
         <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return login page" onclick="ToLogin();"></img></button>
       </div>
-    </div>
   </nav>
 
   <section class="container" style="padding-top: 85px;">
