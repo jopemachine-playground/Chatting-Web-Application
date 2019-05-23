@@ -29,7 +29,7 @@ WHERE usersinchattingroom.UserID = '$ID'
   <title>유저 목록</title>
   <!-- meta 데이터 정의 -->
   <meta charset="utf-8">
-  <meta name="description" content="Chatting web program">
+  <meta name="description" content="Chatting web program ChattingRoom Selector">
   <meta name="keywords" content="Web Programming Term Project, Chatting">
   <meta name="author" content="Gyu Bong Lee">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
@@ -41,7 +41,7 @@ WHERE usersinchattingroom.UserID = '$ID'
 <body id="Background">
   <!-- 프로그램 창 -->
   <div class="container">
-    <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="col-sm-11">
         <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
       </div>
@@ -80,6 +80,9 @@ WHERE usersinchattingroom.UserID = '$ID'
     ?>
 
   </section>
+
+  <!-- 더 좋은 방법을 찾으면 아래 공백을 없애고 싶다 -->
+  <div id="WhiteSpaceForResponsivePage"></div>
 
   <div id="UserInfoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -135,10 +138,9 @@ WHERE usersinchattingroom.UserID = '$ID'
     </div>
   </div>
 
-  <div id="FooterDiv" class="navbar bg-dark p-1 fixed-bottom" style="margin-top: 70px;">
-    <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 </footer>
+  <div id="FooterDiv" class="navbar bg-dark p-1 fixed-bottom">
+    <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 &nbsp; <em>이규봉</em> &nbsp;&nbsp; <sub>Term Project</sub> </footer>
   </div>
-
 
   <!-- 제이쿼리 자바스크립트 추가하기 -->
   <script src="./lib/jquery-3.2.1.min.js"></script>

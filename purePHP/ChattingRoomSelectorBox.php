@@ -19,7 +19,7 @@ class ChattingRoomSelectorBox{
       <p class="MessageContent">%s</p>
       <form action="../ChattingRoom.php" method="get">
         <label for="RoomID">
-        <button class="btn btn-primary btn-lg ToChattingRoomButton" type="submit" name="RoomID" value="%s">채팅방으로 이동</button>
+        <button class="btn btn-secondary btn-lg ToChattingRoomButton" type="submit" name="RoomID" value="%s">채팅방으로 이동</button>
       </form>
     </div>
 
