@@ -32,6 +32,7 @@ WHERE usersinchattingroom.UserID = '$ID'
   <meta name="description" content="Chatting web program ChattingRoom Selector">
   <meta name="keywords" content="Web Programming Term Project, Chatting">
   <meta name="author" content="Gyu Bong Lee">
+  <!-- 반응형 웹페이지 구현을 위한 meta 데이터 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -39,19 +40,22 @@ WHERE usersinchattingroom.UserID = '$ID'
 </head>
 
 <body id="Background">
-  <!-- 프로그램 창 -->
   <div class="container">
     <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 
+      <!-- badge 같은 경우, Notification 수 등을 표기하는데 사용됨  -->
       <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
 
       <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
       <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->
       <button class="navbar-toggler responsiveNone2" data-toggle="collapse" data-target="#navCollapse">
+        <!-- 아이콘 같은 걸 넣을 때 span 태그를 사용함 -->
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div id="navCollapse" class="collapse navbar-collapse responsiveNone2">
+        
+        <!-- ml은 margin-left. -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#ChattingRoomAddModal">새 채팅방 만들기</a>
@@ -158,6 +162,7 @@ WHERE usersinchattingroom.UserID = '$ID'
     </div>
   </div>
 
+  <!-- p는 padding, mt는 margin-top란 의미 -->
   <div id="FooterDiv" class="navbar bg-dark p-1 fixed-bottom">
     <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 &nbsp; <em>이규봉</em> &nbsp;&nbsp; <sub>Term Project</sub> </footer>
   </div>
