@@ -43,7 +43,7 @@ if(empty($ret)){
 
 <body id="Background">
   <div class="container">
-      <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav id="FixedNavbar" class="navbar navbar-dark bg-dark fixed-top">
 
         <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
 
@@ -53,7 +53,7 @@ if(empty($ret)){
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse responsiveNone2" id="navCollapse">
+        <div id="navCollapse" class="collapse navbar-collapse responsiveNone2">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" onclick="ToChattingRoom();">채팅방 선택화면</a>
