@@ -10,39 +10,55 @@ class DataSearch{
     $resultString = "";
     $fp = fopen("data.txt", "r") or die("fail to open file");
 
+    $i = 0;
+    $key = array();
+    $value = array();
+
     while(!feof($fp)){
 
       $oneline_data = fgets($fp);
-      $dataArray = explode(' ', $oneline_data);
+      $dataArray = explode('=>', $oneline_data);
 
       if(empty($oneline_data)){
         continue;
       }
 
+      $key[$i] = $dataArray[0];
+      $value[$i] = $dataArray[1];
+
+      $i = $i + 1;
+    }
+
+    $dataArray = array();
+
+    for ($j = 0; $j < $i; $j++){
+      $dataArray = array_merge($dataArray, array($key[$j] => $value[$j]));
+    }
+
+    foreach($dataArray as $x => $x_value){
       if(empty($_fileName)){
-        if((strpos($dataArray[1], $_word) !== false)){
+        if((strpos($x_value, $_word) !== false)){
           $resultString .= sprintf('
           <li>%s: %s</li>
-          ', $dataArray[0], $dataArray[1]);
+          ', $x, $x_value);
         }
       }
 
       else if(empty($_word)){
-        if((strpos($dataArray[0], $_fileName) !== false)){
+        if((strpos($x, $_fileName) !== false)){
           $resultString .= sprintf('
           <li>%s: %s</li>
-          ', $dataArray[0], $dataArray[1]);
+          ', $x, $x_value);
         }
       }
       else{
-        if((strpos($dataArray[0], $_fileName) !== false) || (strpos($dataArray[1], $_word) !== false)){
+        if((strpos($x, $_fileName) !== false) && (strpos($x_value, $_word) !== false)){
           $resultString .= sprintf('
           <li>%s: %s</li>
-          ', $dataArray[0], $dataArray[1]);
+          ', $x, $x_value);
         }
       }
     }
-    fclose($fp);
     return $resultString;
   }
 }

@@ -16,9 +16,9 @@ class ShowAction{
         return $resultString;
       }
 
-      $dataArray = explode(' ', $oneline_data);
+      $dataArray = explode('=>', $oneline_data);
 
-      echo "<li>$dataArray[0]: $dataArray[1]</li>";
+      echo "<li>$dataArray[0] $dataArray[1]</li>";
 
     }
 
