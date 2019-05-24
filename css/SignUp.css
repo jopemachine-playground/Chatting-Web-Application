@@ -1,8 +1,9 @@
+/* CDN 방식으로 폰트를 가져온다 */
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 strong{
-  color: red;
+  color: red !important;
 }
 
 label{
@@ -49,6 +50,7 @@ a.navbar-brand{
   padding: 15px;
   margin-bottom: 32px;
   border-radius: 8px;
+  /* border: 0.9px solid black !important; */
 }
 
 #FixedNavbar{
@@ -58,4 +60,33 @@ a.navbar-brand{
 #WhiteSpaceForResponsivePage{
   width:100%;
   height: 250px;
+}
+
+#userDefaultProfile{
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 766px) {
+  .responsiveNone{
+    display: none;
+  }
+  .responsiveNone2{
+    display: default;
+  }
+  .responsiveNone2 *{
+    display: default;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .responsiveNone{
+    display: default;
+  }
+  .responsiveNone2{
+    display: none;
+  }
+
+  .responsiveNone2 *{
+    display: none;
+  }
 }

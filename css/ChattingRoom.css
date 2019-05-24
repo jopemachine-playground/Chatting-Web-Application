@@ -1,3 +1,4 @@
+/* CDN 방식으로 폰트를 가져온다 */
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
@@ -54,21 +55,21 @@ a.navbar-brand{
 .MyProfileImages{
   float: right;
   /* width, height 모두 65px로 표시되게 하려면 padding 10px을 포함해 75px로 적어줘야 함에 유의  */
-  width: 75px;
+  width: 65px;
   height: 65px;
   overflow: hidden;
   margin-top: -5px;
-  padding-left: 10px;
+  margin-left: 10px;
   display: inline;
 }
 
 .OthersProfileImages{
   float: left;
-  width: 75px;
+  width: 65px;
   height: 65px;
   overflow: hidden;
   margin-top: -5px;
-  padding-right: 10px;
+  margin-right: 10px;
   display: inline;
 }
 

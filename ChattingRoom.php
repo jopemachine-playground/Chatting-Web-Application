@@ -35,6 +35,7 @@ if(empty($ret)){
   <meta name="description" content="Chatting web page">
   <meta name="keywords" content="Web Programming Term Project, Chatting, chatting Program">
   <meta name="author" content="Gyu Bong Lee">
+  <!-- 반응형 웹페이지 구현을 위한 meta 데이터 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -43,7 +44,7 @@ if(empty($ret)){
 
 <body id="Background">
   <div class="container">
-      <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav id="FixedNavbar" class="navbar navbar-dark bg-dark fixed-top">
 
         <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
 
@@ -53,7 +54,7 @@ if(empty($ret)){
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse responsiveNone2" id="navCollapse">
+        <div id="navCollapse" class="collapse navbar-collapse responsiveNone2">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" onclick="ToChattingRoom();">채팅방 선택화면</a>
@@ -73,8 +74,11 @@ if(empty($ret)){
         <!-- 아래의 버튼들은 데스크톱에서 사용할 이미지 버튼 및 dropdown-menu 이다. -->
         <div class="btn-group float-right responsiveNone">
           <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></img></button>
+
+          <!-- aria-haspopup은 스마트폰 등의 기기에서 터치로 조작할 수 있는지의 여부, aria-expanded는 기본 활성화 여부를 나타낸다. -->
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
           <div class="dropdown-menu dropdown-menu-right">
+            <!-- dropdown-item들은 dropdown-menu에 들어가는 각각의 요소 -->
             <a class="dropdown-item active" onclick="logout()">로그아웃</a>
             <a class="dropdown-item" onclick="ToChattingRoom();">채팅방 선택화면</a>
             <a class="dropdown-item" href="#">내 정보</a>
@@ -88,7 +92,8 @@ if(empty($ret)){
   <!-- Ajax로 가져온 메시지가 아래에 표시됨 -->
   <section id="Message_Window" class="container" style="padding-top:100px;"></section>
 
-  <div id="UserInfoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <!-- aria-hidden은 기본 hidden 설정 값 -->
+  <div id="UserInfoModal" class="modal fade" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
