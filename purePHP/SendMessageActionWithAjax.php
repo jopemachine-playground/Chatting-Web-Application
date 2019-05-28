@@ -5,7 +5,7 @@ require_once('MySQLConection.php');
 $connect_object = MySQLConnection::DB_Connect();
 
 $SenderID = $_POST['sender'];
-$Message = $_POST['message'];
+$MessageContent = $_POST['message'];
 $RoomID = $_POST['roomID'];
 $ProfileImageFileName = $_POST['profileImageFileName'];
 
@@ -17,7 +17,7 @@ Insert INTO ". $RoomID ." (
     SendingDateTime
   ) VALUES(
     '$SenderID',
-    '$Message',
+    '$MessageContent',
     '$ProfileImageFileName',
     NOW()
 )";

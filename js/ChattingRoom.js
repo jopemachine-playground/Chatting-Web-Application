@@ -12,7 +12,7 @@ function ToChattingRoom(){
 
 // 메시지 전송 버튼 클릭 이벤트
 function HandlingSendEvent(){
-  SendJsonMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), UserID, RoomID, ProfileImageFileName));
+  SendMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), UserID, RoomID, ProfileImageFileName));
   $("#Sending_Message_Box").val("");
 }
 
@@ -21,7 +21,7 @@ function ScrollToBottom(){
   $(document).scrollTop($(document).height());
 }
 
-function SendJsonMessageToServer(sendingMessageJson){
+function SendMessageToServer(sendingMessageJson){
   $.ajax({
     type: "POST",
     url : "../purePHP/SendMessageActionWithAjax.php",
@@ -128,3 +128,27 @@ $(document).ready(function() {
     }
   });
 });
+
+//
+function fileUpload(file){
+
+}
+
+function fileUploadByDrag(){
+  // 파일을 드래그 한 게 아닌 경우 아무 일도 하지 않음.
+  if(false){
+    return;
+  }
+  console.log("실행");
+  fileUpload(file);
+}
+
+// 마우스가 드래그 된 상태로 위에 떠 있는 동안 색상을 변경한다.
+$('.Sending_Message_Box').ondragover = function(event){
+  $('.Sending_Message_Box').css('background-color','#f9ae8e');
+}
+
+// 마우스 드래그가 끝나거나, 드래그가 떠나거나, 색상을 되돌려 놓아야 한다.
+$('.Sending_Message_Box').ondragleave = function(event){
+  $('.Sending_Message_Box').css('background-color','#ffffff');
+}

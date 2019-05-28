@@ -126,13 +126,12 @@ if(empty($ret)){
 
       <div class="col-sm-9 text-right" style="margin-top:10px;" title="전송할 메시지를 입력하세요.">
         <form>
-          <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" placeholder="메시지를 입력하세요." autofocus></textarea>
+          <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" ondrop="fileUploadByDrag()" placeholder="여기에 메시지를 입력하거나, 파일을 드래그 해 전송하세요." autofocus></textarea>
         </form>
       </div>
 
       <div class="col-sm-1.5 responsiveNone">
-        <button id="Message_Send_Button" type="submit" class="btn btn-block btn-success" title="메시지를 전송합니다." onclick="HandlingSendEvent()">메시지 전송</button>
-        <button id="File_Transfer_Button" type="submit" class="btn btn-block btn-primary" title="파일을 전송하시려면 클릭하세요.">파일 전송</button>
+        <button id="Message_Send_Button" type="submit" class="btn btn-block btn-success" title="메시지를 전송합니다." onclick="HandlingSendEvent()">전송</button>
       </div>
     </div>
 
