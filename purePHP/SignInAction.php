@@ -2,7 +2,7 @@
 
   require_once('MySQLConection.php');
 
-  $connect_object = MySQLConnection::DB_Connect();
+  $connect_object = MySQLConnection::DB_Connect('chattingdb');
 
   // Post 방식으로 유저 데이터를 가져옴
   $ID = $_POST["ID"];

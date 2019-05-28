@@ -2,7 +2,8 @@
 require_once('MySQLConection.php');
 
 // DB 연결
-$connect_object = MySQLConnection::DB_Connect();
+$connect_object_chattingDB = MySQLConnection::DB_Connect('chattingdb');
+$connect_object_chattingRoomsDB = MySQLConnection::DB_Connect('chattingroomsdb');
 
 $RoomTitle = $_POST["RoomTitle"];
 $RoomDesc = $_POST["RoomDesc"];
@@ -18,7 +19,7 @@ $searchUserID = "
   SELECT * FROM usersinfotbl WHERE ID = '$OppenentID'
 ";
 
-$ret = mysqli_query($connect_object, $searchUserID);
+$ret = mysqli_query($connect_object_chattingDB, $searchUserID);
 
 // 중복 ID가 존재하는 경우 알려줌
 if(mysqli_num_rows($ret) < 1){
@@ -27,7 +28,7 @@ if(mysqli_num_rows($ret) < 1){
   exit();
 }
 
-$ret = mysqli_query($connect_object, $searchRoomIndex);
+$ret = mysqli_query($connect_object_chattingDB, $searchRoomIndex);
 
 # Hasing 값은 UserID, Index, 방을 만들 때의 시간으로 결정한다.
 # 이 값은 ID로 사용할 수 없는 특수문자(#)로 결합됨.
@@ -43,57 +44,57 @@ do {
     SELECT * FROM usersinfotbl WHERE ID = '$HashingRoomID'
   ";
 
-  $ret = mysqli_query($connect_object, $searchHashingValue, $i++);
+  $ret = mysqli_query($connect_object_chattingDB, $searchHashingValue, $i++);
 
 } while(mysqli_num_rows($ret) > 0);
 
 $insertNewRoom = "
-Insert INTO chattingroomtbl (
-  Title,
-  Description,
-  Chief,
-  RoomID,
-  CreatedDate
-  ) VALUES(
-    '$RoomTitle',
-    '$RoomDesc',
-    '$UserID',
-    '$HashingRoomID',
-    Now()
+  Insert INTO chattingroomtbl (
+    Title,
+    Description,
+    Chief,
+    RoomID,
+    CreatedDate
+    ) VALUES(
+      '$RoomTitle',
+      '$RoomDesc',
+      '$UserID',
+      '$HashingRoomID',
+      Now()
 )";
 
 $insertParticipants = "
-Insert INTO usersinchattingroom (
-  RoomID,
-  UserID
-  ) VALUES(
-    '$HashingRoomID',
-    '$UserID'
+  Insert INTO usersinchattingroom (
+    RoomID,
+    UserID
+    ) VALUES(
+      '$HashingRoomID',
+      '$UserID'
 )";
 
 $insertOppenent = "
-Insert INTO usersinchattingroom (
-  RoomID,
-  UserID
-  ) VALUES(
-    '$HashingRoomID',
-    '$OppenentID'
+  Insert INTO usersinchattingroom (
+    RoomID,
+    UserID
+    ) VALUES(
+      '$HashingRoomID',
+      '$OppenentID'
 )";
 
 $createChattingRoomTbl = "
-CREATE TABLE `chattingdb`.`$HashingRoomID`(
-	`SendingUserId` VARCHAR(20) NOT NULL,
-  `Message` MEDIUMTEXT NOT NULL,
-  `SendingDateTime` DATETIME NOT NULL,
-  `ProfileImageFileName` VARCHAR(30),
-  `MessageIndex` INT(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY(`MessageIndex`)
+  CREATE TABLE `chattingroomsdb`.`$HashingRoomID`(
+  	`SendingUserId` VARCHAR(20) NOT NULL,
+    `Message` MEDIUMTEXT NOT NULL,
+    `SendingDateTime` DATETIME NOT NULL,
+    `ProfileImageFileName` VARCHAR(30),
+    `MessageIndex` INT(11) NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(`MessageIndex`)
 )";
 
-$ret = mysqli_query($connect_object, $insertNewRoom);
-$ret = mysqli_query($connect_object, $insertParticipants);
-$ret = mysqli_query($connect_object, $insertOppenent);
-$ret = mysqli_query($connect_object, $createChattingRoomTbl);
+$ret = mysqli_query($connect_object_chattingDB, $insertNewRoom);
+$ret = mysqli_query($connect_object_chattingDB, $insertParticipants);
+$ret = mysqli_query($connect_object_chattingDB, $insertOppenent);
+$ret = mysqli_query($connect_object_chattingRoomsDB, $createChattingRoomTbl);
 
 echo ("<script>location.href='../ChattingRoomSelector.php';</script>");
 
@@ -103,7 +104,8 @@ function Hashing($Algorithm, $UserRoomsIndex, $UserID, $Variant){
   $uniqueString .= "#";
   $uniqueString .= $UserID;
   $uniqueString .= "#";
-  $uniqueString .= date("Y-m-d H:i:s") . $Variant;
+  $uniqueString .= $Variant;
+  // $uniqueString .= date("Y-m-d H:i:s") . $Variant;
 
   return hash($Algorithm, $uniqueString);
 }

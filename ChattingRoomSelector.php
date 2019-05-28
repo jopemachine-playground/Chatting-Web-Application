@@ -11,7 +11,7 @@ if(empty($ID)){
   exit();
 }
 
-$connect_object = MySQLConnection::DB_Connect();
+$connect_object = MySQLConnection::DB_Connect('chattingdb');
 
 $searchUserChattingRoomBoxes = "
   SELECT *
@@ -168,7 +168,7 @@ $searchUserChattingRoomBoxes = "
            <div class="modal-body">
              <h4 class="text-center" style="font-size: 15px; margin-bottom: 20px;">채팅방에서 나가시겠습니까?<br>채팅방 로그는 없어지지 않습니다.</h4>
              <div class="text-center" style="width: 70%; margin: 0 auto">
-               <a class="btn btn-sm btn-danger btn-yes btn-block" style="color:#ffffff;" onclick="DeleteChattingRoom()">네</a>
+               <a class="btn btn-sm btn-danger btn-yes btn-block" style="color:#ffffff;" data-dismiss="modal" onclick="DeleteChattingRoom()">네</a>
                <!-- data dismiss란 attribute를 줌으로써, 모달 박스를 닫는 이벤트를 구현할 수 있음 -->
                <a class="btn btn-sm btn-success btn-no btn-block" style="color:#ffffff;" data-dismiss="modal">아니오</a>
              </div>

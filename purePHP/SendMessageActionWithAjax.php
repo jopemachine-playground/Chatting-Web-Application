@@ -2,7 +2,7 @@
 header("Content-Type: application/json");
 require_once('MySQLConection.php');
 
-$connect_object = MySQLConnection::DB_Connect();
+$connect_object = MySQLConnection::DB_Connect('chattingroomsdb');
 
 $SenderID = $_POST['sender'];
 $MessageContent = $_POST['message'];
@@ -10,7 +10,7 @@ $RoomID = $_POST['roomID'];
 $ProfileImageFileName = $_POST['profileImageFileName'];
 
 $AddMessageToDB = "
-Insert INTO ". $RoomID ." (
+  Insert INTO ". $RoomID ." (
     SendingUserId,
     Message,
     ProfileImageFileName,

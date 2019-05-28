@@ -12,6 +12,11 @@ function ToChattingRoom(){
 
 // 메시지 전송 버튼 클릭 이벤트
 function HandlingSendEvent(){
+
+  // 아무 내용도 없는 메시지는 전송하지 않음
+  if($('#Sending_Message_Box').val() == ''){
+    return;
+  }
   SendMessageToServer(createMessageHTML($('#Sending_Message_Box').val(), UserID, RoomID, ProfileImageFileName));
   $("#Sending_Message_Box").val("");
 }
@@ -131,24 +136,61 @@ $(document).ready(function() {
 
 //
 function fileUpload(file){
+  $.ajax({
+    type: "POST",
+    url : "../purePHP/MessageFetchAction.php",
+    data : {
+      RoomID : RoomID,
+      UpdatedIndex : UpdatedIndex
+    },
+    dataType:"HTML",
 
+    success : function(response) {
+      console.log("서버에서 성공적으로 파일을 업로드 했습니다!");
+      $('#Message_Window').append(response);
+
+      if(response != ''){
+        UpdatedIndex = $('.MessageBox').length;
+        ScrollToBottom();
+        checkOutFooterStyle();
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);
+    }
 }
 
-function fileUploadByDrag(){
+async function fileUploadByDrag(event){
   // 파일을 드래그 한 게 아닌 경우 아무 일도 하지 않음.
-  if(false){
+
+  event.preventDefault();
+
+  if(event.dataTransfer.files.length > 1){
+    alert('한 번에 한 파일만 전송할 수 있습니다.');
     return;
   }
-  console.log("실행");
-  fileUpload(file);
+  if(event.dataTransfer.files[0].size > 100000){
+    alert('전송하려는 파일의 크기는 100000 바이트 미만이어야 합니다.');
+    return;
+  }
+
+  const reader = new FileReader();
+
+  await reader.readAsText(event.dataTransfer.files[0]);
+
+  console.log(reader);
+
+  fileUpload(reader.result);
+
 }
 
 // 마우스가 드래그 된 상태로 위에 떠 있는 동안 색상을 변경한다.
-$('.Sending_Message_Box').ondragover = function(event){
-  $('.Sending_Message_Box').css('background-color','#f9ae8e');
+function colorChangeByDragOver(){
+  console.log("실행");
+  $('#Sending_Message_Box').css('background-color','#f9ae8e');
 }
 
 // 마우스 드래그가 끝나거나, 드래그가 떠나거나, 색상을 되돌려 놓아야 한다.
-$('.Sending_Message_Box').ondragleave = function(event){
-  $('.Sending_Message_Box').css('background-color','#ffffff');
+function colorChangeByDragLeave(){
+  $('#Sending_Message_Box').css('background-color','#ffffff');
 }

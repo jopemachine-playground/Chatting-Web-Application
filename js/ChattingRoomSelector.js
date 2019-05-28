@@ -32,23 +32,22 @@ function checkOutFooterStyle(){
 }
 
 // Delete 버튼이 눌러졌을 때 Ajax를 이용해 데이터를 전송한 후
-// DB에서 삭제에 성공하면
+// DB에서 삭제에 성공하면 페이지를 리로딩 할 필요 없이 hide를 이용해 삭제한 채팅방을 숨긴다.
+// 페이지를 리로딩하면 DB에서 삭제된 데이터는 로딩되지 않는다.
 function DeleteChattingRoom(){
-
-  $('DeleteConfirmModal').show();
 
   $.ajax({
     type: "POST",
     url : "../purePHP/ChattingRoomDeleteAction.php",
     data : {
       DeleteingRoomID : DeleteingRoomID,
-      DeleteingUserID : $.cookie('connectedUserID');  
+      DeleteingUserID : $.cookie('connectedUserID')
     },
 
     success : function(response) {
       console.log("채팅방에서 나가는 데 성공했습니다");
+      $('#' + DeleteingRoomID).parent('div').parent('div').parent('div.jumbotron').hide();
       checkOutFooterStyle();
-
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);

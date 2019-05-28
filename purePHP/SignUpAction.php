@@ -3,7 +3,7 @@
 require_once('MySQLConection.php');
 
 // DB 연결
-$connect_object = MySQLConnection::DB_Connect();
+$connect_object = MySQLConnection::DB_Connect('chattingdb');
 
 // Post 방식으로 유저 데이터를 가져옴
 $ID = $_POST["ID"];
@@ -32,7 +32,7 @@ if($_FILES['ProfileImage']['size'] != 0){
   // 중복 ID가 없는 경우, 프로필 사진 업로드 처리 및 폴더에 저장
   $ProfileImageUploadDir = 'C:\xampp\WebProgramming_Project\profileImages\\';
 
-  // 아래 코드에서 mb_stristr가 파일 확장자만 잘라 ID와 붙인다 
+  // 아래 코드에서 mb_stristr가 파일 확장자만 잘라 ID와 붙인다
   $ProfileImageFileName = $ID . mb_stristr($_FILES['ProfileImage']['name'], '.');
   $ProfileImageFilePath = $ProfileImageUploadDir . $ProfileImageFileName;
 

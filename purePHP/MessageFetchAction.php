@@ -2,7 +2,7 @@
 require_once('MySQLConection.php');
 require_once('MessageWindow.php');
 
-$connect_object = MySQLConnection::DB_Connect();
+$connect_object = MySQLConnection::DB_Connect("chattingroomsdb");
 
 $UserID = $_COOKIE['connectedUserID'];
 $RoomID = $_POST['RoomID'];

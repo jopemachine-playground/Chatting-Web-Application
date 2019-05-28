@@ -11,7 +11,7 @@ if(empty($UserID)){
   echo ("<script>location.href='SignIn.html';</script>");
 }
 
-$connect_object = MySQLConnection::DB_Connect();
+$connect_object = MySQLConnection::DB_Connect('chattingdb');
 
 $searchThisUserBeInThisChattingRoom = "
   SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
@@ -126,7 +126,7 @@ if(empty($ret)){
 
       <div class="col-sm-9 text-right" style="margin-top:10px;" title="전송할 메시지를 입력하세요.">
         <form>
-          <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" ondrop="fileUploadByDrag()" placeholder="여기에 메시지를 입력하거나, 파일을 드래그 해 전송하세요." autofocus></textarea>
+          <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" ondrop="fileUploadByDrag(event)" ondragover="colorChangeByDragOver()" ondragleave="colorChangeByDragLeave()" placeholder="여기에 메시지를 입력하거나, 파일을 드래그 해 전송하세요." autofocus></textarea>
         </form>
       </div>
 
