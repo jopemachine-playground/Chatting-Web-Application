@@ -1,7 +1,7 @@
 <?php
-require_once('C:\xampp\WebProgramming_Project\purePHP\UserModalBox.php');
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
-require_once('C:\xampp\WebProgramming_Project\purePHP\ChattingRoomSelectorBox.php');
+require_once('purePHP\UserModalBox.php');
+require_once('purePHP\MySQLConection.php');
+require_once('purePHP\ChattingRoomSelectorBox.php');
 
 $ID = $_COOKIE["connectedUserID"];
 
@@ -54,7 +54,7 @@ WHERE usersinchattingroom.UserID = '$ID'
       </button>
 
       <div id="navCollapse" class="collapse navbar-collapse responsiveNone2">
-        
+
         <!-- ml은 margin-left. -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">

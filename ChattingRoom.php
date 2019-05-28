@@ -1,7 +1,7 @@
 <?php
-require_once('C:\xampp\WebProgramming_Project\purePHP\UserModalBox.php');
-require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+require_once('purePHP\UserModalBox.php');
+require_once('purePHP\MessageWindow.php');
+require_once('purePHP\MySQLConection.php');
 
 $UserID = $_COOKIE["connectedUserID"];
 $RoomID = $_GET["RoomID"];

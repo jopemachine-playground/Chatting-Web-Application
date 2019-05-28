@@ -1,5 +1,5 @@
 <?php
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+require_once('MySQLConection.php');
 
 $UserNewID = $_GET["userID"];
 

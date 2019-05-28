@@ -1,6 +1,6 @@
 <?php
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
-require_once('C:\xampp\WebProgramming_Project\purePHP\MessageWindow.php');
+require_once('MySQLConection.php');
+require_once('MessageWindow.php');
 
 $connect_object = MySQLConnection::DB_Connect();
 

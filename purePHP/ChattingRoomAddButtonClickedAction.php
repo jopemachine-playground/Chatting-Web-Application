@@ -1,5 +1,5 @@
 <?php
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+require_once('MySQLConection.php');
 
 // DB 연결
 $connect_object = MySQLConnection::DB_Connect();
@@ -29,11 +29,23 @@ if(mysqli_num_rows($ret) < 1){
 
 $ret = mysqli_query($connect_object, $searchRoomIndex);
 
-# Hasing 값은 UserID, Index로 결정된다.
+# Hasing 값은 UserID, Index, 방을 만들 때의 시간으로 결정한다.
 # 이 값은 ID로 사용할 수 없는 특수문자(#)로 결합됨.
 # 즉, 어떤 유저가 채팅방을 만들 때 항상 DB에 없는 고유의 값을 지니게 됨
-# 따라서, 이 Hashing 값을 사용하면 데이터 무결성이 보장됨 (해시 충돌이 일어나는 경우는 예외로 함)
-$HashingRoomID = Hashing("sha256", mysqli_num_rows($ret), $UserID);
+# 따라서, 이 Hashing 값을 사용하면 데이터 무결성이 보장됨 (해시 충돌이 일어나는 경우는 예외로 해 시간 값을 바꿔 다시 구한다)
+
+$i = 0;
+
+do {
+  $HashingRoomID = Hashing("sha256", mysqli_num_rows($ret), $UserID, $i);
+  // 해싱값이 존재하는지 검사
+  $searchHashingValue = "
+    SELECT * FROM usersinfotbl WHERE ID = '$HashingRoomID'
+  ";
+
+  $ret = mysqli_query($connect_object, $searchHashingValue, $i++);
+
+} while(mysqli_num_rows($ret) > 0);
 
 $insertNewRoom = "
 Insert INTO chattingroomtbl (
@@ -85,10 +97,13 @@ $ret = mysqli_query($connect_object, $createChattingRoomTbl);
 
 echo ("<script>location.href='../ChattingRoomSelector.php';</script>");
 
-function Hashing($Algorithm, $UserRoomsIndex, $UserID){
+function Hashing($Algorithm, $UserRoomsIndex, $UserID, $Variant){
   $uniqueString = "";
   $uniqueString .= $UserRoomsIndex;
   $uniqueString .= "#";
   $uniqueString .= $UserID;
+  $uniqueString .= "#";
+  $uniqueString .= date("Y-m-d H:i:s") . $Variant;
+
   return hash($Algorithm, $uniqueString);
 }

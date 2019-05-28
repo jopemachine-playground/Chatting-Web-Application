@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+require_once('MySQLConection.php');
 
 $connect_object = MySQLConnection::DB_Connect();
 

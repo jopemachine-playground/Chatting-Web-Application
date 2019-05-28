@@ -1,6 +1,6 @@
 <!-- 파일 전송에 관한 부분은 오른쪽 페이지 참고함 https://opentutorials.org/course/62/5136 -->
 <?php
-require_once('C:\xampp\WebProgramming_Project\purePHP\MySQLConection.php');
+require_once('MySQLConection.php');
 
 // DB 연결
 $connect_object = MySQLConnection::DB_Connect();
@@ -57,17 +57,17 @@ Insert INTO usersinfotbl (
   ProfileImageFileName,
   SignupDate
   ) VALUES(
-    '$ID',
-    '$PW',
-    '$Address',
-    '$PhoneNumber',
-    '$ProfileImageFileName',
-    Now()
-    )";
+  '$ID',
+  '$PW',
+  '$Address',
+  '$PhoneNumber',
+  '$ProfileImageFileName',
+  Now()
+)";
 
-    $ret = mysqli_query($connect_object, $insertData);
+$ret = mysqli_query($connect_object, $insertData);
 
-    echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
-    echo ("<script>location.href='../SignIn.html';</script>");
+echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
+echo ("<script>location.href='../SignIn.html';</script>");
 
-    mysqli_close($connect_object);
+mysqli_close($connect_object);
