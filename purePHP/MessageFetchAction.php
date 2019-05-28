@@ -12,7 +12,7 @@ $RoomID = $_POST['RoomID'];
 $UpdatedIndex = $_POST['UpdatedIndex'];
 
 $searchUserChattingRoomBoxes = "
-SELECT * FROM " . $RoomID . " WHERE MessageIndex > '$UpdatedIndex'";
+  SELECT * FROM " . $RoomID . " WHERE MessageIndex > '$UpdatedIndex'";
 
 $ret = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
 

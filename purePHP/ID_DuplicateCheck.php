@@ -8,7 +8,7 @@ $connect_object = MySQLConnection::DB_Connect();
 
 // DB에서 PK (ID) 중복 검사
 $searchUserID = "
-SELECT * FROM usersinfotbl WHERE ID = '$UserNewID'
+  SELECT * FROM usersinfotbl WHERE ID = '$UserNewID'
 ";
 
 $ret = mysqli_query($connect_object, $searchUserID);

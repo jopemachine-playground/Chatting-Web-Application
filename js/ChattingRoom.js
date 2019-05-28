@@ -42,7 +42,10 @@ function FetchMessageWithAjax(){
   $.ajax({
     type: "POST",
     url : "../purePHP/MessageFetchAction.php",
-    data : { RoomID : RoomID, UpdatedIndex : UpdatedIndex },
+    data : {
+      RoomID : RoomID,
+      UpdatedIndex : UpdatedIndex
+    },
     dataType:"HTML",
 
     success : function(response) {

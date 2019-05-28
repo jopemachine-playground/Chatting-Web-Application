@@ -14,7 +14,7 @@ $PhoneNumber = $_POST["PhoneNumber"];
 
 // DB에서 PK (ID) 중복 검사
 $searchUserID = "
-SELECT * FROM usersinfotbl
+  SELECT * FROM usersinfotbl
 ";
 
 $ret = mysqli_query($connect_object, $searchUserID);
@@ -45,7 +45,6 @@ if($_FILES['ProfileImage']['size'] != 0){
 else{
   $ProfileImageFileName = '';
 }
-
 
 // DB에 새 레코드 입력
 $insertData = "

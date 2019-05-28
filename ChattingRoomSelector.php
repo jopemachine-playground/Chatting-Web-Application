@@ -14,11 +14,11 @@ if($ID == null){
 $connect_object = MySQLConnection::DB_Connect();
 
 $searchUserChattingRoomBoxes = "
-SELECT *
-FROM usersinchattingroom
-INNER JOIN chattingroomtbl
-ON usersinchattingroom.RoomID = chattingroomtbl.RoomID
-WHERE usersinchattingroom.UserID = '$ID'
+  SELECT *
+  FROM usersinchattingroom
+  INNER JOIN chattingroomtbl
+  ON usersinchattingroom.RoomID = chattingroomtbl.RoomID
+  WHERE usersinchattingroom.UserID = '$ID'
 ";
 
 ?>
@@ -79,7 +79,6 @@ WHERE usersinchattingroom.UserID = '$ID'
         </div>
         <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
       </div>
-
     </nav>
   </div>
 
@@ -135,6 +134,7 @@ WHERE usersinchattingroom.UserID = '$ID'
         <div class="modal-header">
           <h5 class="modal-title">새 채팅방 추가</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <!-- times를 x 버튼 대신 이용함 -->
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -156,13 +156,28 @@ WHERE usersinchattingroom.UserID = '$ID'
               <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
               <button type="submit" class="btn btn-primary">추가하기</button>
             </div>
-          </form>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- p는 padding, mt는 margin-top란 의미 -->
+  <!-- 부트스트랩에서 Custom Modal Box의 기본적인 틀. prompt 대신 사용함 -->
+  <div id="DeleteConfirmModal" class="modal fade" role="dialog">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-body">
+             <h4 class="text-center" style="font-size: 15px; margin-bottom: 20px;">채팅방에서 나가시겠습니까?<br>채팅방 로그는 없어지지 않습니다.</h4>
+             <div class="text-center" style="width: 70%; margin: 0 auto">
+               <a class="btn btn-sm btn-danger btn-yes btn-block" style="color:#ffffff;" onclick="DeleteChattingRoom()">네</a>
+               <!-- data dismiss란 attribute를 줌으로써, 모달 박스를 닫는 이벤트를 구현할 수 있음 -->
+               <a class="btn btn-sm btn-success btn-no btn-block" style="color:#ffffff;" data-dismiss="modal">아니오</a>
+             </div>
+           </div>
+       </div>
+    </div>
+  </div>
+
+  <!-- p는 padding, mt는 margin-top란 의미 (Bootstrap 4 API spacing 참고) -->
   <div id="FooterDiv" class="navbar bg-dark p-1 fixed-bottom">
     <footer id="Copyright" class="bg-dark mt-4 p-3 text-center"> &copy; 2019 웹프로그래밍 &nbsp; <em>이규봉</em> &nbsp;&nbsp; <sub>Term Project</sub> </footer>
   </div>

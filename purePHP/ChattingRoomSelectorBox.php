@@ -12,7 +12,7 @@ class ChattingRoomSelectorBox{
           <p style="font-size: 9pt; color: #939496;">Partipants: %s</p>
         </div>
         <div class="col-sm-1">
-          <img src="img/delete.svg" class="responsiveSmall" style="width: 32px; height:32px;" onclick="DeleteChattingRoom()" alt="Chatting Room Delete Button"></img>
+          <img src="img/delete.svg" class="responsiveSmall" style="width: 32px; height:32px;" data-toggle="modal" onclick="setIndexToDeleteRoom(%s)" data-target="#DeleteConfirmModal" alt="Chatting Room Delete Button"></img>
         </div>
       </div>
       <hr class="my-2">
@@ -23,7 +23,7 @@ class ChattingRoomSelectorBox{
       </form>
     </div>
 
-    ', $chattingRoomTitle, $participants, $chattingRoomDesc, $roomID);
+    ', $chattingRoomTitle, $roomID ,$participants, $chattingRoomDesc, $roomID);
   }
 
 }
