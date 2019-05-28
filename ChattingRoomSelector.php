@@ -5,7 +5,7 @@ require_once('purePHP\ChattingRoomSelectorBox.php');
 
 $ID = $_COOKIE["connectedUserID"];
 
-if($ID == null){
+if(empty($ID)){
   echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
   echo ("<script>location.href='SignIn.html';</script>");
   exit();

@@ -14,7 +14,7 @@ if(empty($UserID)){
 $connect_object = MySQLConnection::DB_Connect();
 
 $searchThisUserBeInThisChattingRoom = "
-SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
+  SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
 ";
 
 $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom);
@@ -100,7 +100,7 @@ if(empty($ret)){
         <?php
         // 유저 프로필 사진, ID 등을 표시하는 Small Modal Box
         $searchUserID = "
-        SELECT * FROM usersinfotbl WHERE ID = '$UserID'
+          SELECT * FROM usersinfotbl WHERE ID = '$UserID'
         ";
 
         $ret = mysqli_query($connect_object, $searchUserID);
