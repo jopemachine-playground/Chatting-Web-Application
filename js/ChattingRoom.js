@@ -170,20 +170,19 @@ async function fileUploadByDrag(event){
     return;
   }
 
-  // const reader = new FileReader();
-
-  let arrayBuffer = null;
   let fileName = event.dataTransfer.files[0].name;
-  // await reader.readAsArrayBuffer(event.dataTransfer.files[0]);
-  arrayBuffer = await new Response(event.dataTransfer.files[0]).arrayBuffer();
 
-  console.log(arrayBuffer);
+  let arrayBuffer = await new Response(event.dataTransfer.files[0]).arrayBuffer();
+
+  // console.log(arrayBuffer);
 
   uint8ArrayNew  = new Uint8Array(arrayBuffer);
   
-  console.log(ab2str(uint8ArrayNew));
+  // console.log(ab2str(uint8ArrayNew));
 
   fileUpload(ab2str(uint8ArrayNew), fileName);
+
+  $('#Sending_Message_Box').css('background-color','#ffffff');
 
 }
 
@@ -202,8 +201,7 @@ function str2ab(str) {
 
 // 마우스가 드래그 된 상태로 위에 떠 있는 동안 색상을 변경한다.
 function colorChangeByDragOver(){
-  console.log("실행");
-  $('#Sending_Message_Box').css('background-color','#f9ae8e');
+  $('#Sending_Message_Box').css('background-color','#dfffd8');
 }
 
 // 마우스 드래그가 끝나거나, 드래그가 떠나거나, 색상을 되돌려 놓아야 한다.

@@ -1,4 +1,3 @@
-<!-- 파일 전송에 관한 부분은 오른쪽 페이지 참고함 https://opentutorials.org/course/62/5136 -->
 <?php
 require_once('MySQLConection.php');
 
