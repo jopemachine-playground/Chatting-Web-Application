@@ -174,22 +174,32 @@ async function fileUploadByDrag(event){
   // console.log(arrayBuffer); // 정상
 
   uint8ArrayNew  = new Uint8Array(arrayBuffer);
-  
-  // console.log(ab2str(uint8ArrayNew)); // 크기가 두 배 가까이 증가
 
-  fileUpload(ab2str(uint8ArrayNew), fileName);
+  // console.log(uint8ArrayNew); // 정상
+
+  // var enc = new TextDecoder("utf-8");
+  // var arr = new Uint8Array([84,104,105,115,32,105,115,32,97,32,85,105,110,116,
+  //                           56,65,114,114,97,121,32,99,111,110,118,101,114,116,
+  //                           101,100,32,116,111,32,97,32,115,116,114,105,110,103]);
+  // console.log(enc.decode(arr));
+  
+  var enc = new TextDecoder("utf-16");
+  
+  console.log(enc.decode(uint8ArrayNew));
+
+  fileUpload(enc.decode(uint8ArrayNew), fileName);
 
   $('#Sending_Message_Box').css('background-color','#ffffff');
 
 }
 
 function ab2str(buf) {
-  return String.fromCharCode.apply(null, buf);
+  return String.fromCharCode.apply(null, new Uint8Array(buf));
 }
 
 function str2ab(str) {
   var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
-  var bufView = new Uint16Array(buf);
+  var bufView = new Uint8Array(buf);
   for (var i=0, strLen=str.length; i < strLen; i++) {
     bufView[i] = str.charCodeAt(i);
   }
@@ -207,6 +217,7 @@ function colorChangeByDragLeave(){
 }
 
 function fileDownload(message_index){
+
   $.ajax({
     type: "POST",
     url : "../purePHP/FileDownloadAction.php",
@@ -216,9 +227,30 @@ function fileDownload(message_index){
     },
 
     success : function(response) {
+      
       console.log("서버에 파일 다운로드 요청에 성공했습니다");
-      // 이제 아래 response로 파일을 만들면 된다.
-      console.log(response);
+
+      // require에 콜백을 등록해, 파일 저장에 필요한 스크립트 파일이 로드되면 다음 과정을 진행
+      require(["../lib/FileSaver.js"], () => {
+
+      // 서버에서 json_encode로 인코딩 한 파일 내용, 파일 이름을 디코딩한다.
+      // JSON.parse는 제이쿼리의 메서드 라고 함
+      let response_file = JSON.parse(response);
+
+      // let a = str2ab(response_file['File']);
+
+      // blob 객체를 생성
+      //var blob = new Blob([a]);
+
+      var enc = new TextDecoder("utf-16");
+
+      var blob = new Blob([response_file['File']], {type: "text/plain; charset=utf-8"});
+      
+      // 브라우저의 다운로드 경로에 파일을 다운로드함
+      saveAs(blob, response_file['FileName']);
+
+      });
+
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);

@@ -19,7 +19,10 @@ if(!empty($_POST['file'])){
 // var_dump($MessageContent);
 // var_dump($RoomID);
 // var_dump($ProfileImageFileName);
-// var_dump($FileBlob);
+
+var_dump($File); // 73.8
+var_dump($FileBlob); // 152
+var_dump(stripslashes($FileBlob)); // 147
 
 $AddMessageToDB = "
   Insert INTO ". $RoomID ." (

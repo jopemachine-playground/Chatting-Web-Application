@@ -164,11 +164,14 @@ $ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
   <script src="./lib/mdb.min.js"></script>
   <!-- 제이쿼리 쿠키 자바스크립트 파일 추가하기 -->
   <script src="./lib/jquery.cookie.js"></script>
+  <!-- 자바스크립트 종속성 관리를 위한 라이브러리 추가하기 -->
+  <script src="./lib/require.js"></script>
+  <!-- 파일 다운로드를 위한 라이브러리 추가하기 -->
+  <script src="./lib/FileSaver.js"></script>
   <!-- 커스텀 자바스크립트 추가하기 -->
   <script src="./js/ChattingRoom.js"></script>
   <!-- 커스텀 자바스크립트 추가하기 -->
   <script src="./js/Logout.js"></script>
-
 
 </body>
 </html>

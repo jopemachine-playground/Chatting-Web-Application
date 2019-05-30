@@ -14,5 +14,4 @@ $ret = mysqli_query($connect_object, $searchFile) or die("Error Ouccured Searchi
 
 $row = mysqli_fetch_array($ret);
 
-echo stripslashes($row['File']);
-
+echo json_encode(array("File" => stripslashes($row['File']), "FileName" => $row['Message']));
