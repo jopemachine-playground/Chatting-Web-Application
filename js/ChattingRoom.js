@@ -105,8 +105,8 @@ function checkOutFooterStyle(){
   // 문서 전체의 길이와 비교해 스타일을 전환한다
 
   // 디버깅 용
-  console.log(document.body.scrollHeight);
-  console.log(window.innerHeight);
+  // console.log(document.body.scrollHeight);
+  // console.log(window.innerHeight);
   // console.log($('#Message_Writing_Box').outerHeight())
   // console.log(parseInt(($('#Message_Window').css('padding-top'))));
 
@@ -131,10 +131,7 @@ $(document).ready(function() {
   });
 });
 
-//createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName, file)
 function fileUpload(file, fileName){
-
-  console.log(file);
 
   $.ajax({
     type: "POST",
@@ -174,11 +171,11 @@ async function fileUploadByDrag(event){
 
   let arrayBuffer = await new Response(event.dataTransfer.files[0]).arrayBuffer();
 
-  // console.log(arrayBuffer);
+  // console.log(arrayBuffer); // 정상
 
   uint8ArrayNew  = new Uint8Array(arrayBuffer);
   
-  // console.log(ab2str(uint8ArrayNew));
+  // console.log(ab2str(uint8ArrayNew)); // 크기가 두 배 가까이 증가
 
   fileUpload(ab2str(uint8ArrayNew), fileName);
 
@@ -187,7 +184,7 @@ async function fileUploadByDrag(event){
 }
 
 function ab2str(buf) {
-  return String.fromCharCode.apply(null, new Uint16Array(buf));
+  return String.fromCharCode.apply(null, buf);
 }
 
 function str2ab(str) {
@@ -207,4 +204,24 @@ function colorChangeByDragOver(){
 // 마우스 드래그가 끝나거나, 드래그가 떠나거나, 색상을 되돌려 놓아야 한다.
 function colorChangeByDragLeave(){
   $('#Sending_Message_Box').css('background-color','#ffffff');
+}
+
+function fileDownload(message_index){
+  $.ajax({
+    type: "POST",
+    url : "../purePHP/FileDownloadAction.php",
+    data : { 
+      Index : message_index,
+      roomID: RoomID
+    },
+
+    success : function(response) {
+      console.log("서버에 파일 다운로드 요청에 성공했습니다");
+      // 이제 아래 response로 파일을 만들면 된다.
+      console.log(response);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);
+    }
+  });
 }

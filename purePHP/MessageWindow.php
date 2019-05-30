@@ -1,7 +1,7 @@
 <?php
 class MessageWindow{
 
-  static public function CreateMessageWindow($sender, $sendedDateTime, $message, $profileImageName, $file){
+  static public function CreateMessageWindow($sender, $sendedDateTime, $message, $profileImageName, $file, $messageIndex){
 
     #############################################################    
     #                                                           #
@@ -51,7 +51,7 @@ class MessageWindow{
 
     if(!empty($file)){
       $fileImageElement = '<img class="FileImage" src="/img/file-text.svg">';
-      $messageElement = sprintf('<a class="messageContent fileDownloadLink" onclick="" href="#">%s</a>', $message);
+      $messageElement = sprintf('<a id="%s" class="messageContent fileDownloadLink" onclick="fileDownload(this.id)" href="#">%s</a>', $messageIndex , $message);
     }
     else {
       $messageElement = sprintf('<p class="messageContent">%s</p>', $message);
