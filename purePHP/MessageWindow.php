@@ -1,10 +1,13 @@
 <?php
 class MessageWindow{
 
-  static public function CreateMessageWindow($sender, $sendedDateTime, $message, $profileImageName){
+  static public function CreateMessageWindow($sender, $sendedDateTime, $message, $profileImageName, $file){
 
     $colorClass;
     $profileClass;
+
+    $fileImageElement = '';
+    $messageElement = '';
 
     // 내가 보낸 메시지를 검은색으로, 아닌 메시지를 하얀색으로 표시
     if($sender == $_COOKIE["connectedUserID"]){
@@ -24,14 +27,33 @@ class MessageWindow{
       $profileImageName =  'profileImages/' . $profileImageName;
     }
 
+    // 파일이 있는 경우 파일 아이콘 및 다운로드 링크를 제공
+    if(!empty($file)){
+      $fileImageElement = '<img class="FileImage" src="/img/file-text.svg">';
+      $messageElement = sprintf('<a class="messageContent" onclick="" href="#">%s</a>', $message);
+    }
+    else {
+      $messageElement = sprintf('<p class="messageContent">%s</p>', $message);
+    }
+
     return sprintf(
       '<div class="MessageBox jumbotron %s">
         <img src="%s" class="img-fluid rounded-circle %s" alt="User Profile Image">
+        %s
         <h6 class="sender">%s</h6>
         <p class="sendingTime">보낸 시각: %s</p>
         <hr class="my-1">
-        <p class="messageContent">%s</p>
-      </div>', $colorClass, $profileImageName, $profileClass, $sender, $sendedDateTime, $message);
+        %s
+      </div>', 
+
+        $colorClass,
+        $profileImageName, 
+        $profileClass, 
+        $fileImageElement, 
+        $sender, 
+        $sendedDateTime, 
+        $messageElement
+      );
   }
 
 }

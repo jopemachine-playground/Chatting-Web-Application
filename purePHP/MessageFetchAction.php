@@ -22,5 +22,7 @@ while($row = mysqli_fetch_array($ret)){
     $row['SendingUserId'],
     $row['SendingDateTime'],
     $row['Message'],
-    $row['ProfileImageFileName']);
+    $row['ProfileImageFileName'],
+    $row['File']  
+  );
 }

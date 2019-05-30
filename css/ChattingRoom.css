@@ -63,6 +63,13 @@ a.navbar-brand{
   display: inline;
 }
 
+.MyProfileImages~.FileImage{
+  position: absolute;
+  left: 10%;
+  width: 55px;
+  height: 55px;
+}
+
 .OthersProfileImages{
   float: left;
   width: 65px;
@@ -71,6 +78,13 @@ a.navbar-brand{
   margin-top: -5px;
   margin-right: 10px;
   display: inline;
+}
+
+.OthersProfileImages~.FileImage{
+  position: absolute;
+  right: 10%;
+  width: 55px;
+  height: 55px;
 }
 
 .messageContent{

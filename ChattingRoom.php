@@ -20,7 +20,7 @@ $searchThisUserBeInThisChattingRoom = "
 $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom);
 
 if(empty($ret)){
-  echo ("<script language=javascript>alert({$UserID} + '님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
+  echo ("<script language=javascript>alert(".$UserID."님은 이 채팅방에 등록되어 있지 않습니다.\n방장에게 문의하세요.')</script>");
   echo ("<script>location.href='ChattingRoomSelector.php';</script>");
   exit();
 }
@@ -90,7 +90,18 @@ if(empty($ret)){
   </div>
 
   <!-- Ajax로 가져온 메시지가 아래에 표시됨 -->
-  <section id="Message_Window" class="container" style="padding-top:100px;"></section>
+  <section id="Message_Window" class="container" style="padding-top:100px;">
+  
+    <!-- <div class="MessageBox jumbotron %s">
+      <img src="%s" class="img-fluid rounded-circle OthersProfileImages" alt="User Profile Image">
+      <img class="FileImage" src="/img/file-text.svg">
+      <h6 class="sender">%s</h6>
+      <p class="sendingTime">보낸 시각: %s</p>
+
+      <hr class="my-1">
+      <p class="messageContent">%s</p>
+    </div> -->
+  </section>
 
   <!-- aria-hidden은 기본 hidden 설정 값 -->
   <div id="UserInfoModal" class="modal fade" aria-hidden="true">

@@ -31,7 +31,6 @@ function SendMessageToServer(sendingMessageJson){
     type: "POST",
     url : "../purePHP/SendMessageActionWithAjax.php",
     data: sendingMessageJson,
-    dataType:"JSON",
 
     success : function(data, status, xhr) {
       console.log("서버로 채팅 데이터 전송 성공" + data);
@@ -41,7 +40,6 @@ function SendMessageToServer(sendingMessageJson){
     }
   });
 }
-
 
 function FetchMessageWithAjax(){
   $.ajax({
@@ -79,15 +77,14 @@ window.onresize = function(){
   checkOutFooterStyle();
 }
 
-function createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName){
-  let newMessage = {
+function createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName, file){
+  return {
     message: sendingMessage,
     sender: senderID,
     roomID: roomID,
-    profileImageFileName: profileImageFileName
+    profileImageFileName: profileImageFileName,
+    file: file
   };
-
-  return newMessage;
 }
 
 // 이 함수는 아래 페이지에서 가져와 그대로 사용했음.
@@ -134,20 +131,18 @@ $(document).ready(function() {
   });
 });
 
-//
-function fileUpload(file){
+//createMessageHTML(sendingMessage, senderID, roomID, profileImageFileName, file)
+function fileUpload(file, fileName){
+
+  console.log(file);
+
   $.ajax({
     type: "POST",
-    url : "../purePHP/MessageFetchAction.php",
-    data : {
-      RoomID : RoomID,
-      UpdatedIndex : UpdatedIndex
-    },
-    dataType:"HTML",
+    url : "../purePHP/SendMessageActionWithAjax.php",
+    data : createMessageHTML(fileName, UserID, RoomID, ProfileImageFileName, file),
 
     success : function(response) {
-      console.log("서버에서 성공적으로 파일을 업로드 했습니다!");
-      $('#Message_Window').append(response);
+      console.log("서버에 성공적으로 파일을 업로드 했습니다!");
 
       if(response != ''){
         UpdatedIndex = $('.MessageBox').length;
@@ -158,6 +153,7 @@ function fileUpload(file){
     error: function(jqXHR, textStatus, errorThrown) {
       console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);
     }
+  });
 }
 
 async function fileUploadByDrag(event){
@@ -174,14 +170,34 @@ async function fileUploadByDrag(event){
     return;
   }
 
-  const reader = new FileReader();
+  // const reader = new FileReader();
 
-  await reader.readAsText(event.dataTransfer.files[0]);
+  let arrayBuffer = null;
+  let fileName = event.dataTransfer.files[0].name;
+  // await reader.readAsArrayBuffer(event.dataTransfer.files[0]);
+  arrayBuffer = await new Response(event.dataTransfer.files[0]).arrayBuffer();
 
-  console.log(reader);
+  console.log(arrayBuffer);
 
-  fileUpload(reader.result);
+  uint8ArrayNew  = new Uint8Array(arrayBuffer);
+  
+  console.log(ab2str(uint8ArrayNew));
 
+  fileUpload(ab2str(uint8ArrayNew), fileName);
+
+}
+
+function ab2str(buf) {
+  return String.fromCharCode.apply(null, new Uint16Array(buf));
+}
+
+function str2ab(str) {
+  var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+  var bufView = new Uint16Array(buf);
+  for (var i=0, strLen=str.length; i < strLen; i++) {
+    bufView[i] = str.charCodeAt(i);
+  }
+  return buf;
 }
 
 // 마우스가 드래그 된 상태로 위에 떠 있는 동안 색상을 변경한다.

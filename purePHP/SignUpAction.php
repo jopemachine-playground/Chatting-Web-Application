@@ -66,7 +66,7 @@ Insert INTO usersinfotbl (
   Now()
 )";
 
-$ret = mysqli_query($connect_object, $insertData);
+$ret = mysqli_query($connect_object, $insertData) or die("Error Occured in Inserting Message to DB");
 
 echo ("<script language=javascript>alert('축하합니다! 회원가입이 완료되었습니다!')</script>");
 echo ("<script>location.href='../SignIn.html';</script>");

@@ -88,6 +88,7 @@ $createChattingRoomTbl = "
     `SendingDateTime` DATETIME NOT NULL,
     `ProfileImageFileName` VARCHAR(30),
     `MessageIndex` INT(11) NOT NULL AUTO_INCREMENT,
+    `File` MEDIUMBLOB, 
     PRIMARY KEY(`MessageIndex`)
 )";
 
