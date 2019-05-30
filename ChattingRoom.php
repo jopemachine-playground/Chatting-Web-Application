@@ -24,6 +24,13 @@ if(empty($ret)){
   echo ("<script>location.href='ChattingRoomSelector.php';</script>");
   exit();
 }
+
+$searchChattingRoomTitle = "
+  SELECT * FROM chattingroomtbl WHERE RoomID = '$RoomID'
+";
+
+$ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +53,12 @@ if(empty($ret)){
   <div class="container">
       <nav id="FixedNavbar" class="navbar navbar-dark bg-dark fixed-top">
 
-        <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">채팅방 제목</a>
+        <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">
+          <?php
+            $row = mysqli_fetch_array($ret_title);
+            echo $row['Title'];
+          ?>
+        </a>
 
         <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
         <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->
@@ -73,7 +85,7 @@ if(empty($ret)){
 
         <!-- 아래의 버튼들은 데스크톱에서 사용할 이미지 버튼 및 dropdown-menu 이다. -->
         <div class="btn-group float-right responsiveNone">
-          <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></img></button>
+          <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></button>
 
           <!-- aria-haspopup은 스마트폰 등의 기기에서 터치로 조작할 수 있는지의 여부, aria-expanded는 기본 활성화 여부를 나타낸다. -->
           <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
@@ -83,7 +95,7 @@ if(empty($ret)){
             <a class="dropdown-item" onclick="ToChattingRoom();">채팅방 선택화면</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
+          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></button>
         </div>
 
     </nav>

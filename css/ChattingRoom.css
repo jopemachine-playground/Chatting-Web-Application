@@ -54,7 +54,6 @@ a.navbar-brand{
 
 .MyProfileImages{
   float: right;
-  /* width, height 모두 65px로 표시되게 하려면 padding 10px을 포함해 75px로 적어줘야 함에 유의  */
   width: 65px;
   height: 65px;
   overflow: hidden;
@@ -64,8 +63,8 @@ a.navbar-brand{
 }
 
 .MyProfileImages~.FileImage{
-  position: absolute;
-  left: 10%;
+  float: left;
+  left: 10px;
   width: 55px;
   height: 55px;
 }
@@ -81,8 +80,8 @@ a.navbar-brand{
 }
 
 .OthersProfileImages~.FileImage{
-  position: absolute;
-  right: 10%;
+  float: right;
+  right: 10px;
   width: 55px;
   height: 55px;
 }
@@ -90,6 +89,16 @@ a.navbar-brand{
 .messageContent{
   font-family: 'Jeju Gothic';
   overflow-wrap: break-word;
+}
+
+.fileDownloadLink{
+  color: blue;
+  text-decoration: underline;
+}
+
+.fileDownloadLink{
+  color: blue;
+  text-decoration: underline;
 }
 
 body{
@@ -106,7 +115,8 @@ footer{
 
 /* Chatting box 스타일 */
 #Sending_Message_Box{
-  width: 100%
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 #Sending_Message_Box:focus{
@@ -127,7 +137,6 @@ footer{
   font-family: 'Jeju Gothic';
   font-size: 12pt;
   color: #f2f2f2;
-  margin-bottom: 12px;
 }
 
 #Copyright em{

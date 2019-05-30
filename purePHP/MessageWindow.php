@@ -51,7 +51,7 @@ class MessageWindow{
 
     if(!empty($file)){
       $fileImageElement = '<img class="FileImage" src="/img/file-text.svg">';
-      $messageElement = sprintf('<a class="messageContent" onclick="" href="#">%s</a>', $message);
+      $messageElement = sprintf('<a class="messageContent fileDownloadLink" onclick="" href="#">%s</a>', $message);
     }
     else {
       $messageElement = sprintf('<p class="messageContent">%s</p>', $message);

@@ -8,9 +8,12 @@ $SenderID = $_POST['sender'];
 $MessageContent = $_POST['message'];
 $RoomID = $_POST['roomID'];
 $ProfileImageFileName = $_POST['profileImageFileName'];
+$FileBlob = '';
 
-$File =  $_POST['file'];
-$FileBlob = addslashes($File); 
+if(!empty($_POST['file'])){
+  $File =  $_POST['file'];
+  $FileBlob = addslashes($File); 
+}
 
 // var_dump($SenderID);
 // var_dump($MessageContent);
