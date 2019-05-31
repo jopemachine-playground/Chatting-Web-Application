@@ -1,0 +1,3 @@
+jopebot|1234
+jopemachine|1234
+jopejope|1234
