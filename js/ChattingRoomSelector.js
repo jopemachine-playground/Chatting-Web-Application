@@ -58,3 +58,13 @@ function DeleteChattingRoom(){
 function setIndexToDeleteRoom(index){
   DeleteingRoomID = index;
 }
+
+function AddChattingRoomButtonClicked(){
+  // 자기 자신과 채팅방을 만들 수 없음
+  if($("#OppenentID").val() == $.cookie('connectedUserID')){
+    return false;
+  } 
+  else {
+    return true;
+  }
+}

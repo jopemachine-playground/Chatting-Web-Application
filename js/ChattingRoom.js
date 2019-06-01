@@ -257,3 +257,24 @@ function fileDownload(message_index){
     }
   });
 }
+
+function otherUserInvite(){
+
+  console.log($('#InvitedUserID').val());
+
+  $.ajax({
+    type: "POST",
+    url : "../purePHP/InviteAction.php",
+    data : {
+      InvitedUserID: $('#InvitedUserID').val(),
+      RoomID: RoomID
+    },
+
+    success : function(response) {
+      console.log(response);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("Ajax 수신에 실패했습니다!" + jqXHR.responseText);
+    }
+  });
+}

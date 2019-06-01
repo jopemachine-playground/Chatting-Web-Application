@@ -23,7 +23,7 @@ if($start_date == '' && $end_date == ''){
   $result = "<li id=". $class .'-'. $id_index ." ondragstart='startDrag(event)' draggable='true'>" . $memo . "&nbsp;<span onclick='DeleteItem(parentNode.id)'>&times;</span></li>";
 }
 else{
-  $result = "<li class='withDate' id=". $class .'-'. $id_index ."ondragstart='startDrag(event)' draggable='true'>" . $memo . " (" . $start_date . " ~ " .  trim($end_date) . ")&nbsp;<span onclick='DeleteItem(parentNode.id)'>&times;</span></li>";
+  $result = "<li class='withDate' id=". $class .'-'. $id_index ." ondragstart='startDrag(event)' draggable='true'>" . $memo . " (" . $start_date . " ~ " .  trim($end_date) . ")&nbsp;<span onclick='DeleteItem(parentNode.id)'>&times;</span></li>";
 }
 
 // 새로 입력한 부분만 데이터를 가져가 갖다 붙인다.

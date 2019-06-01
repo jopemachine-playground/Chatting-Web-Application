@@ -143,7 +143,7 @@ if(mysqli_num_rows($ret_userID) < 1){
             </button>
           </div>
           <div class="modal-body">
-            <form action="purePHP/ChattingRoomAddButtonClickedAction.php" onsubmit="return SubmitButtonClicked()" method="post" accept-charset="utf-8">
+            <form action="purePHP/ChattingRoomAddButtonClickedAction.php" onsubmit="return AddChattingRoomButtonClicked()" method="post" accept-charset="utf-8">
               <div class="form-group">
                 <label for="RoomTitle">채팅방 제목</label>
                 <input name="RoomTitle" type="text" class="form-control">
@@ -154,7 +154,7 @@ if(mysqli_num_rows($ret_userID) < 1){
               </div>
               <div class="form-group">
                 <label for="OppenentID">상대방 ID</label>
-                <input name="OppenentID" type="text" class="form-control">
+                <input id="OppenentID" name="OppenentID" type="text" class="form-control">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -196,9 +196,6 @@ if(mysqli_num_rows($ret_userID) < 1){
     <script src="./lib/mdb.min.js"></script>
     <!-- 제이쿼리 쿠키 플러그인 추가하기 -->
     <script src="./lib/jquery.cookie.js"></script>
-    <!-- 커스텀 자바스크립트 추가하기 -->
-
-    <script src="./js/ChattingRoomAddButtonClickedAction.js"></script>
     <!-- 커스텀 자바스크립트 추가하기 -->
     <script src="./js/ChattingRoomSelector.js"></script>
     <!-- 커스텀 자바스크립트 추가하기 -->

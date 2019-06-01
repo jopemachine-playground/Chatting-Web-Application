@@ -96,6 +96,7 @@ $ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
           <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></button>
+          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInviteBox"><img src="img/user-plus.svg" alt="other user Invite button"></button>
         </div>
 
     </nav>
@@ -125,6 +126,32 @@ $ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
       </div>
     </div>
   </div>
+
+  
+  <div id="UserInviteBox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">유저 초대</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <!-- times를 x 버튼 대신 이용함 -->
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="InvitedUserID">상대방 ID</label>
+                <input id="InvitedUserID" name="InvitedUserID" type="text" class="form-control">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="otherUserInvite();">추가하기</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <!-- 아래 보다 나은 방법은 아직 못 찾았음. 적당히 heigtht를 줘서 반응형으로 기능할 수 있게 했지만, 페이지 아래쪽에 공백이 생긴다.  -->
   <div id="WhiteSpaceForResponsivePage"></div>

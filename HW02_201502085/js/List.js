@@ -132,6 +132,8 @@ function allowDrop(ev){
 async function ItemDrop(ev){
 
   ev.preventDefault();
+  // 제이쿼리를 사용해 이벤트 전파 버그를 막아보자
+  ev.stopPropagation();
   let data = ev.dataTransfer.getData("text");
 
   let prev_classString = data.split('-')[0];
