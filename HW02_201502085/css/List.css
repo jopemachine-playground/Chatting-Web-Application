@@ -1,0 +1,93 @@
+* {
+  box-sizing: content-box;
+}
+
+table {
+  border: 1px solid black;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+tr th{
+  border: 1px solid black;
+  height: 20px;
+}
+
+tr td{
+  border: 1px solid black;
+  height: 300px;
+}
+
+td, th{
+  padding-left: 15px;
+}
+
+
+.disappearing{
+  display: none;
+}
+
+#family{
+  background-color: #e8bf58;
+}
+
+#school{
+  background-color: #9bf1ff;
+}
+
+#travel{
+  background-color: #e8bf58;
+}
+
+#exercise{
+  background-color: #9bf1ff;
+}
+
+#ListAddModalBox{
+  width: 400px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  position: fixed;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: #90b4ed;
+  padding-left: 15px;
+}
+
+#ListSearchModalBox{
+  width: 400px;
+  height: 270px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  position: fixed;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: #90b4ed;
+  padding-left: 15px;
+}
+
+#ListSearchModalBox * {
+  margin-bottom: 15px;
+}
+
+#ListAddModalBox * {
+  margin-bottom: 15px;
+}
+
+#addModalBox_Title {
+  text-align: center;
+}
+
+#searchResult{
+  height: 400px;
+  background-color: #aec4e8;
+  border: 1px solid black;
+}

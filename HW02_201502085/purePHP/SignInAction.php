@@ -3,6 +3,11 @@
 $UserID = $_POST['ID'];
 $UserPW = $_POST['PW'];
 
+
+if(!file_exists('../data/person.txt')){
+	fopen("../data/person.txt", "x+") or die("Unable to make file!");
+}
+
 $fp = fopen("../data/person.txt", "r") or die("fail to open file");
 
 while(!feof($fp)){
@@ -19,6 +24,6 @@ while(!feof($fp)){
 if(empty($oneline_data)){
   fclose($fp);
   echo ("<script language=javascript>alert('존재하지 않는 ID 입니다.')</script>");
-  // echo ("<script>location.href='../SignIn.html';</script>");
+  echo ("<script>location.href='../SignIn.html';</script>");
   exit();
 }
