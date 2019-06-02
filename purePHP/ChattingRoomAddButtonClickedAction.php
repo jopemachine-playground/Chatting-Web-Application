@@ -38,13 +38,15 @@ $ret = mysqli_query($connect_object_chattingDB, $searchRoomIndex);
 $i = 0;
 
 do {
-  $HashingRoomID = Hashing("sha256", mysqli_num_rows($ret), $UserID, $i);
+
+  $HashingRoomID = Hashing("sha256", mysqli_num_rows($ret), $UserID, $i++);
+
   // 해싱값이 존재하는지 검사
   $searchHashingValue = "
-    SELECT * FROM usersinfotbl WHERE ID = '$HashingRoomID'
+    SELECT * FROM chattingroomtbl WHERE RoomID = '$HashingRoomID'
   ";
 
-  $ret = mysqli_query($connect_object_chattingDB, $searchHashingValue, $i++);
+  $ret = mysqli_query($connect_object_chattingDB, $searchHashingValue);
 
 } while(mysqli_num_rows($ret) > 0);
 

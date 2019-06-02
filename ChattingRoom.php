@@ -31,12 +31,16 @@ $searchChattingRoomTitle = "
 
 $ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
 
+$row = mysqli_fetch_array($ret_title);
+
+$RoomTitle = $row['Title'];
+
 ?>
 
 <!DOCTYPE html>
 <html lang="kr">
 <head>
-  <title>채팅 프로그램</title>
+  <title><?php echo $RoomTitle;?></title>
   <!-- meta 데이터 정의 -->
   <meta charset="utf-8">
   <meta name="description" content="Chatting web page">
@@ -55,12 +59,7 @@ $ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
   <div class="container">
       <nav id="FixedNavbar" class="navbar navbar-dark bg-dark fixed-top">
 
-        <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html">
-          <?php
-            $row = mysqli_fetch_array($ret_title);
-            echo $row['Title'];
-          ?>
-        </a>
+        <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html"><?php echo $RoomTitle;?></a>
 
         <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
         <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->

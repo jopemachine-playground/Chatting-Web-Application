@@ -46,7 +46,7 @@ function DeleteChattingRoom(){
 
     success : function(response) {
       console.log("채팅방에서 나가는 데 성공했습니다");
-      $('#' + DeleteingRoomID).parent('div').parent('div').parent('div.jumbotron').hide();
+      $('#' + DeleteingRoomID).hide();
       checkOutFooterStyle();
     },
     error: function(jqXHR, textStatus, errorThrown) {

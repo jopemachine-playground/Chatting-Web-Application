@@ -60,7 +60,7 @@ a.navbar-brand{
   font-family: 'Jeju Gothic';
 }
 
-.ToChattingRoomButton{
+.Buttons{
   font-size: 14px;
   font-family: 'Jeju Gothic';
 }
@@ -175,10 +175,13 @@ a.navbar-brand{
   .responsiveSmall{
     display: none;
   }
+  .responsiveSmallReverse{
+    display: default;
+  }
 }
 
-@media screen and (max-width: 581px) {
-  .responsiveSmall{
+@media screen and (min-width: 581px) {
+  .responsiveSmallReverse{
     display: none;
   }
 }
