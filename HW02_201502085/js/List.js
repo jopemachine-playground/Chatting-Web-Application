@@ -69,7 +69,6 @@ function FecthAllList(){
     url : "purePHP/ListFetchAction.php",
 
     success : function(response) {
-      console.log(response);
       let response_data = JSON.parse(response);
       // 아래 반복문은 4번 실행됨
       for(let i = 0; i< 4; i++){
@@ -129,12 +128,14 @@ function allowDrop(ev){
   ev.preventDefault();
 }
 
-async function ItemDrop(ev){
-
+function ItemDrop(ev){
   ev.preventDefault();
-  // 제이쿼리를 사용해 이벤트 전파 버그를 막아보자
-  ev.stopPropagation();
-  let data = ev.dataTransfer.getData("text");
+
+  if(ev.target.getAttribute("class") != 'TodoList_Table'){
+    return;
+  }
+
+  let data = ev.dataTransfer.getData("id");
 
   let prev_classString = data.split('-')[0];
   let prev_Index = data.split('-')[1];
@@ -146,7 +147,7 @@ async function ItemDrop(ev){
   }
 
   // 서버 파일의 인덱스 업데이트.
-  await ServerFileIndexUpdate(prev_classString, after_classString, prev_Index);
+  ServerFileIndexUpdate(prev_classString, after_classString, prev_Index);
 
   // 엘리먼트를 옮김
   ev.target.appendChild(document.getElementById(data));
@@ -158,7 +159,9 @@ async function ItemDrop(ev){
 }
 
 function startDrag(ev){
-  ev.dataTransfer.setData("text", ev.target.id);
+
+  ev.dataTransfer.setData("id", ev.target.id);
+
 }
 
 function ServerFileIndexUpdate(prev_classString, after_classString, prev_Index){

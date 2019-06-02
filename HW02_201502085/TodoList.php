@@ -24,8 +24,8 @@
 
       <tbody>
         <tr>
-          <td id="TodoList_family" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
-          <td id="TodoList_School" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
+          <td class="TodoList_Table" id="TodoList_family" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
+          <td class="TodoList_Table" id="TodoList_School" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
         </tr>
       </tbody>
 
@@ -38,8 +38,8 @@
 
       <tbody>
         <tr>
-          <td id="TodoList_Travel" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
-          <td id="TodoList_Exercise" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
+          <td class="TodoList_Table" id="TodoList_Travel" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
+          <td class="TodoList_Table" id="TodoList_Exercise" ondragover="allowDrop(event)" ondrop="ItemDrop(event)"></td>
         </tr>
       </tbody>
 
