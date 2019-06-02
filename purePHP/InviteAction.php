@@ -9,7 +9,7 @@ $connect_object = MySQLConnection::DB_Connect("chattingdb");
 
 // DB에서 PK (ID) 를 찾음
 $searchUserID = "
-SELECT * FROM usersinfotbl WHERE ID = '$InvitedUserID'
+  SELECT * FROM usersinchattingroom WHERE UserID = '$InvitedUserID' AND RoomID = '$RoomID'
 ";
 
 $ret = mysqli_query($connect_object, $searchUserID);

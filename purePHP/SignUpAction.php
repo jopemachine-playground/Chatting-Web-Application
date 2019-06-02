@@ -10,6 +10,9 @@ $PW = $_POST["PW"];
 $PW_Confirm = $_POST["PW_Confirm"];
 $Address = $_POST["Address"];
 $PhoneNumber = $_POST["PhoneNumber"];
+$Gender = $_POST["Gender"];
+$Name = $_POST["FirstName"] . ' '. $_POST["LastName"];
+
 
 // DB에서 PK (ID) 중복 검사
 $searchUserID = "
@@ -49,20 +52,24 @@ else{
 
 // DB에 새 레코드 입력
 $insertData = "
-Insert INTO usersinfotbl (
-  ID,
-  PW,
-  Address,
-  PhoneNumber,
-  ProfileImageFileName,
-  SignupDate
-  ) VALUES(
-  '$ID',
-  '$PW',
-  '$Address',
-  '$PhoneNumber',
-  '$ProfileImageFileName',
-  Now()
+  Insert INTO usersinfotbl (
+    ID,
+    PW,
+    Address,
+    PhoneNumber,
+    ProfileImageFileName,
+    Gender,
+    Name,
+    SignupDate
+    ) VALUES(
+    '$ID',
+    '$PW',
+    '$Address',
+    '$PhoneNumber',
+    '$ProfileImageFileName',
+    '$Gender',
+    '$Name',
+    Now()
 )";
 
 $ret = mysqli_query($connect_object, $insertData) or die("Error Occured in Inserting Message to DB");

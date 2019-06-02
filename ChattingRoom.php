@@ -80,6 +80,9 @@ $ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
             <li class="nav-item">
               <a class="nav-link">정보수정</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="modal" data-target="#UserInviteBox">초대하기</a>
+            </li>
           </ul>
         </div>
 

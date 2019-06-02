@@ -1,5 +1,7 @@
 <?php
 
+require_once('MySQLConection.php');
+
 class ChattingRoomSelectorBox{
 
   public static function WarnNoChattingRoomsToShow(){
@@ -14,7 +16,23 @@ class ChattingRoomSelectorBox{
     ');
   }
 
-  public static function CreateChattingRoomBox($chattingRoomTitle, $chattingRoomDesc, $participants, $roomID){
+  public static function CreateChattingRoomBox($chattingRoomTitle, $chattingRoomDesc, $roomID){
+
+    $connect_object = MySQLConnection::DB_Connect('chattingdb');
+
+    $participantsArray = array();
+
+    $searchRoom = "
+      SELECT * FROM usersinchattingroom WHERE RoomID = '$roomID'
+    ";
+
+    $ret = mysqli_query($connect_object, $searchRoom) or die("Error Ouccured Searching File in DB");
+
+    while($row = mysqli_fetch_array($ret)){
+      array_push($participantsArray, $row['UserID']);
+    }
+
+    $participants = implode(', ' , $participantsArray);
 
     return sprintf('
       <div class="jumbotron bg-light">

@@ -112,7 +112,7 @@ if(mysqli_num_rows($ret_userID) < 1){
         }
 
         while($row = mysqli_fetch_array($ret_chattingRooms)){
-          echo ChattingRoomSelectorBox::CreateChattingRoomBox($row['Title'], $row['Description'], $ID, $row['RoomID']);
+          echo ChattingRoomSelectorBox::CreateChattingRoomBox($row['Title'], $row['Description'], $row['RoomID']);
         }
 
       ?>
@@ -146,11 +146,11 @@ if(mysqli_num_rows($ret_userID) < 1){
             <form action="purePHP/ChattingRoomAddButtonClickedAction.php" onsubmit="return AddChattingRoomButtonClicked()" method="post" accept-charset="utf-8">
               <div class="form-group">
                 <label for="RoomTitle">채팅방 제목</label>
-                <input name="RoomTitle" type="text" class="form-control">
+                <input id="newChattingRoom_Title" name="RoomTitle" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label for="RoomDesc">채팅방 설명</label>
-                <textarea name="RoomDesc" type="text" class="form-control" style="height: 180px;"></textarea>
+                <textarea id="newChattingRoom_Desc" name="RoomDesc" type="text" class="form-control" style="height: 180px;"></textarea>
               </div>
               <div class="form-group">
                 <label for="OppenentID">상대방 ID</label>

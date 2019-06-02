@@ -99,13 +99,17 @@
         <input id="PW_Confirm" type="password" name="PW_Confirm" class="form-control" maxlength="20" placeholder="비밀번호를 다시 한 번 입력하세요" title="비밀번호를 다시 한 번 입력하세요." required>
       </div>
 
-      <label for="Gender">성별</label><br>
+      <label for="Gender">성별</label>
+      <input id="Gender" name="Gender" type="text" style="display: none;">
+
+      <br>
+      
       <div class="form-group btn-group btn-group-toggle" data-toggle="buttons">
         <label class="btn btn-secondary">
-          <input type="radio" name="GenderOption" id="optionMan" autocomplete="off">남자
+          <input type="radio" autocomplete="off" onchange="manButtonClick()">남자
         </label>
         <label class="btn btn-secondary">
-          <input type="radio" name="GenderOption" id="optionWoman" autocomplete="off">여자
+          <input type="radio" autocomplete="off" onchange="womanButtonClick()">여자
         </label>
       </div>
 
