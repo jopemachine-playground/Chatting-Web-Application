@@ -53,6 +53,8 @@ if(mysqli_num_rows($ret_userID) < 1){
 
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/ChattingRoomSelector.css">
+    <!-- Favicon 적용 -->
+    <link rel="shortcut icon" size="16x16" href="./img/favicon.ico" />
   </head>
 
   <body id="Background">

@@ -47,6 +47,8 @@ $ret_title = mysqli_query($connect_object, $searchChattingRoomTitle);
 
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/ChattingRoom.css">
+  <!-- Favicon 적용 -->
+  <link rel="shortcut icon" size="16x16" href="./img/favicon.ico" />
 </head>
 
 <body id="Background">
