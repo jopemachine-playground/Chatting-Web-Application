@@ -57,8 +57,9 @@ $RoomTitle = $row['Title'];
 
 <body id="Background">
   <div class="container">
-      <nav id="FixedNavbar" class="navbar navbar-dark bg-dark fixed-top">
+      <nav id="FixedNavbar" class="navbar navbar-dark fixed-top" style="background-color: #2c65c1 !important">
 
+        <img src="img/message-square.svg" style="margin-right: 10px;">
         <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html"><?php echo $RoomTitle;?></a>
 
         <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
@@ -161,7 +162,7 @@ $RoomTitle = $row['Title'];
   <div id="WhiteSpaceForResponsivePage"></div>
 
   <!-- 메시지 작성 박스 -->
-  <footer id="Message_Writing_Box" class="container-fluid navbar bg-dark p-2 fixed-bottom">
+  <footer id="Message_Writing_Box" class="container-fluid navbar p-2 fixed-bottom" style="background-color: #2c65c1 !important">
     <div class="row">
 
       <!-- 왼쪽에 어느 정도 공백을 줘야 여유가 있어 보여 이렇게 했다. -->
