@@ -1,4 +1,4 @@
-# Simple_ChattingService
+# Simple ChattingService
 2019 CNU Web Programming Term Project
 
 # Development Environment
@@ -8,3 +8,5 @@ RequireJS : ReactJS 등에 사용되는 JS 종속성 관리 라이브러리.
 
 # Asset Sources
 svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. https://feathericons.com/
+
+# Screen shots
