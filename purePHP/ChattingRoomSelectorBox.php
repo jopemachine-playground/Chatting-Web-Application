@@ -18,6 +18,9 @@ class ChattingRoomSelectorBox{
 
   public static function CreateChattingRoomBox($chattingRoomTitle, $chattingRoomDesc, $roomID){
 
+    // RoomID를 통해 usersinchattingroom에서 해당하는 ID를 모두 찾아 array에 넣어 놓고, implode로 string 형태로 만들어
+    // Participant에 넣어놓는다.
+
     $connect_object = MySQLConnection::DB_Connect('chattingdb');
 
     $participantsArray = array();

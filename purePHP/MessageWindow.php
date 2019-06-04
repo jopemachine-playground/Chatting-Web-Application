@@ -9,15 +9,15 @@ class MessageWindow{
     #                                                           #
     #############################################################
 
-    $colorClass;
+    $jumbotronElement;
     $profileClass;
 
     if($sender == $_COOKIE["connectedUserID"]){
-      $colorClass = "MyMessage bg-dark";
+      $jumbotronElement = '<div class="MessageBox MyMessage jumbotron" style="background-color: #8596b2 !important;">';
       $profileClass = "MyProfileImages";
     }
     else{
-      $colorClass = "OthersMessage bg-white";
+      $jumbotronElement = '<div class="MessageBox OthersMessage jumbotron" style="background-color: #647187 !important;">';
       $profileClass = "OthersProfileImages";
     }
 
@@ -56,9 +56,9 @@ class MessageWindow{
     else {
       $messageElement = sprintf('<p class="messageContent">%s</p>', $message);
     }
-
+    // #8596b2
     return sprintf(
-      '<div class="MessageBox jumbotron %s">
+      ' %s
         %s
         %s
         <h6 class="sender">%s</h6>
@@ -67,7 +67,7 @@ class MessageWindow{
         %s
       </div>', 
 
-        $colorClass,
+        $jumbotronElement,
         $profileImageElement, 
         $fileImageElement, 
         $sender, 

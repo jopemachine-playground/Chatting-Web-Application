@@ -13,13 +13,11 @@ class UserModalBox{
     }
 
     return sprintf('
-      <p>프로필 정보</p>
-      <div id="smallModal" class="container">
+      <div id="smallModal" class="container" style="text-align: center;">
+        <p id="Modal_USER_ID" class="lead">%s</p><br>
         <img id="userDefaultProfile" class="img-fluid rounded-circle" src="%s" alt="Image For User Profile">
-        <p id="Modal_USER_ID" class="lead">&nbsp;ID: %s</p><br>
-        <p id="Modal_SIGNUP_DATE" class="lead">&nbsp;SignUp date: %s</p><br>
       </div>
-    ', $ProfileImageFileName, $UserID, $SignUpDate);
+    ', $UserID, $ProfileImageFileName);
   }
 
 }
