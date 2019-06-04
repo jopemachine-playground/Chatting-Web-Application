@@ -59,10 +59,9 @@ if(mysqli_num_rows($ret_userID) < 1){
 
   <body id="Background">
     <div class="container">
-      <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-
-        <!-- badge 같은 경우, Notification 수 등을 표기하는데 사용됨  -->
-        <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록&nbsp;&nbsp;<span class="badge badge-secondary">0</span></a>
+      <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #2c65c1 !important">
+        <img src="img/message-square.svg" style="margin-right: 10px;">
+        <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록</a>
 
         <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
         <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->
@@ -184,8 +183,8 @@ if(mysqli_num_rows($ret_userID) < 1){
     </div>
 
     <!-- p는 padding, mt는 margin-top란 의미 (Bootstrap 4 API spacing 참고) -->
-    <div id="FooterDiv" class="navbar bg-dark p-1 fixed-bottom">
-      <footer id="Copyright" class="bg-dark p-3 text-center"> &copy; 2019 웹프로그래밍 &nbsp; <em>이규봉</em> &nbsp;&nbsp; <sub>Term Project</sub> </footer>
+    <div id="FooterDiv" class="navbar p-1 fixed-bottom" style="background-color: #2c65c1 !important">
+      <footer id="Copyright" class="p-3 text-center"> &copy; 2019 웹프로그래밍 &nbsp; <em>이규봉</em> &nbsp;&nbsp; <sub>Term Project</sub> </footer>
     </div>
 
     <!-- 제이쿼리 자바스크립트 추가하기 -->
