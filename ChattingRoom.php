@@ -89,20 +89,22 @@ $RoomTitle = $row['Title'];
         </div>
 
         <!-- 아래의 버튼들은 데스크톱에서 사용할 이미지 버튼 및 dropdown-menu 이다. -->
-        <div class="btn-group float-right responsiveNone">
-          <button type="button" class="side_btn"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></button>
+        <div class="btn-group float-right responsiveNone" style="position: absolute; right: 15px;">
+          <button type="button" class="side_btn sizeUpOnHover"><img src="img/arrow-left.svg" alt="return chatting room" onclick="ToChattingRoom();"></button>
 
           <!-- aria-haspopup은 스마트폰 등의 기기에서 터치로 조작할 수 있는지의 여부, aria-expanded는 기본 활성화 여부를 나타낸다. -->
-          <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
+          <button type="button" class="btn-sm side_btn dropdown-toggle sizeUpOnHover" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
           <div class="dropdown-menu dropdown-menu-right">
             <!-- dropdown-item들은 dropdown-menu에 들어가는 각각의 요소 -->
             <a class="dropdown-item active" onclick="logout()">로그아웃</a>
             <a class="dropdown-item" onclick="ToChattingRoom();">채팅방 선택화면</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></button>
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInviteBox"><img src="img/user-plus.svg" alt="other user Invite button"></button>
+          <button type="button" class="side_btn sizeUpOnHover" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></button>
+          <button type="button" class="side_btn sizeUpOnHover" data-toggle="modal" data-target="#UserInviteBox"><img src="img/user-plus.svg" alt="other user Invite button"></button>
         </div>
+
+        <div class="responsiveNone" style="width: 60px;"></div>
 
     </nav>
   </div>

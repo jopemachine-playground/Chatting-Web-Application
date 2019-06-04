@@ -2,6 +2,10 @@
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+* {
+	outline: none !important;
+}
+
 /* 아래쪽 사이드바 스타일 */
 footer{
   color: #ffffff;
@@ -25,6 +29,11 @@ textarea:not(focus){
 /* 위쪽 사이드바 스타일 */
 a.navbar-brand{
   font-family: 'Jeju Gothic';
+}
+
+/* 요소 위에 마우스를 올려 놓았을 때 변화 */
+.sizeUpOnHover:hover{
+  transform: scale(1.35);
 }
 
 /* 위쪽 사이드바 버튼 스타일 */

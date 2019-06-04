@@ -60,8 +60,8 @@ if(mysqli_num_rows($ret_userID) < 1){
   <body id="Background">
     <div class="container">
       <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #2c65c1 !important">
-        <img src="img/message-square.svg" style="margin-right: 10px;">
-        <a class="navbar-brand" href="./ChattingRoomSelector.php">채팅방 목록</a>
+
+        <a class="navbar-brand" href="./ChattingRoomSelector.php"><img src="img/message-square.svg" style="margin-right: 10px;">채팅방 목록</a>
 
         <!-- 창 너비에 따라 버튼이 미디어 쿼리로, 두 종류로 나뉜다. -->
         <!-- 아래의 버튼은 창이 작을 때, 핸드폰이나 태블릿 같은 환경에서 사용할 버튼 및 a 태그 들이다.-->
@@ -86,16 +86,19 @@ if(mysqli_num_rows($ret_userID) < 1){
           </ul>
         </div>
 
-        <!-- 아래의 버튼은 데스크톱에서 사용할 버튼 -->
+        <!-- 아래의 버튼들은 데스크톱에서 사용할 버튼 -->
+
+        <!-- 텍스트를 중간에 배치하기 위해 버튼들을 absoulte로 놓고 오른쪽엔 div로 따로 공간을 두었음 -->
         <div class="btn-group float-right responsiveNone">
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#ChattingRoomAddModal"><img src="img/plus.svg" alt="Chatting Room Add Button"></img></button>
-          <button type="button" class="btn side_btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></img></button>
+          <button type="button" class="side_btn sizeUpOnHover" data-toggle="modal" data-target="#ChattingRoomAddModal"><img src="img/plus.svg" alt="Chatting Room Add Button"></button>
+          <button type="button" class="btn-sm side_btn dropdown-toggle sizeUpOnHover" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></button>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
-          <button type="button" class="side_btn" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></img></button>
+          <button type="button" class="side_btn sizeUpOnHover" data-toggle="modal" data-target="#UserInfoModal"><img src="img/user.svg" alt="user info button"></button>
         </div>
+      
       </nav>
     </div>
 

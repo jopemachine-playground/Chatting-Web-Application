@@ -35,14 +35,14 @@ class ChattingRoomSelectorBox{
     $participants = implode(', ' , $participantsArray);
 
     return sprintf('
-      <div id="%s" class="jumbotron" style="background-color: #e2ffec !important; padding: 33px 32px 30px 32px">
+      <div id="%s" class="jumbotron" style="background-color: #e8f9ff !important; padding: 33px 32px 30px 32px">
         <div class="row">
           <div class="col-sm-11">
             <h1 class="display-6">%s</h1>
             <p style="font-size: 10pt; color: #939496;">Partipants: %s</p>
           </div>
           <div class="col-sm-1">
-            <img src="img/log-out.svg" class="responsiveSmall" style="width: 32px; height:32px;" data-toggle="modal" onclick="setIndexToDeleteRoom(this.parentNode.parentNode.parentNode.id)" data-target="#DeleteConfirmModal" alt="Chatting Room Delete Button" />
+            <img src="img/log-out.svg" class="responsiveSmall sizeUpOnHover" style="width: 32px; height:32px;" data-toggle="modal" onclick="setIndexToDeleteRoom(this.parentNode.parentNode.parentNode.id)" data-target="#DeleteConfirmModal" alt="Chatting Room Delete Button" />
           </div>
         </div>
         <hr class="my-2">
