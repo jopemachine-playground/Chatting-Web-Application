@@ -10,19 +10,12 @@ $RoomID = $_POST['roomID'];
 $ProfileImageFileName = $_POST['profileImageFileName'];
 $FileBlob = '';
 
+// 송신된 파일이 존재하는 경우 파일을 addslash를 거쳐 Blob 형태로 DB에 넣고, 이 경우에 MessageContent는 파일 이름이 된다
+// 파일이 존재하지 않는 경우 일반 메시지로 취급한다
 if(!empty($_POST['file'])){
   $File =  $_POST['file'];
   $FileBlob = addslashes($File); 
 }
-
-// var_dump($SenderID);
-// var_dump($MessageContent);
-// var_dump($RoomID);
-// var_dump($ProfileImageFileName);
-
-var_dump($File); // 73.8
-var_dump($FileBlob); // 152
-var_dump(stripslashes($FileBlob)); // 147
 
 $AddMessageToDB = "
   Insert INTO ". $RoomID ." (

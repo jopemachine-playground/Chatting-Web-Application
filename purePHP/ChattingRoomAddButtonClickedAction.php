@@ -30,7 +30,7 @@ if(mysqli_num_rows($ret) < 1){
 
 $ret = mysqli_query($connect_object_chattingDB, $searchRoomIndex);
 
-# Hasing 값은 UserID, Index, 방을 만들 때의 시간으로 결정한다.
+# Hasing 값은 UserID, Index로 결정한다.
 # 이 값은 ID로 사용할 수 없는 특수문자(#)로 결합됨.
 # 즉, 어떤 유저가 채팅방을 만들 때 항상 DB에 없는 고유의 값을 지니게 됨
 # 따라서, 이 Hashing 값을 사용하면 데이터 무결성이 보장됨 (해시 충돌이 일어나는 경우는 예외로 해 시간 값을 바꿔 다시 구한다)
@@ -41,7 +41,7 @@ do {
 
   $HashingRoomID = Hashing("sha256", mysqli_num_rows($ret), $UserID, $i++);
 
-  // 해싱값이 존재하는지 검사
+  // 해싱값이 존재하는지 검사해, 중복된 RoomID가 생길 수 없도록 한다
   $searchHashingValue = "
     SELECT * FROM chattingroomtbl WHERE RoomID = '$HashingRoomID'
   ";
@@ -50,6 +50,8 @@ do {
 
 } while(mysqli_num_rows($ret) > 0);
 
+// 상대 ID와 자신의 ID를 usersinchattingroom에 추가하고,
+// 새 채팅방을 chattingroomtbl에 추가한다
 $insertNewRoom = "
   Insert INTO chattingroomtbl (
     Title,
@@ -83,6 +85,7 @@ $insertOppenent = "
       '$OppenentID'
 )";
 
+// 새 채팅방을 chattingroomsdb에 테이블로 생성
 $createChattingRoomTbl = "
   CREATE TABLE `chattingroomsdb`.`$HashingRoomID`(
   	`SendingUserId` VARCHAR(20) NOT NULL,

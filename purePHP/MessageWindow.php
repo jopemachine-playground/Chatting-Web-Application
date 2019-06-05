@@ -56,7 +56,7 @@ class MessageWindow{
     else {
       $messageElement = sprintf('<p class="messageContent">%s</p>', $message);
     }
-    // #8596b2
+
     return sprintf(
       ' %s
         %s

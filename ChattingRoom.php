@@ -6,6 +6,7 @@ require_once('purePHP\MySQLConection.php');
 $UserID = $_COOKIE["connectedUserID"];
 $RoomID = $_GET["RoomID"];
 
+// 쿠키가 없는 상태는, 로그인 되지 않은 상태로 간주하고 접속을 거부함
 if(empty($UserID)){
   echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
   echo ("<script>location.href='SignIn.html';</script>");
@@ -13,8 +14,10 @@ if(empty($UserID)){
 
 $connect_object = MySQLConnection::DB_Connect('chattingdb');
 
+// RoomID 및 UserID가 일치하는 채팅방을 검색함
+// 해당 레코드가 존재하지 않는다면 잘못된 접근으로 간주함
 $searchThisUserBeInThisChattingRoom = "
-  SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID'
+  SELECT * FROM usersinchattingroom WHERE RoomID = '$RoomID' AND UserID = '$UserID'
 ";
 
 $ret = mysqli_query($connect_object, $searchThisUserBeInThisChattingRoom);
@@ -25,6 +28,7 @@ if(empty($ret)){
   exit();
 }
 
+// chattingroomtbl에서 해당 방의 정보 (제목) 를 가져옴
 $searchChattingRoomTitle = "
   SELECT * FROM chattingroomtbl WHERE RoomID = '$RoomID'
 ";
@@ -59,6 +63,7 @@ $RoomTitle = $row['Title'];
   <div class="container">
       <nav id="FixedNavbar" class="navbar navbar-dark fixed-top" style="background-color: #2c65c1 !important">
 
+        <!-- ChattingRoom 페이지는 다른 페이지들보다 제목의 중요성을 생각해, 제목이 중앙에 오게 배치했음 -->
         <img src="img/message-square.svg" style="margin-right: 10px;">
         <a id="ChattingRoomTitle" class="navbar-brand" href="./ChattingRoom.html"><?php echo $RoomTitle;?></a>
 
@@ -134,7 +139,10 @@ $RoomTitle = $row['Title'];
     </div>
   </div>
 
-  
+  <!-- 유저를 초대하기 위한 Modal box. -->
+  <!-- fade 클래스를 이용해 애니메이션을 줌 -->
+  <!-- tabindex에 대해선 오른쪽 참고 https://developers.google.com/web/fundamentals/accessibility/focus/using-tabindex?hl=ko -->
+
   <div id="UserInviteBox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -163,7 +171,7 @@ $RoomTitle = $row['Title'];
   <!-- 아래 보다 나은 방법은 아직 못 찾았음. 적당히 heigtht를 줘서 반응형으로 기능할 수 있게 했지만, 페이지 아래쪽에 공백이 생긴다.  -->
   <div id="WhiteSpaceForResponsivePage"></div>
 
-  <!-- 메시지 작성 박스 -->
+  <!-- 메시지 작성 박스 + Footer. -->
   <footer id="Message_Writing_Box" class="container-fluid navbar p-2 fixed-bottom" style="background-color: #2c65c1 !important">
     <div class="row">
 

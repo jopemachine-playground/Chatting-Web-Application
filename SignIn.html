@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+  <!-- 검색되게 쉽게 하기 위한 meta 태그 작성 -->
   <meta charset="utf-8">
   <meta name="description" content="Chatting web program Login page">
   <meta name="keywords" content="Web Programming Term Project, Chatting">
@@ -57,15 +58,20 @@
       <p class="lead" style="font-size: 60px;">Login</p>
       <p class="lead" style="font-size: 14px; color: #4c4c4c;">채팅 서비스를 이용하기 위해 로그인하세요.</p>
 
+      <!-- form 태그를 통해 SignInAction.php를 거쳐 로그인 함 -->
+      <!-- form-group 및 form-control 은 부트스트랩 css를 적용하기 위한 태그 -->
+      <!-- SubmitButtonClicked를 통해 올바른 데이터 입력인지를 먼저 클라이언트 측에서 확인한 후 전송함 -->
       <form action="purePHP/SignInAction.php" onsubmit="return SubmitButtonClicked()" method="post">
         <div class="form-group">
           <label for="ID">ID </label>
+          <!-- autofocuse를 통해 쉽게 로그인할 수 있게 도움 -->
           <input type="text" name="ID" class="ID form-control" placeholder="ID를 입력하세요" autofocus required>
         </div>
         <div class="form-group">
           <label for="PW">PW </label>
           <input type="password" name="PW" class="PW form-control" placeholder="비밀번호를 입력하세요" required>
         </div>
+        <!-- 부트스트랩의 btn-block을 통한 스타일링 (버튼을 한 row로 만들어 집어넣을 수 있다) -->
         <button type="submit" class="btn btn-primary btn-block" style="margin-top: 70px;">로그인</button>
       </form>
     </section>

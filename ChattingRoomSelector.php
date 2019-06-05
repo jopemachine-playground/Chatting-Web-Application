@@ -6,6 +6,7 @@ require_once('purePHP\ChattingRoomSelectorBox.php');
 $ID = $_COOKIE["connectedUserID"];
 
 // 쿠키가 소멸되면 로그아웃 됨
+// 로그아웃은 js 파일에서 쿠키를 제거하는 것으로 구현함
 if(empty($ID)){
   echo ("<script language=javascript>alert('먼저 로그인하세요!')</script>");
   echo ("<script>location.href='SignIn.html';</script>");
@@ -14,6 +15,8 @@ if(empty($ID)){
 
 $connect_object = MySQLConnection::DB_Connect('chattingdb');
 
+// 로그인 된 유저의 모든 채팅방 및 채팅방의 정보를 가져와야 하므로,  
+// InnerJoin을 이용해 ChattingRoomTbl과 UsersInChattingRoomTbl을 합친다.
 $searchUserChattingRoomBoxes = "
   SELECT *
   FROM usersinchattingroom
@@ -22,6 +25,7 @@ $searchUserChattingRoomBoxes = "
   WHERE usersinchattingroom.UserID = '$ID'
 ";
 
+// ID 검색
 $searchUserID = "
   SELECT * FROM usersinfotbl WHERE ID = '$ID'
 ";
@@ -59,6 +63,7 @@ if(mysqli_num_rows($ret_userID) < 1){
 
   <body id="Background">
     <div class="container">
+      <!-- 인라인으로 스타일을 준 것은, bootstrap.css에서 색상 속성이 !important로 선언되어 있기 때문임. boostrap 파일을 변경하기보단, 인라인으로 새 속성을 주었음 -->
       <nav id="FixedNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #2c65c1 !important">
 
         <a class="navbar-brand" href="./ChattingRoomSelector.php"><img src="img/message-square.svg" style="margin-right: 10px;">채팅방 목록</a>
@@ -89,10 +94,12 @@ if(mysqli_num_rows($ret_userID) < 1){
         <!-- 아래의 버튼들은 데스크톱에서 사용할 버튼 -->
 
         <!-- 텍스트를 중간에 배치하기 위해 버튼들을 absoulte로 놓고 오른쪽엔 div로 따로 공간을 두었음 -->
+        <!-- sizeUpOnHover가 들어간 엘리먼트는 hover 하면 크기가 커짐 -->
         <div class="btn-group float-right responsiveNone">
           <button type="button" class="side_btn sizeUpOnHover" data-toggle="modal" data-target="#ChattingRoomAddModal"><img src="img/plus.svg" alt="Chatting Room Add Button"></button>
           <button type="button" class="btn-sm side_btn dropdown-toggle sizeUpOnHover" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/menu.svg" alt="sidebar menu"></button>
           <div class="dropdown-menu dropdown-menu-right">
+            <!-- 로그아웃: 쿠키 제거 -->
             <a class="dropdown-item active" onclick="logout()" href="#">로그아웃</a>
             <a class="dropdown-item" href="#">내 정보</a>
           </div>
@@ -106,8 +113,8 @@ if(mysqli_num_rows($ret_userID) < 1){
 
       <?php
 
-        // 채팅 기록이 있는 유저 목록을 가져옴
-
+        // 서버의 DB에서 채팅 기록이 있는 유저와의 채팅방들을 가져옴
+        // 검색된 채팅방이 없는 경우, 채팅방이 없다는 알림창을 띄움
         $ret_chattingRooms = mysqli_query($connect_object, $searchUserChattingRoomBoxes);
         
         if(mysqli_num_rows($ret_chattingRooms) < 1)
@@ -125,8 +132,11 @@ if(mysqli_num_rows($ret_userID) < 1){
 
     <!-- 더 좋은 방법을 찾으면 아래 공백을 없애고 싶다 -->
     <div id="WhiteSpaceForResponsivePage"></div>
-
+    
+    <!-- fade 클래스를 이용해 애니메이션을 줌 -->
+    <!-- tabindex에 대해선 오른쪽 참고 https://developers.google.com/web/fundamentals/accessibility/focus/using-tabindex?hl=ko -->
     <div id="UserInfoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <!-- modal-sm, modal-md, modal-lg는 modal 창 크기에 대한 부트스트랩 속성임 -->
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <?php
@@ -136,11 +146,13 @@ if(mysqli_num_rows($ret_userID) < 1){
       </div>
     </div>
 
+    <!-- 채팅방을 추가하기 위한 Modal box. -->
     <div id="ChattingRoomAddModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">새 채팅방 추가</h5>
+            <!-- data-dismiss 속성을 통해, 취소 버튼을 누르면 모달 박스가 없어지는 것을 구현 -->
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <!-- times를 x 버튼 대신 이용함 -->
               <span aria-hidden="true">&times;</span>
@@ -161,6 +173,7 @@ if(mysqli_num_rows($ret_userID) < 1){
                 <input id="OppenentID" name="OppenentID" type="text" class="form-control">
               </div>
               <div class="modal-footer">
+                <!-- data-dismiss 속성을 통해, 취소 버튼을 누르면 모달 박스가 없어지는 것을 구현 -->
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
                 <button type="submit" class="btn btn-primary">추가하기</button>
               </div>
@@ -170,6 +183,8 @@ if(mysqli_num_rows($ret_userID) < 1){
     </div>
 
     <!-- 부트스트랩에서 Custom Modal Box의 기본적인 틀. prompt 대신 사용함 -->
+    <!-- 채팅방에서 나갈 것인지 확인하기 위해 띄우는 모달 박스 -->
+    <!-- btn-sm, btn-md, btn-lg는 버튼 크기에 대한 부트스트랩 속성임 -->
     <div id="DeleteConfirmModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
           <div class="modal-content">

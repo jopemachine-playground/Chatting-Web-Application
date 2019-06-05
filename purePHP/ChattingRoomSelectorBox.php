@@ -4,6 +4,7 @@ require_once('MySQLConection.php');
 
 class ChattingRoomSelectorBox{
 
+  // 검색된 채팅방이 없으면 닫을 수 있는 알림창 (채팅방이 존재하지 않는다는 것을 알려주는) 을 띄운다 
   public static function WarnNoChattingRoomsToShow(){
 
     return sprintf('
