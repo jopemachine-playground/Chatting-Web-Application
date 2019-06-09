@@ -10,3 +10,5 @@ RequireJS : ReactJS 등에 사용되는 JS 종속성 관리 라이브러리.
 svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. https://feathericons.com/
 
 # Screen shots
+
+<img src="./ScreenClip.png"></img>
