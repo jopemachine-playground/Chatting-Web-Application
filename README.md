@@ -14,9 +14,10 @@ svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. htt
 <img src="./ScreenClip.png"></img>
 
 
-<hr>
-# Part of Report 
-1. 과제의 개요  
+
+# Part of Report  
+
+1. #### 과제의 개요 
 
 1) 본 과제의 주제  
 
@@ -72,12 +73,12 @@ readAsDataURL로 선택한 이미지 파일을 가져옵니다. 그리고 reader
 5) 유저의 프로필 사진의 경로 역시 쿠키로 만들어 함께 저장합니다.
 6) ChattingRoomSelector.php로 이동합니다.
 
-▶ 로그아웃 절차 설명
+▶ 로그아웃 절차 설명  
 로그아웃 기능은 별도의 백엔드 작업이 필요 없기 때문에, Logout.js에서 구현되어 있으며, 제이쿼리 쿠키 플러그인을
 사용했습니다. removeCookie로 유저의 로그인 쿠키 및 프로필 사진 정보를 삭제하고, SignIn.html로 이동합니다.
 
 
-▶ Chatting Room 생성 절차 설명
+▶ Chatting Room 생성 절차 설명  
 
 1) 각 유저는 ChattingRoomSelector.php에서 상대 유저 ID를 입력해 채팅방을 생성할 수 있습니다. 상대 ID가 존재
 하지 않으면 채팅방은 생성되지 않습니다. 채팅방을 만들 땐, 채팅방의 제목이 필요하며, 채팅방의 설명을 추가할 수
@@ -92,7 +93,7 @@ readAsDataURL로 선택한 이미지 파일을 가져옵니다. 그리고 reader
 5) usersinchattingroom은, 어떤 유저가 어떤 채팅방들을 갖고 있는지를 나타내는 테이블입니다. 따라서, 채팅방이
 하나 생성되면 상대측 ID와 채팅방을 만든 유저의 ID 두 개의 레코드가 usersinchattingroom에 추가 됩니다.
 
-▶ 메시지 전송 절차 설명
+▶ 메시지 전송 절차 설명  
 
 1) ChattingRoom.php에서 문자 데이터를 입력한 후, 엔터를 누르거나 전송 버튼을 누르면 제 서버의 공유기 IP 주소
 로 Ajax로 데이터를 전송하는 ChattingRoom.js 내의 함수가 실행 됩니다.
@@ -132,6 +133,7 @@ fileUpload 함수는 jquery의 ajax 메서드로 SendMessageActionWithAjax.php�
 
 3. 참고한 코드 및 웹 페이지, 라이브러리, 프로그램  
 
+```
 1) BootStrap 4**
 : 보다 용이한 반응형 웹 페이지 디자인을 위해 사용했습니다. bootstrap.min.css (서버의 부하를 최소화 하기 위한
 난독화 파일) 을 사용했으나, css 파일이 어떻게 구성되어 있는지 보기 위해 참고용으로 bootstrap.css를 함께 프로젝
@@ -167,5 +169,6 @@ https://programmingsummaries.tistory.com/
 7) FileSaver.js**
 파일 다운로드를 구현할 때, 사용한 파일 관리 JS 라이브러리입니다.
 https://github.com/eligrey/FileSaver.js
+```
 
 

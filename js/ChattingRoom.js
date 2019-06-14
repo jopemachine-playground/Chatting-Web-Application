@@ -175,17 +175,18 @@ async function fileUploadByDrag(event){
 
   uint8ArrayNew  = new Uint8Array(arrayBuffer);
 
-  // console.log(uint8ArrayNew); // 정상
+  console.log(uint8ArrayNew.toString(16));
 
-  // var enc = new TextDecoder("utf-8");
-  // var arr = new Uint8Array([84,104,105,115,32,105,115,32,97,32,85,105,110,116,
-  //                           56,65,114,114,97,121,32,99,111,110,118,101,114,116,
-  //                           101,100,32,116,111,32,97,32,115,116,114,105,110,103]);
-  // console.log(enc.decode(arr));
+  // console.log(uint8ArrayNew); // 정상
   
+  // TextDecoder object allows to read the value into an an actual JavaScript string
   var enc = new TextDecoder("utf-16");
   
+  console.log(enc.decode(uint8ArrayNew).toString(16));
+
   console.log(enc.decode(uint8ArrayNew));
+
+  // console.log(enc.decode(uint8ArrayNew)) // 정상
 
   fileUpload(enc.decode(uint8ArrayNew), fileName);
 
@@ -237,15 +238,28 @@ function fileDownload(message_index){
       // JSON.parse는 제이쿼리의 메서드 라고 함
       let response_file = JSON.parse(response);
 
+      console.log(response);
+
+      console.log(response_file['File']);
+
+      console.log(typeof response_file['File']);
+      // response_file['File'] 정상
+
       // let a = str2ab(response_file['File']);
 
       // blob 객체를 생성
       //var blob = new Blob([a]);
 
-      var enc = new TextDecoder("utf-16");
+      // 얘네 포맷은 바이너리 데이터를 바꾸지 않음 
+      var enc = new TextEncoder("utf-8");
 
-      var blob = new Blob([response_file['File']], {type: "text/plain; charset=utf-8"});
+      // MIME 타입과 charset을 지정해주고, Blob 생성
+      // 얘네 포맷은 바이너리 데이터를 바꾸지 않음 
+      var blob = new Blob([str2ab(response_file['File'])], {type: "text/plain; charset=utf-8"});
       
+      console.log(blob);
+      // console.log(blob) 비정상
+
       // 브라우저의 다운로드 경로에 파일을 다운로드함
       saveAs(blob, response_file['FileName']);
 
@@ -257,6 +271,7 @@ function fileDownload(message_index){
     }
   });
 }
+
 
 function otherUserInvite(){
 
