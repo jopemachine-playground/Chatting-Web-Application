@@ -134,7 +134,7 @@ fileUpload 함수는 jquery의 ajax 메서드로 SendMessageActionWithAjax.php�
 3. 참고한 코드 및 웹 페이지, 라이브러리, 프로그램  
 
 ```
-1) BootStrap 4**
+1) BootStrap 4
 : 보다 용이한 반응형 웹 페이지 디자인을 위해 사용했습니다. bootstrap.min.css (서버의 부하를 최소화 하기 위한
 난독화 파일) 을 사용했으나, css 파일이 어떻게 구성되어 있는지 보기 위해 참고용으로 bootstrap.css를 함께 프로젝
 트 폴더에 넣어 놓아 참고하였습니다. 일부 코드는 부트스트랩 API를 참고해 작성했습니다. 마찬가지 이유로
@@ -143,11 +143,11 @@ bootstrap.js도 함께 참고했습니다. 또한, 부트스트랩 4 의 일부 
 않으면 에러를 일으킴)
 https://getbootstrap.com/
 
-2) jQuery**
+2) jQuery
 : 자바스크립트 문법을 간결하게 쓰고 싶어 사용했습니다.
 https://jquery.com/
 
-3) jQuery cookie plugin**
+3) jQuery cookie plugin
 : 자바스크립트로 쿠키를 간결하게 다룰 수 있게 해 주는 플러그인입니다.
 https://github.com/carhartl/jquery-cookie
 
@@ -160,13 +160,13 @@ https://www.mysql.com/
 이나, 배경 값, 너비나 높이 등 속성을 변경해 사용했습니다.
 https://feathericons.com/
 
-6) RequireJS**
+6) RequireJS
 RequireJS는 ReactJS 등에 사용되는 JS 종속성 관리 라이브러리입니다. 파일 다운로드를 구현할 때, require에 콜백
 함수를 등록해 사용했습니다.
 https://requirejs.org/
 https://programmingsummaries.tistory.com/
 
-7) FileSaver.js**
+7) FileSaver.js
 파일 다운로드를 구현할 때, 사용한 파일 관리 JS 라이브러리입니다.
 https://github.com/eligrey/FileSaver.js
 ```
