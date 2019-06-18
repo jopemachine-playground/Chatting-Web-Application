@@ -73,13 +73,9 @@ function changeProfileImage(value){
 }
 
 function manButtonClick(){
-  console.log('남자');
   $('#Gender').val('man');
-  console.log($('#Gender').val());
 }
 
 function womanButtonClick(){
-  console.log('여자');
   $('#Gender').val('woman');
-  console.log($('#Gender').val());
 }

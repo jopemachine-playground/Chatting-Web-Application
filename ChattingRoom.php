@@ -181,12 +181,14 @@ $RoomTitle = $row['Title'];
       <div class="col-sm-9 text-right" style="margin-top:10px;" title="전송할 메시지를 입력하세요.">
         <form>
           <textarea id="Sending_Message_Box" name="message" rows="4" cols="400" ondrop="fileUploadByDrag(event)" ondragover="colorChangeByDragOver()" ondragleave="colorChangeByDragLeave()" placeholder="여기에 메시지를 입력하거나, 파일을 드래그 해 전송하세요." autofocus></textarea>
+          <input id="fileSelector" style="display: none;" type="file"></button>
+          <img style="position: absolute; bottom: 25px; right: 32px;" class="responsiveNone2" src="./img/file.svg" onclick="document.getElementById('fileSelector').click();">
         </form>
       </div>
 
       <div class="col-sm-1.5 responsiveNone">
         <button id="Message_Send_Button" type="submit" class="btn btn-block btn-success" title="메시지를 전송합니다." onclick="HandlingSendEvent()">전송</button>
-      </div>
+      </div><br>
     </div>
 
     <div class="row" style="width: 100%">

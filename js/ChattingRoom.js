@@ -133,8 +133,6 @@ $(document).ready(function() {
 
 function fileUpload(file, fileName){
 
-  console.log(file);
-
   $.ajax({
     type: "POST",
     url : "../purePHP/SendMessageActionWithAjax.php",
@@ -238,8 +236,6 @@ function fileDownload(message_index){
 
 function otherUserInvite(){
 
-  console.log($('#InvitedUserID').val());
-
   $.ajax({
     type: "POST",
     url : "../purePHP/InviteAction.php",
@@ -256,3 +252,25 @@ function otherUserInvite(){
     }
   });
 }
+
+// 클릭을 통한 파일 전송
+$('#fileSelector').change(async function(event){
+  
+  var selectedFile = event.target.files[0]; 
+
+  if(selectedFile.size > 100000){
+    alert('전송하려는 파일의 크기는 100000 바이트 미만이어야 합니다.');
+    return;
+  }
+
+  let fileName = selectedFile.name;
+
+  let arrayBuffer = await new Response(selectedFile).arrayBuffer();
+
+  fileUpload(ab2str(arrayBuffer), fileName);
+
+  $('#Sending_Message_Box').css('background-color','#ffffff');
+
+  $('#fileSelector').val('');
+
+});

@@ -98,13 +98,12 @@ a.navbar-brand{
 }
 
 .fileDownloadLink{
-  color: blue;
-  text-decoration: underline;
+  color: #000000 !important;
 }
 
-.fileDownloadLink{
-  color: blue;
-  text-decoration: underline;
+.fileDownloadLink:hover{
+  color: blue !important;
+  text-decoration: underline !important;
 }
 
 body{
