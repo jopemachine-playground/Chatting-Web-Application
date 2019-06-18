@@ -162,8 +162,8 @@ async function fileUploadByDrag(event){
     alert('한 번에 한 파일만 전송할 수 있습니다.');
     return;
   }
-  if(event.dataTransfer.files[0].size > 100000){
-    alert('전송하려는 파일의 크기는 100000 바이트 미만이어야 합니다.');
+  if(event.dataTransfer.files[0].size > 10000000){
+    alert('전송하려는 파일의 크기는 10 MB 미만이어야 합니다.');
     return;
   }
 
@@ -258,8 +258,8 @@ $('#fileSelector').change(async function(event){
   
   var selectedFile = event.target.files[0]; 
 
-  if(selectedFile.size > 100000){
-    alert('전송하려는 파일의 크기는 100000 바이트 미만이어야 합니다.');
+  if(selectedFile.size > 10000000){
+    alert('전송하려는 파일의 크기는 10 MB 미만이어야 합니다.');
     return;
   }
 
