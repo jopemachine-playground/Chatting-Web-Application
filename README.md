@@ -121,14 +121,13 @@ Index (Auto Increment입니다.) 를 가지는 메시지들을 search 합니다.
 채팅 전송 박스에 파일을 드래그 해 올려 놓으면 fileUploadByDrag가 실행됩니다. 이 함수는
 dataTransfer.files[0].name으로 파일 이름을 가져 옵니다. (1개 이상의 파일을 드래그 해 실행하면 한 번에 한 파일
 만 전송할 수 있다는 alert를 띄웠습니다.) 가져온 파일 이름으로 Resonponse 객체를 생성해, arrayBuffer()로 파일의
-바이너리 데이터를 array로 만듭니다. 그리고 Uint8Array()를 이용해 바이너리 데이터를 Unsigned int로 만들고,
-TextDecoder로 utf-16으로 인코딩한 후, fileUpload 함수에 이 배열 데이터와 파일 이름 데이터를 넘겨줍니다.
+바이너리 데이터를 array로 만듭니다. 그리고 ab2str이란 함수로 이 arraybuffer를 string 데이터로 만들고, fileUpload 함수에 이 데이터와 파일 이름 데이터를 넘겨줍니다.
 fileUpload 함수는 jquery의 ajax 메서드로 SendMessageActionWithAjax.php에 넘겨받은 데이터를 전송합니다. 전
-송된 파일 데이터는 SendMessageActionWithAjax.php에서 Blob 형태로 메시지 형태로 저장됩니다. 메시지 형태로
+송된 파일 데이터는 SendMessageActionWithAjax.php에서 Blob 형태로 메시지 형태로 저장됩니다. (addSlash를 이용) 메시지 형태로
 레코드를 저장했기 때문에, 다른 메시지들과 같이 jumbotron 안에 a 태그가 감싸진 형태로 나타나게 되며, 이 a 태그
-를 클릭함으로써, 채팅방 내 모든 유저들은 해당 파일을 다운로드할 수 있게 됩니다. 그러나, 현재 Multibyte 파일의
-인코딩, 디코딩 과정에서 문제가 발생해, MySQL에서 다운로드 받은 파일이 깨져 올바른 형태로 복원되지 않는 버그가
-있습니다.
+를 클릭함으로써, 채팅방 내 모든 유저들은 해당 파일을 다운로드할 수 있게 됩니다. 파일을 다운로드 할 때는, 반대로 str2ab란 함수로 arrayBuffer를 생성해, 이것으로 Blob 객체를 생성하고, FileSaver.js의 saveAs 메서드를 이용해 파일을 다운로드 하게 됩니다.
+
+
 
 
 3. 참고한 코드 및 웹 페이지, 라이브러리, 프로그램  

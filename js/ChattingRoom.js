@@ -133,6 +133,8 @@ $(document).ready(function() {
 
 function fileUpload(file, fileName){
 
+  console.log(file);
+
   $.ajax({
     type: "POST",
     url : "../purePHP/SendMessageActionWithAjax.php",
@@ -171,24 +173,7 @@ async function fileUploadByDrag(event){
 
   let arrayBuffer = await new Response(event.dataTransfer.files[0]).arrayBuffer();
 
-  // console.log(arrayBuffer); // 정상
-
-  uint8ArrayNew  = new Uint8Array(arrayBuffer);
-
-  console.log(uint8ArrayNew.toString(16));
-
-  // console.log(uint8ArrayNew); // 정상
-  
-  // TextDecoder object allows to read the value into an an actual JavaScript string
-  var enc = new TextDecoder("utf-16");
-  
-  console.log(enc.decode(uint8ArrayNew).toString(16));
-
-  console.log(enc.decode(uint8ArrayNew));
-
-  // console.log(enc.decode(uint8ArrayNew)) // 정상
-
-  fileUpload(enc.decode(uint8ArrayNew), fileName);
+  fileUpload(ab2str(arrayBuffer), fileName);
 
   $('#Sending_Message_Box').css('background-color','#ffffff');
 
@@ -199,7 +184,7 @@ function ab2str(buf) {
 }
 
 function str2ab(str) {
-  var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+  var buf = new ArrayBuffer(str.length);
   var bufView = new Uint8Array(buf);
   for (var i=0, strLen=str.length; i < strLen; i++) {
     bufView[i] = str.charCodeAt(i);
@@ -228,38 +213,16 @@ function fileDownload(message_index){
     },
 
     success : function(response) {
-      
-      console.log("서버에 파일 다운로드 요청에 성공했습니다");
 
       // require에 콜백을 등록해, 파일 저장에 필요한 스크립트 파일이 로드되면 다음 과정을 진행
       require(["../lib/FileSaver.js"], () => {
 
       // 서버에서 json_encode로 인코딩 한 파일 내용, 파일 이름을 디코딩한다.
-      // JSON.parse는 제이쿼리의 메서드 라고 함
       let response_file = JSON.parse(response);
-
-      console.log(response);
-
-      console.log(response_file['File']);
-
-      console.log(typeof response_file['File']);
-      // response_file['File'] 정상
-
-      // let a = str2ab(response_file['File']);
-
-      // blob 객체를 생성
-      //var blob = new Blob([a]);
-
-      // 얘네 포맷은 바이너리 데이터를 바꾸지 않음 
-      var enc = new TextEncoder("utf-8");
-
+      
       // MIME 타입과 charset을 지정해주고, Blob 생성
-      // 얘네 포맷은 바이너리 데이터를 바꾸지 않음 
       var blob = new Blob([str2ab(response_file['File'])], {type: "text/plain; charset=utf-8"});
       
-      console.log(blob);
-      // console.log(blob) 비정상
-
       // 브라우저의 다운로드 경로에 파일을 다운로드함
       saveAs(blob, response_file['FileName']);
 
