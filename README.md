@@ -138,13 +138,11 @@ fileUpload 함수는 jquery의 ajax 메서드로 SendMessageActionWithAjax.php�
 난독화 파일) 을 사용했으나, css 파일이 어떻게 구성되어 있는지 보기 위해 참고용으로 bootstrap.css를 함께 프로젝
 트 폴더에 넣어 놓아 참고하였습니다. 일부 코드는 부트스트랩 API를 참고해 작성했습니다. 마찬가지 이유로
 bootstrap.js도 함께 참고했습니다. 또한, 부트스트랩 4 의 일부 컴포넌트들은 내부적으로 popper,js, mdb.js를 사용하
-기 때문에, 제 프로젝트에는 이 파일들도 함께 임포트 되어 있습니다. (CDN 방식으로 사용하지 않을 때 임포트 하지
-않으면 에러를 일으킴)
+기 때문에, 제 프로젝트에는 이 파일들도 함께 임포트 되어 있습니다. 
 https://getbootstrap.com/
 
 2) jQuery
-: 자바스크립트 문법을 간결하게 쓰고 싶어 사용했습니다.
-https://jquery.com/
+: https://jquery.com/
 
 3) jQuery cookie plugin
 : 자바스크립트로 쿠키를 간결하게 다룰 수 있게 해 주는 플러그인입니다.
@@ -160,8 +158,9 @@ https://www.mysql.com/
 https://feathericons.com/
 
 6) RequireJS
-RequireJS는 ReactJS 등에 사용되는 JS 종속성 관리 라이브러리입니다. 파일 다운로드를 구현할 때, require에 콜백
-함수를 등록해 사용했습니다.
+RequireJS는 ReactJS 등에 사용되는 JS 종속성 관리 라이브러리입니다. 이 프로젝트에서는, 
+파일 다운로드를 구현할 때, require()에 콜백 함수를 등록해, FileSaver.js를 로드한 후 saveFile을 호출하는 식으로
+사용했습니다.
 https://requirejs.org/
 https://programmingsummaries.tistory.com/
 
