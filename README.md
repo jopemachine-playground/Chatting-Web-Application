@@ -14,6 +14,8 @@ svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. htt
 <img src="./ScreenClip.png"></img>
 
 
+<img src="./DB_Screenshot.gif"></img>
+
 
 # Part of Report  
 
