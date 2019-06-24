@@ -12,10 +12,12 @@ svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. htt
 # Screen shots
 
 * 채팅방 화면
+
 <img src="./ScreenClip.png"></img>
 
 
 * 데이터베이스는 아래처럼 구성되어 있음
+
 <img src="./DB_Screenshot.gif"></img>
 
 
