@@ -1,4 +1,4 @@
-# Simple ChattingService (부트스트랩 4 를 이용한 반응형 채팅 웹 페이지)
+# 부트스트랩 4 를 이용한 반응형 채팅 웹 페이지
 2019 CNU Web Programming Term Project
 
 # Development Environment
