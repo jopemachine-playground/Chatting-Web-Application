@@ -1,15 +1,15 @@
-# 부트스트랩 4 를 이용한 반응형 채팅 웹 페이지
+<h2>부트스트랩 4 를 이용한 반응형 채팅 웹 페이지</h2>
 2019 CNU Web Programming Term Project
 
-# Development Environment
+<h2>Development Environment</h2>
 프론트엔 BootStrap 4.3.1, 백엔드엔 PHP, DB는 MySQL을 사용함.  
 FileSaver : 파일 다운로드를 구현할 때, 사용한 파일 관리 JS 라이브러리.  
 RequireJS : ReactJS 등에 사용되는 JS 종속성 관리 라이브러리.
 
-# Asset Sources
+<h2>Asset Sources</h2>
 svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. https://feathericons.com/
 
-# Screen shots
+<h2>Screen shots</h2>
 
 * 채팅방 화면
 
@@ -21,7 +21,7 @@ svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. htt
 <img src="./DB_Screenshot.gif"></img>
 
 
-# Part of Report  
+<h2>Part of Report</h2>
 
 1. #### 과제의 개요 
 
