@@ -2,9 +2,21 @@
 2019 CNU Web Programming Term Project
 
 <h2>Development Environment</h2>
-프론트엔 BootStrap 4.3.1, 백엔드엔 PHP, DB는 MySQL을 사용함.  
-FileSaver : 파일 다운로드를 구현할 때, 사용한 파일 관리 JS 라이브러리.  
-RequireJS : ReactJS 등에 사용되는 JS 종속성 관리 라이브러리.
+>xampp for windows 7.1.30, xampp control panel 3.2.4
+>
+>Apache 2.4.39
+>
+>MariaDB 10.3.16 (mySQL)
+>
+>phpMyAdmin 4.9.0.1
+>
+>Bootstrap 4.3.1, popper.js, mdb.js
+>
+>JQuery 3.2.1
+>
+>FileSaver : 파일 다운로드를 구현할 때, 사용한 파일 관리 JS 라이브러리.  
+>
+>RequireJS : ReactJS 등에 사용되는 JS 종속성 관리 라이브러리.
 
 <h2>Asset Sources</h2>
 svg 파일들은 오른쪽 페이지에서 다운로드 받아 사용했다. https://feathericons.com/
